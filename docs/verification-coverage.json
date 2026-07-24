@@ -1,9 +1,9 @@
 {
   "generatedAt": "2026-07-25",
-  "institutions": 77,
-  "sourceLinked": 75,
+  "institutions": 85,
+  "sourceLinked": 83,
   "needsReview": 2,
-  "linkedSources": 333,
+  "linkedSources": 374,
   "unresolvedReferences": 2,
   "coverage": [
     {
@@ -697,6 +697,78 @@
       "status": "source-linked",
       "total": 4,
       "linked": 4,
+      "unresolved": 0
+    },
+    {
+      "priority": 78,
+      "slug": "own-e-procurement-system-interconnection",
+      "name": "자체전자조달시스템과 나라장터의 관계",
+      "status": "source-linked",
+      "total": 3,
+      "linked": 3,
+      "unresolved": 0
+    },
+    {
+      "priority": 79,
+      "slug": "overseas-currency-procurement",
+      "name": "외자구매",
+      "status": "source-linked",
+      "total": 7,
+      "linked": 7,
+      "unresolved": 0
+    },
+    {
+      "priority": 80,
+      "slug": "design-competition",
+      "name": "설계공모",
+      "status": "source-linked",
+      "total": 7,
+      "linked": 7,
+      "unresolved": 0
+    },
+    {
+      "priority": 81,
+      "slug": "knowledge-based-project-contract-method",
+      "name": "지식기반사업의 계약방법",
+      "status": "source-linked",
+      "total": 9,
+      "linked": 9,
+      "unresolved": 0
+    },
+    {
+      "priority": 82,
+      "slug": "lease-goods-contract",
+      "name": "리스물품 계약(공공기관 리스입찰)",
+      "status": "source-linked",
+      "total": 4,
+      "linked": 4,
+      "unresolved": 0
+    },
+    {
+      "priority": 83,
+      "slug": "product-catalog-number-registration",
+      "name": "물품목록번호와 상품정보 등록(목록화)",
+      "status": "source-linked",
+      "total": 5,
+      "linked": 5,
+      "unresolved": 0
+    },
+    {
+      "priority": 84,
+      "slug": "excellent-product-joint-brand-designation",
+      "name": "우수조달공동상표 물품 지정",
+      "status": "source-linked",
+      "total": 4,
+      "linked": 4,
+      "unresolved": 0
+    },
+    {
+      "priority": 85,
+      "slug": "tax-evasion-debarment",
+      "name": "조세포탈자의 입찰참가자격 제한",
+      "status": "source-linked",
+      "total": 2,
+      "linked": 2,
       "unresolved": 0
     }
   ]

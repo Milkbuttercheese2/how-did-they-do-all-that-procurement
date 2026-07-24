@@ -1,21 +1,1958 @@
 {
  "checkedAt": "2026-07-24",
- "citations": 1192,
+ "citations": 1521,
  "summary": {
   "deletedArticle": 0,
-  "contentMismatch": 0,
-  "noSourceText": 0,
+  "contentMismatch": 1,
+  "noSourceText": 320,
   "descriptiveCitation": 0,
-  "legalBasisOrder": 0,
-  "emptyBasis": 13,
-  "articleReuse": 97
+  "legalBasisOrder": 1,
+  "emptyBasis": 15,
+  "articleReuse": 103
  },
  "findings": {
   "deletedArticle": [],
-  "contentMismatch": [],
-  "noSourceText": [],
+  "contentMismatch": [
+   {
+    "slug": "commercial-software-mas",
+    "node": "P12",
+    "law": "상용소프트웨어 다수공급자계약 업무처리규정",
+    "article": "제18조제2항",
+    "score": 0.286,
+    "claim": "계약담당공무원은 「물품구매(제조)계약일반조건」 제26조(단, 유지관리상품 및 커스터마이징상품의 경우 「용역계약일반조건」 제31조)에 따라 계약상대자의 책임있는 사유로 인하여 당해 "
+   }
+  ],
+  "noSourceText": [
+   {
+    "slug": "reinspection-request",
+    "node": "P01",
+    "law": "(계약예규) 물품구매(제조)계약일반조건",
+    "article": "제19조제8항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P01",
+    "law": "(계약예규) 공사계약일반조건",
+    "article": "제27조제6항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P02",
+    "law": "(계약예규) 물품구매(제조)계약일반조건",
+    "article": "제19조제7항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P02",
+    "law": "(계약예규) 공사계약일반조건",
+    "article": "제27조제6항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P02",
+    "law": "(계약예규) 용역계약일반조건",
+    "article": "제20조제6항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P03",
+    "law": "(계약예규) 공사계약일반조건",
+    "article": "제12조제4항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P03",
+    "law": "(계약예규) 공사계약일반조건",
+    "article": "제12조제3항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P04",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제55조제1항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P04",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제14조제1항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P05",
+    "law": "(계약예규) 물품구매(제조)계약일반조건",
+    "article": "제19조제4항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P05",
+    "law": "(계약예규) 공사계약일반조건",
+    "article": "제27조제3항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P05",
+    "law": "(계약예규) 용역계약일반조건",
+    "article": "제20조제3항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P06",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제55조제6항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P07",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제15조제1항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P07",
+    "law": "(계약예규) 물품구매(제조)계약일반조건",
+    "article": "제19조제8항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P08",
+    "law": "(계약예규) 물품구매(제조)계약일반조건",
+    "article": "제24조제4항"
+   },
+   {
+    "slug": "reinspection-request",
+    "node": "P08",
+    "law": "(계약예규) 공사계약일반조건",
+    "article": "제25조제6항"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P01",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제7조제1항"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P01",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제21조제1항"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P02",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제21조제1항"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P03",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행규칙",
+    "article": "제24조제1항"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P04",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행규칙",
+    "article": "제25조제2항"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P04",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행규칙",
+    "article": "제25조제5항"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P05",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제21조"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "S01",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제22조"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P06",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행규칙",
+    "article": "제15조제2항"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P07",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제21조제1항"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P08",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제39조제1항"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "S02",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제40조제1항"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P09",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제10조제2항"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P09",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제42조"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P10",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제11조제1항"
+   },
+   {
+    "slug": "restricted-competitive-bidding",
+    "node": "P11",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제20조제2항"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P01",
+    "law": "중증장애인생산품 우선구매 특별법",
+    "article": "제9조제1항"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P02",
+    "law": "중증장애인생산품 우선구매 특별법 시행령",
+    "article": "제16조"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P02",
+    "law": "중증장애인생산품 우선구매 특별법 시행령",
+    "article": "제17조"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P03",
+    "law": "중증장애인생산품 우선구매 특별법",
+    "article": "제7조"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P03",
+    "law": "중증장애인생산품 구매목표 비율 및 생산시설 지정 등에 관한 기준",
+    "article": "제2조"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P04",
+    "law": "중증장애인생산품 우선구매 특별법",
+    "article": "제7조제2항"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P04",
+    "law": "중증장애인생산품 우선구매 특별법 시행령",
+    "article": "제10조"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "S01",
+    "law": "중증장애인생산품 우선구매 특별법",
+    "article": "제7조의2"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P05",
+    "law": "중증장애인생산품 우선구매 특별법",
+    "article": "제7조제1항"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P06",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제26조제1항"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P06",
+    "law": "중증장애인생산품 우선구매 특별법",
+    "article": "제7조제5항"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P07",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제14조"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P07",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제15조"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P08",
+    "law": "중증장애인생산품 우선구매 특별법 시행령",
+    "article": "제10조"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "S02",
+    "law": "중증장애인생산품 우선구매 특별법",
+    "article": "제7조의3"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P09",
+    "law": "중증장애인생산품 우선구매 특별법",
+    "article": "제10조"
+   },
+   {
+    "slug": "severely-disabled-products",
+    "node": "P10",
+    "law": "중증장애인생산품 우선구매 특별법 시행령",
+    "article": "제17조"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "S01",
+    "law": "조달사업에 관한 법률",
+    "article": "제13조"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "S01",
+    "law": "조달사업에 관한 법률",
+    "article": "제12조"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "S01",
+    "law": "국가종합전자조달시스템 쇼핑몰 운영규정",
+    "article": "제6조"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "P01",
+    "law": "조달사업에 관한 법률",
+    "article": "제13조제1항"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "P02",
+    "law": "물품 다수공급자계약 업무처리규정",
+    "article": "제49조"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "P03",
+    "law": "물품 다수공급자계약 업무처리규정",
+    "article": "제51조"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "P04",
+    "law": "물품 다수공급자계약 업무처리규정",
+    "article": "제52조"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "S02",
+    "law": "물품 다수공급자계약 업무처리규정",
+    "article": "제54조의2"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "P05",
+    "law": "물품 다수공급자계약 업무처리규정",
+    "article": "제53조"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "P06",
+    "law": "물품 다수공급자계약 업무처리규정",
+    "article": "제52조제9항"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "P06",
+    "law": "조달사업에 관한 법률",
+    "article": "제12조"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "S03",
+    "law": "조달사업에 관한 법률",
+    "article": "제12조"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "P07",
+    "law": "(계약예규) 물품구매(제조)계약일반조건",
+    "article": "제12조"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "P07",
+    "law": "(계약예규) 물품구매(제조)계약일반조건",
+    "article": "제24조"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "P08",
+    "law": "(계약예규) 물품구매(제조)계약일반조건",
+    "article": "제19조"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "P09",
+    "law": "(계약예규) 물품구매(제조)계약일반조건",
+    "article": "제19조제4항"
+   },
+   {
+    "slug": "shopping-mall-purchase",
+    "node": "P10",
+    "law": "(계약예규) 물품구매(제조)계약일반조건",
+    "article": "제22조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P01",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제6조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P02",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제6조제2항"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P03",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제6조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P03",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제6조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P04",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제6조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P05",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제6조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P06",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제6조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P07",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제6조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P07",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제6조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P08",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제9조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P08",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제10조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P09",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제7조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P10",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제7조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P11",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제7조의2"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P11",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제8조"
+   },
+   {
+    "slug": "sme-competitive-products",
+    "node": "P12",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제6조"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P01",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제2조"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P01",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제3조"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P02",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제5조제1항"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P02",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제5조"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P03",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제5조"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P04",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제4조제2항"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P04",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제2조의2"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P05",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제13조"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P05",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제14조제1항"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P05",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제12조"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P06",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제4조"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P07",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제5조"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P08",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제5조"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P09",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제5조"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P10",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제5조"
+   },
+   {
+    "slug": "sme-priority-purchase",
+    "node": "P11",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제5조제1항"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P01",
+    "law": "사회적기업 육성법",
+    "article": "제7조제1항"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P01",
+    "law": "사회적기업 육성법",
+    "article": "제8조제1항"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P02",
+    "law": "사회적기업 육성법",
+    "article": "제7조"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P03",
+    "law": "사회적기업 육성법",
+    "article": "제12조제1항"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P03",
+    "law": "사회적기업 육성법",
+    "article": "제12조제2항"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "S01",
+    "law": "사회적기업 육성법",
+    "article": "제20조"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P04",
+    "law": "사회적기업 육성법",
+    "article": "제12조제1항"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P05",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제26조제1항제5호"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P06",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제26조제1항제5호"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P06",
+    "law": "사회적기업 육성법",
+    "article": "제12조제1항"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P07",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제14조제1항"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P07",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제15조제1항"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P08",
+    "law": "사회적기업 육성법",
+    "article": "제12조제2항"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P08",
+    "law": "사회적기업 육성법 시행령",
+    "article": "제12조의2"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "S02",
+    "law": "사회적기업 육성법",
+    "article": "제12조제3항"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "S02",
+    "law": "사회적기업 육성법 시행령",
+    "article": "제12조의2"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P09",
+    "law": "사회적기업 육성법",
+    "article": "제12조제3항"
+   },
+   {
+    "slug": "social-enterprise-preference",
+    "node": "P10",
+    "law": "사회적기업 육성법",
+    "article": "제12조제2항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P01",
+    "law": "소프트웨어 진흥법",
+    "article": "제44조제1항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P01",
+    "law": "소프트웨어 진흥법",
+    "article": "제44조제2항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P01",
+    "law": "소프트웨어 진흥법",
+    "article": "제44조제3항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P02",
+    "law": "소프트웨어 진흥법",
+    "article": "제48조제2항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P02",
+    "law": "소프트웨어 진흥법",
+    "article": "제48조제4항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P03",
+    "law": "소프트웨어 진흥법",
+    "article": "제48조제3항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P03",
+    "law": "소프트웨어 진흥법",
+    "article": "제48조제5항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P04",
+    "law": "소프트웨어 진흥법",
+    "article": "제49조제1항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P04",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제10조제2항제3호"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P05",
+    "law": "소프트웨어 진흥법",
+    "article": "제51조제1항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P06",
+    "law": "소프트웨어 진흥법",
+    "article": "제50조제1항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P06",
+    "law": "소프트웨어 진흥법",
+    "article": "제50조제2항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P07",
+    "law": "소프트웨어 진흥법",
+    "article": "제50조제3항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P08",
+    "law": "소프트웨어 진흥법",
+    "article": "제51조제7항"
+   },
+   {
+    "slug": "software-procurement",
+    "node": "P09",
+    "law": "소프트웨어 진흥법",
+    "article": "제52조제1항"
+   },
+   {
+    "slug": "spec-precommitment-disclosure",
+    "node": "P01",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제14조제1항"
+   },
+   {
+    "slug": "spec-precommitment-disclosure",
+    "node": "P01",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제16조"
+   },
+   {
+    "slug": "spec-precommitment-disclosure",
+    "node": "P02",
+    "law": "(계약예규) 정부 입찰·계약 집행기준",
+    "article": "제5조"
+   },
+   {
+    "slug": "spec-precommitment-disclosure",
+    "node": "P02",
+    "law": "조달청 내자구매업무 처리규정",
+    "article": "제73조제2항"
+   },
+   {
+    "slug": "spec-precommitment-disclosure",
+    "node": "P03",
+    "law": "(계약예규) 정부 입찰·계약 집행기준",
+    "article": "제5조의3"
+   },
+   {
+    "slug": "spec-precommitment-disclosure",
+    "node": "P04",
+    "law": "조달청 내자구매업무 처리규정",
+    "article": "제9조제1항"
+   },
+   {
+    "slug": "spec-precommitment-disclosure",
+    "node": "P05",
+    "law": "조달청 내자구매업무 처리규정",
+    "article": "제9조제2항"
+   },
+   {
+    "slug": "spec-precommitment-disclosure",
+    "node": "P06",
+    "law": "조달청 내자구매업무 처리규정",
+    "article": "제9조제4항"
+   },
+   {
+    "slug": "spec-precommitment-disclosure",
+    "node": "P07",
+    "law": "조달청 내자구매업무 처리규정",
+    "article": "제9조제4항"
+   },
+   {
+    "slug": "spec-precommitment-disclosure",
+    "node": "P07",
+    "law": "조달청 내자구매업무 처리규정",
+    "article": "제73조제1항"
+   },
+   {
+    "slug": "spec-precommitment-disclosure",
+    "node": "P08",
+    "law": "조달청 내자구매업무 처리규정",
+    "article": "제32조"
+   },
+   {
+    "slug": "spec-precommitment-disclosure",
+    "node": "P08",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제14조제2항"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P01",
+    "law": "조달사업에 관한 법률",
+    "article": "제2조"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P01",
+    "law": "조달사업에 관한 법률 시행령",
+    "article": "제3조"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P02",
+    "law": "조달사업에 관한 법률",
+    "article": "제14조제1항"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P02",
+    "law": "조달사업에 관한 법률",
+    "article": "제29조제1항"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P02",
+    "law": "조달사업에 관한 법률 시행령",
+    "article": "제35조"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P03",
+    "law": "조달사업에 관한 법률",
+    "article": "제31조"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P04",
+    "law": "조달사업에 관한 법률",
+    "article": "제29조제2항"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "S01",
+    "law": "조달사업에 관한 법률",
+    "article": "제29조제3항"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "S01",
+    "law": "조달사업에 관한 법률 시행령",
+    "article": "제36조"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P07",
+    "law": "조달사업에 관한 법률",
+    "article": "제30조제1항"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P08",
+    "law": "조달사업에 관한 법률 시행규칙",
+    "article": "제12조제1항"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P09",
+    "law": "조달사업에 관한 법률",
+    "article": "제30조제3항"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P09",
+    "law": "조달사업에 관한 법률 시행규칙",
+    "article": "제12조제3항"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P10",
+    "law": "조달사업에 관한 법률 시행규칙",
+    "article": "제12조제5항"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P11",
+    "law": "조달사업에 관한 법률 시행규칙",
+    "article": "제12조제4항"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P11",
+    "law": "조달사업에 관한 법률 시행규칙",
+    "article": "제13조"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P12",
+    "law": "조달사업에 관한 법률 시행규칙",
+    "article": "제12조제2항"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P13",
+    "law": "조달사업에 관한 법률",
+    "article": "제29조제4항"
+   },
+   {
+    "slug": "stockpile-goods",
+    "node": "P13",
+    "law": "조달사업에 관한 법률",
+    "article": "제29조제5항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P01",
+    "law": "(계약예규) 공사계약일반조건",
+    "article": "제42조제1항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P02",
+    "law": "(계약예규) 공사계약일반조건",
+    "article": "제42조제2항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P03",
+    "law": "하도급거래 공정화에 관한 법률",
+    "article": "제13조의2"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P03",
+    "law": "건설산업기본법",
+    "article": "제34조"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "S01",
+    "law": "전자조달의 이용 및 촉진에 관한 법률",
+    "article": "제9조의2"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "S01",
+    "law": "건설산업기본법",
+    "article": "제34조제9항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P04",
+    "law": "하도급거래 공정화에 관한 법률",
+    "article": "제13조제1항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P05",
+    "law": "(계약예규) 공사계약일반조건",
+    "article": "제43조의2제1항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P06",
+    "law": "하도급거래 공정화에 관한 법률",
+    "article": "제14조제1항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P06",
+    "law": "(계약예규) 공사계약일반조건",
+    "article": "제43조제1항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P07",
+    "law": "하도급거래 공정화에 관한 법률",
+    "article": "제14조제1항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P07",
+    "law": "건설산업기본법",
+    "article": "제35조제2항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P08",
+    "law": "(계약예규) 공사계약일반조건",
+    "article": "제43조제1항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P08",
+    "law": "하도급거래 공정화에 관한 법률",
+    "article": "제14조제1항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P09",
+    "law": "(계약예규) 공사계약일반조건",
+    "article": "제43조제2항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "S02",
+    "law": "전자조달의 이용 및 촉진에 관한 법률",
+    "article": "제9조의2"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P10",
+    "law": "하도급거래 공정화에 관한 법률",
+    "article": "제14조제2항"
+   },
+   {
+    "slug": "subcontract-payment-protection",
+    "node": "P10",
+    "law": "건설산업기본법",
+    "article": "제35조"
+   },
+   {
+    "slug": "tax-evasion-debarment",
+    "node": "P01",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제27조의5제1항"
+   },
+   {
+    "slug": "tax-evasion-debarment",
+    "node": "P02",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제27조의5제1항"
+   },
+   {
+    "slug": "tax-evasion-debarment",
+    "node": "P03",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제27조의5제1항"
+   },
+   {
+    "slug": "tax-evasion-debarment",
+    "node": "P04",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제27조의5제2항"
+   },
+   {
+    "slug": "tax-evasion-debarment",
+    "node": "P04",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제27조제3항"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P01",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제15조"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P01",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제13조"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P02",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제14조"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P02",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제13조"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P03",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제13조"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "S01",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제25조"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P04",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제13조의2"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P04",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제13조"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P05",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제13조"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P05",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제12조"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P06",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제7조제1항"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P06",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제26조제1항"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P07",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제12조"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P08",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제5조"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P08",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제12조"
+   },
+   {
+    "slug": "tech-development-priority-purchase",
+    "node": "P09",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",
+    "article": "제12조"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P01",
+    "law": "조달사업에 관한 법률",
+    "article": "제12조제1항"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P01",
+    "law": "조달사업에 관한 법률",
+    "article": "제11조"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P02",
+    "law": "조달사업에 관한 법률 시행령",
+    "article": "제12조"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P02",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제12조제1항"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P03",
+    "law": "조달사업에 관한 법률 시행령",
+    "article": "제12조제6항"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P04",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제7조제1항"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P04",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제26조제1항제3호"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P05",
+    "law": "조달사업에 관한 법률",
+    "article": "제12조제1항"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P05",
+    "law": "조달사업에 관한 법률",
+    "article": "제14조"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P05",
+    "law": "우수조달물품 지정관리 규정",
+    "article": "제38조"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P06",
+    "law": "조달사업에 관한 법률 시행령",
+    "article": "제13조의2"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P07",
+    "law": "조달사업에 관한 법률 시행규칙",
+    "article": "제2조제2항"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P08",
+    "law": "조달사업에 관한 법률 시행규칙",
+    "article": "제2조제2항"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P09",
+    "law": "조달사업에 관한 법률 시행규칙",
+    "article": "제2조제3항"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P10",
+    "law": "조달사업에 관한 법률",
+    "article": "제15조"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P11",
+    "law": "조달사업에 관한 법률 시행령",
+    "article": "제12조제5항"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P11",
+    "law": "조달사업에 관한 법률 시행규칙",
+    "article": "제2조제2항"
+   },
+   {
+    "slug": "third-party-unit-price-contract",
+    "node": "P12",
+    "law": "조달사업에 관한 법률",
+    "article": "제12조제2항"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P01",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제22조"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P02",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제22조"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P03",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제8조의2"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "S01",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제39조"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P04",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제42조"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P04",
+    "law": "(계약예규) 물품구매(제조)계약일반조건",
+    "article": "제3조"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P05",
+    "law": "(계약예규) 물품구매(제조)계약일반조건",
+    "article": "제7조제3항"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P05",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제50조"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "S02",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제22조"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P06",
+    "law": "(계약예규) 물품구매(제조)계약일반조건",
+    "article": "제12조"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P07",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제14조"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P07",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제55조"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P08",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제15조"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P08",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제58조"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P08",
+    "law": "(계약예규) 정부 입찰·계약 집행기준",
+    "article": "제34조제8항"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P09",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제22조"
+   },
+   {
+    "slug": "total-and-unit-price-contract",
+    "node": "P09",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제69조"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P01",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제16조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P01",
+    "law": "조달사업에 관한 법률",
+    "article": "제21조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P02",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제20조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P02",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제21조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P02",
+    "law": "국가를 당사자로 하는 계약에 관한 법률",
+    "article": "제27조제4항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P03",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제7조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P04",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제9조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P04",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제8조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P04",
+    "law": "조달사업에 관한 법률",
+    "article": "제21조제2항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P05",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제13조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P05",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제13조제2항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P06",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제14조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P06",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제14조제2항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P07",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제15조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P08",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제15조제2항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P09",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제15조제3항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P09",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제15조제4항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P10",
+    "law": "조달사업에 관한 법률",
+    "article": "제21조제4항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P10",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제15조제7항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P11",
+    "law": "조달사업에 관한 법률",
+    "article": "제22조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P11",
+    "law": "조달사업에 관한 법률 시행령",
+    "article": "제25조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P11",
+    "law": "조달사업에 관한 법률 시행령",
+    "article": "제25조제3항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P12",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제28조"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P12",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제25조의4제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P12",
+    "law": "조달사업에 관한 법률",
+    "article": "제21조제6항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P12",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제22조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P13",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제29조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P14",
+    "law": "조달사업에 관한 법률",
+    "article": "제21조제5항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P14",
+    "law": "조달사업에 관한 법률 시행령",
+    "article": "제24조제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P15",
+    "law": "조달사업에 관한 법률 시행령",
+    "article": "제24조제3항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P15",
+    "law": "조달사업에 관한 법률 시행령",
+    "article": "제24조제4항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P16",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제29조의2제1항"
+   },
+   {
+    "slug": "unfair-procurement-practice-investigation",
+    "node": "P16",
+    "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+    "article": "제29조의2제2항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P01",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제7조제3항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P01",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제7조제4항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P02",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제7조의2제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P02",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제7조의2제2항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P03",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제7조의2제3항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P04",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제11조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P04",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제6조"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P05",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제11조제2항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P05",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제11조제4항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P06",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제14조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P06",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제15조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P06",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제38조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P07",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제17조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P07",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제19조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P08",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제18조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P09",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제20조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P09",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제21조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P09",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제22조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "S01",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제14조제2항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P10",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제16조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P10",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제16조제2항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P11",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제23조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P11",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제24조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P12",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제25조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P12",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제25조제4항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P12",
+    "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+    "article": "제30조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P13",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제26조"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P14",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제29조"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P14",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제30조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P15",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제31조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P15",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제31조제4항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P16",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제33조제1항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P16",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제33조제2항"
+   },
+   {
+    "slug": "venture-nara",
+    "node": "P17",
+    "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+    "article": "제33조제2항"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P01",
+    "law": "여성기업지원에 관한 법률 시행령",
+    "article": "제15조"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P02",
+    "law": "여성기업지원에 관한 법률",
+    "article": "제20조의2"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P02",
+    "law": "여성기업지원에 관한 법률 시행령",
+    "article": "제16조"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P03",
+    "law": "여성기업지원에 관한 법률",
+    "article": "제9조제2항"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P03",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제5조제1항"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P04",
+    "law": "여성기업지원에 관한 법률",
+    "article": "제9조제3항"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P04",
+    "law": "여성기업지원에 관한 법률 시행령",
+    "article": "제7조제1항"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P05",
+    "law": "여성기업지원에 관한 법률 시행령",
+    "article": "제16조제1항"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P06",
+    "law": "여성기업지원에 관한 법률",
+    "article": "제9조제1항"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P06",
+    "law": "여성기업지원에 관한 법률 시행령",
+    "article": "제7조제1항"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P07",
+    "law": "여성기업지원에 관한 법률 시행령",
+    "article": "제16조제1항"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P08",
+    "law": "여성기업지원에 관한 법률",
+    "article": "제9조제5항"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P08",
+    "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
+    "article": "제5조제4항"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P09",
+    "law": "여성기업지원에 관한 법률",
+    "article": "제9조제4항"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P10",
+    "law": "여성기업지원에 관한 법률",
+    "article": "제20조의3"
+   },
+   {
+    "slug": "women-owned-business-purchase",
+    "node": "P11",
+    "law": "여성기업지원에 관한 법률 시행령",
+    "article": "제17조"
+   }
+  ],
   "descriptiveCitation": [],
-  "legalBasisOrder": [],
+  "legalBasisOrder": [
+   {
+    "slug": "knowledge-based-project-contract-method",
+    "law": "엔지니어링산업 진흥법",
+    "kind": "법률",
+    "after": "국가를 당사자로 하는 계약에 관한 법률 시행령"
+   }
+  ],
   "emptyBasis": [
    {
     "slug": "bid-announcement",
@@ -72,6 +2009,12 @@
     "type": "task"
    },
    {
+    "slug": "procurement-statistics-disclosure",
+    "node": "P07",
+    "name": "통계·공공데이터 활용",
+    "type": "task"
+   },
+   {
     "slug": "provisional-price-contract",
     "node": "P04",
     "name": "낙찰자·계약상대자 결정",
@@ -81,6 +2024,12 @@
     "slug": "provisional-price-contract",
     "node": "P11",
     "name": "정산금액 이견 조정",
+    "type": "task"
+   },
+   {
+    "slug": "spec-precommitment-disclosure",
+    "node": "C01",
+    "name": "업계 의견 제출",
     "type": "task"
    },
    {
@@ -577,6 +2526,30 @@
     ]
    },
    {
+    "slug": "knowledge-based-project-contract-method",
+    "article": "국가를 당사자로 하는 계약에 관한 법률 시행령::제43조의2",
+    "nodes": [
+     "P01",
+     "P02",
+     "P03",
+     "P04",
+     "P05",
+     "P06",
+     "P07",
+     "P08",
+     "P09"
+    ]
+   },
+   {
+    "slug": "lease-goods-contract",
+    "article": "조달청 내자구매업무 처리규정::제172조",
+    "nodes": [
+     "P04",
+     "P04",
+     "S01"
+    ]
+   },
+   {
     "slug": "liquidated-damages",
     "article": "(계약예규) 공사계약일반조건::제25조",
     "nodes": [
@@ -732,6 +2705,16 @@
      "P05",
      "P09",
      "P11"
+    ]
+   },
+   {
+    "slug": "own-e-procurement-system-interconnection",
+    "article": "전자조달의 이용 및 촉진에 관한 법률 시행령::제9조의2",
+    "nodes": [
+     "P01",
+     "P01",
+     "P03",
+     "P03"
     ]
    },
    {
@@ -1032,6 +3015,16 @@
     ]
    },
    {
+    "slug": "spec-precommitment-disclosure",
+    "article": "조달청 내자구매업무 처리규정::제9조",
+    "nodes": [
+     "P04",
+     "P05",
+     "P06",
+     "P07"
+    ]
+   },
+   {
     "slug": "subcontract-payment-protection",
     "article": "하도급거래 공정화에 관한 법률::제14조",
     "nodes": [
@@ -1048,6 +3041,16 @@
      "P06",
      "P08",
      "P09"
+    ]
+   },
+   {
+    "slug": "tax-evasion-debarment",
+    "article": "국가를 당사자로 하는 계약에 관한 법률::제27조의5",
+    "nodes": [
+     "P01",
+     "P02",
+     "P03",
+     "P04"
     ]
    },
    {
@@ -1105,6 +3108,15 @@
      "P02",
      "S02",
      "P09"
+    ]
+   },
+   {
+    "slug": "venture-nara",
+    "article": "벤처나라 등록 물품·서비스 지정 관리 규정::제33조",
+    "nodes": [
+     "P16",
+     "P16",
+     "P17"
     ]
    },
    {

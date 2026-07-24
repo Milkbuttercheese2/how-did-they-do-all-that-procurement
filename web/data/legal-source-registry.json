@@ -1,7 +1,7 @@
 {
   "generatedAt": "2026-07-25",
-  "total": 77,
-  "linked": 75,
+  "total": 95,
+  "linked": 93,
   "unresolved": 2,
   "entries": [
     {
@@ -171,6 +171,19 @@
       }
     },
     {
+      "key": "고시·지침\u0000목록화지침",
+      "source": {
+        "law": "목록화지침",
+        "kind": "고시·지침",
+        "sourceType": "admin-rule",
+        "officialName": "목록화지침",
+        "adminRuleId": "63520",
+        "adminRuleSerial": "2100000270308",
+        "promulgatedOn": "2025-12-23",
+        "officialUrl": "https://law.go.kr/행정규칙/목록화지침"
+      }
+    },
+    {
       "key": "고시·지침\u0000물품구매계약 품질관리 특수조건",
       "source": {
         "law": "물품구매계약 품질관리 특수조건",
@@ -181,6 +194,19 @@
         "adminRuleSerial": "2100000275978",
         "promulgatedOn": "2026-03-16",
         "officialUrl": "https://law.go.kr/행정규칙/물품구매계약품질관리특수조건"
+      }
+    },
+    {
+      "key": "고시·지침\u0000물품목록정보의 관리 및 이용에 관한 규정",
+      "source": {
+        "law": "물품목록정보의 관리 및 이용에 관한 규정",
+        "kind": "고시·지침",
+        "sourceType": "admin-rule",
+        "officialName": "물품목록정보의 관리 및 이용에 관한 규정",
+        "adminRuleId": "24589",
+        "adminRuleSerial": "2100000270306",
+        "promulgatedOn": "2025-12-23",
+        "officialUrl": "https://law.go.kr/행정규칙/물품목록정보의관리및이용에관한규정"
       }
     },
     {
@@ -204,6 +230,19 @@
         "reasonCode": "title-needs-confirmation",
         "reason": "행정규칙·법령 정확 일치 없음",
         "nextStep": "소관 기관의 공식 제명을 확인한 뒤 국가법령정보센터에서 다시 조회해야 한다."
+      }
+    },
+    {
+      "key": "고시·지침\u0000우수조달공동상표 물품 지정 관리규정",
+      "source": {
+        "law": "우수조달공동상표 물품 지정 관리규정",
+        "kind": "고시·지침",
+        "sourceType": "admin-rule",
+        "officialName": "우수조달공동상표 물품 지정 관리규정",
+        "adminRuleId": "35662",
+        "adminRuleSerial": "2100000227044",
+        "promulgatedOn": "2023-07-21",
+        "officialUrl": "https://law.go.kr/행정규칙/우수조달공동상표물품지정관리규정"
       }
     },
     {
@@ -415,6 +454,20 @@
       }
     },
     {
+      "key": "대통령령\u0000건축서비스산업 진흥법 시행령",
+      "source": {
+        "law": "건축서비스산업 진흥법 시행령",
+        "kind": "대통령령",
+        "sourceType": "statute",
+        "officialName": "건축서비스산업 진흥법 시행령",
+        "lawId": "012078",
+        "mst": "270063",
+        "promulgatedOn": "2025-03-25",
+        "effectiveOn": "2026-03-26",
+        "officialUrl": "https://law.go.kr/법령/건축서비스산업진흥법시행령"
+      }
+    },
+    {
       "key": "대통령령\u0000국가를 당사자로 하는 계약에 관한 법률 시행령",
       "source": {
         "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
@@ -454,6 +507,20 @@
         "promulgatedOn": "2025-10-01",
         "effectiveOn": "2025-10-01",
         "officialUrl": "https://law.go.kr/법령/녹색제품구매촉진에관한법률시행령"
+      }
+    },
+    {
+      "key": "대통령령\u0000물품목록정보의 관리 및 이용에 관한 법률 시행령",
+      "source": {
+        "law": "물품목록정보의 관리 및 이용에 관한 법률 시행령",
+        "kind": "대통령령",
+        "sourceType": "statute",
+        "officialName": "물품목록정보의 관리 및 이용에 관한 법률 시행령",
+        "lawId": "003519",
+        "mst": "280851",
+        "promulgatedOn": "2025-12-30",
+        "effectiveOn": "2026-01-02",
+        "officialUrl": "https://law.go.kr/법령/물품목록정보의관리및이용에관한법률시행령"
       }
     },
     {
@@ -597,6 +664,20 @@
       }
     },
     {
+      "key": "법률\u0000건축서비스산업 진흥법",
+      "source": {
+        "law": "건축서비스산업 진흥법",
+        "kind": "법률",
+        "sourceType": "statute",
+        "officialName": "건축서비스산업 진흥법",
+        "lawId": "011868",
+        "mst": "276929",
+        "promulgatedOn": "2025-10-01",
+        "effectiveOn": "2026-01-02",
+        "officialUrl": "https://law.go.kr/법령/건축서비스산업진흥법"
+      }
+    },
+    {
       "key": "법률\u0000공공데이터의 제공 및 이용 활성화에 관한 법률",
       "source": {
         "law": "공공데이터의 제공 및 이용 활성화에 관한 법률",
@@ -667,6 +748,34 @@
       }
     },
     {
+      "key": "법률\u0000문화산업진흥 기본법",
+      "source": {
+        "law": "문화산업진흥 기본법",
+        "kind": "법률",
+        "sourceType": "statute",
+        "officialName": "문화산업진흥 기본법",
+        "lawId": "001983",
+        "mst": "277331",
+        "promulgatedOn": "2025-10-01",
+        "effectiveOn": "2025-10-01",
+        "officialUrl": "https://law.go.kr/법령/문화산업진흥기본법"
+      }
+    },
+    {
+      "key": "법률\u0000물품목록정보의 관리 및 이용에 관한 법률",
+      "source": {
+        "law": "물품목록정보의 관리 및 이용에 관한 법률",
+        "kind": "법률",
+        "sourceType": "statute",
+        "officialName": "물품목록정보의 관리 및 이용에 관한 법률",
+        "lawId": "000685",
+        "mst": "276109",
+        "promulgatedOn": "2025-10-01",
+        "effectiveOn": "2026-01-02",
+        "officialUrl": "https://law.go.kr/법령/물품목록정보의관리및이용에관한법률"
+      }
+    },
+    {
       "key": "법률\u0000사회적기업 육성법",
       "source": {
         "law": "사회적기업 육성법",
@@ -678,6 +787,20 @@
         "promulgatedOn": "2026-06-09",
         "effectiveOn": "2026-06-09",
         "officialUrl": "https://law.go.kr/법령/사회적기업육성법"
+      }
+    },
+    {
+      "key": "법률\u0000산업디자인진흥법",
+      "source": {
+        "law": "산업디자인진흥법",
+        "kind": "법률",
+        "sourceType": "statute",
+        "officialName": "산업디자인진흥법",
+        "lawId": "000328",
+        "mst": "276523",
+        "promulgatedOn": "2025-10-01",
+        "effectiveOn": "2025-10-01",
+        "officialUrl": "https://law.go.kr/법령/산업디자인진흥법"
       }
     },
     {
@@ -695,6 +818,20 @@
       }
     },
     {
+      "key": "법률\u0000엔지니어링산업 진흥법",
+      "source": {
+        "law": "엔지니어링산업 진흥법",
+        "kind": "법률",
+        "sourceType": "statute",
+        "officialName": "엔지니어링산업 진흥법",
+        "lawId": "000758",
+        "mst": "280053",
+        "promulgatedOn": "2025-12-02",
+        "effectiveOn": "2026-06-03",
+        "officialUrl": "https://law.go.kr/법령/엔지니어링산업진흥법"
+      }
+    },
+    {
       "key": "법률\u0000여성기업지원에 관한 법률",
       "source": {
         "law": "여성기업지원에 관한 법률",
@@ -706,6 +843,20 @@
         "promulgatedOn": "2023-10-31",
         "effectiveOn": "2024-05-01",
         "officialUrl": "https://law.go.kr/법령/여성기업지원에관한법률"
+      }
+    },
+    {
+      "key": "법률\u0000여신전문금융업법",
+      "source": {
+        "law": "여신전문금융업법",
+        "kind": "법률",
+        "sourceType": "statute",
+        "officialName": "여신전문금융업법",
+        "lawId": "000536",
+        "mst": "277267",
+        "promulgatedOn": "2025-10-01",
+        "effectiveOn": "2025-10-01",
+        "officialUrl": "https://law.go.kr/법령/여신전문금융업법"
       }
     },
     {
@@ -751,6 +902,20 @@
       }
     },
     {
+      "key": "법률\u0000정보통신산업 진흥법",
+      "source": {
+        "law": "정보통신산업 진흥법",
+        "kind": "법률",
+        "sourceType": "statute",
+        "officialName": "정보통신산업 진흥법",
+        "lawId": "011006",
+        "mst": "280045",
+        "promulgatedOn": "2025-12-02",
+        "effectiveOn": "2026-06-03",
+        "officialUrl": "https://law.go.kr/법령/정보통신산업진흥법"
+      }
+    },
+    {
       "key": "법률\u0000조달사업에 관한 법률",
       "source": {
         "law": "조달사업에 관한 법률",
@@ -793,6 +958,20 @@
       }
     },
     {
+      "key": "법률\u0000지능정보화 기본법",
+      "source": {
+        "law": "지능정보화 기본법",
+        "kind": "법률",
+        "sourceType": "statute",
+        "officialName": "지능정보화 기본법",
+        "lawId": "000028",
+        "mst": "268535",
+        "promulgatedOn": "2025-01-21",
+        "effectiveOn": "2026-01-22",
+        "officialUrl": "https://law.go.kr/법령/지능정보화기본법"
+      }
+    },
+    {
       "key": "법률\u0000하도급거래 공정화에 관한 법률",
       "source": {
         "law": "하도급거래 공정화에 관한 법률",
@@ -832,6 +1011,20 @@
         "promulgatedOn": "2026-01-02",
         "effectiveOn": "2026-01-02",
         "officialUrl": "https://law.go.kr/법령/국가를당사자로하는계약에관한법률시행규칙"
+      }
+    },
+    {
+      "key": "부령\u0000물품목록정보의 관리 및 이용에 관한 법률 시행규칙",
+      "source": {
+        "law": "물품목록정보의 관리 및 이용에 관한 법률 시행규칙",
+        "kind": "부령",
+        "sourceType": "statute",
+        "officialName": "물품목록정보의 관리 및 이용에 관한 법률 시행규칙",
+        "lawId": "007171",
+        "mst": "97994",
+        "promulgatedOn": "2009-12-29",
+        "effectiveOn": "2009-12-29",
+        "officialUrl": "https://law.go.kr/법령/물품목록정보의관리및이용에관한법률시행규칙"
       }
     },
     {
@@ -929,6 +1122,32 @@
       }
     },
     {
+      "key": "행정규칙\u0000건축 설계공모 운영지침",
+      "source": {
+        "law": "건축 설계공모 운영지침",
+        "kind": "행정규칙",
+        "sourceType": "admin-rule",
+        "officialName": "건축 설계공모 운영지침",
+        "adminRuleId": "45028",
+        "adminRuleSerial": "2100000279634",
+        "promulgatedOn": "2026-05-22",
+        "officialUrl": "https://law.go.kr/행정규칙/건축설계공모운영지침"
+      }
+    },
+    {
+      "key": "행정규칙\u0000국가종합전자조달시스템 구축 및 운용에 관한 규정",
+      "source": {
+        "law": "국가종합전자조달시스템 구축 및 운용에 관한 규정",
+        "kind": "행정규칙",
+        "sourceType": "admin-rule",
+        "officialName": "국가종합전자조달시스템 구축 및 운용에 관한 규정",
+        "adminRuleId": "24588",
+        "adminRuleSerial": "2100000193759",
+        "promulgatedOn": "2020-10-13",
+        "officialUrl": "https://law.go.kr/행정규칙/국가종합전자조달시스템구축및운용에관한규정"
+      }
+    },
+    {
       "key": "행정규칙\u0000국가종합전자조달시스템 쇼핑몰 운영규정",
       "source": {
         "law": "국가종합전자조달시스템 쇼핑몰 운영규정",
@@ -994,6 +1213,19 @@
       }
     },
     {
+      "key": "행정규칙\u0000조달청 건축 설계공모 운영기준",
+      "source": {
+        "law": "조달청 건축 설계공모 운영기준",
+        "kind": "행정규칙",
+        "sourceType": "admin-rule",
+        "officialName": "조달청 건축 설계공모 운영기준",
+        "adminRuleId": "56002",
+        "adminRuleSerial": "2100000264852",
+        "promulgatedOn": "2025-09-23",
+        "officialUrl": "https://law.go.kr/행정규칙/조달청건축설계공모운영기준"
+      }
+    },
+    {
       "key": "행정규칙\u0000조달청 내자구매업무 처리규정",
       "source": {
         "law": "조달청 내자구매업무 처리규정",
@@ -1030,6 +1262,19 @@
         "adminRuleSerial": "2100000281276",
         "promulgatedOn": "2026-06-26",
         "officialUrl": "https://law.go.kr/행정규칙/조달청시설공사계약업무처리규정"
+      }
+    },
+    {
+      "key": "행정규칙\u0000조달청 외자구매업무 처리규정",
+      "source": {
+        "law": "조달청 외자구매업무 처리규정",
+        "kind": "행정규칙",
+        "sourceType": "admin-rule",
+        "officialName": "조달청 외자구매업무 처리규정",
+        "adminRuleId": "34281",
+        "adminRuleSerial": "2100000276276",
+        "promulgatedOn": "2026-01-23",
+        "officialUrl": "https://law.go.kr/행정규칙/조달청외자구매업무처리규정"
       }
     }
   ]

@@ -91,8 +91,12 @@ async function fetchAdminRuleFull(serial) {
 // 문장 중간의 상호참조("법 제7조제1항 …")는 행 시작이 아니므로 절단하지 않는다.
 function truncateAtForeignArticle(body, ownKey) {
   const lineHeader = /^제(\d+)조(?:의(\d+))?(?:\s|\(|$)/; // 행 시작 조문 헤더/목차 라인
+  // 편·장·절 제목 줄(예: "제2장 설계공모 공고 및 공모안 제출 등")은 다음 조문의
+  // 머리글이므로 앞 조문 본문에 섞이면 안 된다.
+  const divisionHeader = /^제\d+[편장절관](?:\s|$)/;
   const out = [];
   for (const line of body.split("\n")) {
+    if (divisionHeader.test(line.trim())) break;
     const hm = line.match(lineHeader);
     if (hm) {
       const key = `제${hm[1]}조${hm[2] ? `의${hm[2]}` : ""}`;
@@ -106,8 +110,11 @@ function truncateAtForeignArticle(body, ownKey) {
 // 본문 텍스트에서 "제N조(제목) …" 블록을 각 조문 단위로 분리
 function parseArticleBodies(output) {
   const map = new Map();
-  // 헤더 라인: 제7조(계약의 방법)  — 조문 제목 괄호 포함
-  const headerRe = /제(\d+)조(?:의(\d+))?\s*\(([^)]*)\)/g;
+  // 헤더 라인: 제7조(계약의 방법)  — 조문 제목 괄호 포함.
+  // 반드시 행 시작에 앵커한다. 앵커가 없으면 문장 중간의 상호참조
+  // (예: 「국가계약법 시행규칙」제44조(또는 …)) 를 조문 헤더로 오인해
+  // 그 앞에서 본문이 잘린다.
+  const headerRe = /^[ \t]*제(\d+)조(?:의(\d+))?\s*\(([^)]*)\)/gm;
   const marks = [];
   let m;
   while ((m = headerRe.exec(output)) !== null) {
