@@ -1,9 +1,9 @@
 {
   "generatedAt": "2026-07-25",
-  "institutions": 85,
-  "sourceLinked": 83,
+  "institutions": 90,
+  "sourceLinked": 88,
   "needsReview": 2,
-  "linkedSources": 374,
+  "linkedSources": 398,
   "unresolvedReferences": 2,
   "coverage": [
     {
@@ -769,6 +769,51 @@
       "status": "source-linked",
       "total": 2,
       "linked": 2,
+      "unresolved": 0
+    },
+    {
+      "priority": 86,
+      "slug": "bid-notice-period",
+      "name": "입찰공고 기간과 긴급공고(공고기간 단축)",
+      "status": "source-linked",
+      "total": 6,
+      "linked": 6,
+      "unresolved": 0
+    },
+    {
+      "priority": 87,
+      "slug": "debarment-administrative-appeal",
+      "name": "부정당업자 제재처분에 대한 불복(행정심판·행정소송)",
+      "status": "source-linked",
+      "total": 6,
+      "linked": 6,
+      "unresolved": 0
+    },
+    {
+      "priority": 88,
+      "slug": "audit-board-review-request",
+      "name": "감사원 심사청구",
+      "status": "source-linked",
+      "total": 2,
+      "linked": 2,
+      "unresolved": 0
+    },
+    {
+      "priority": 89,
+      "slug": "stockpile-release-sale",
+      "name": "비축물자 방출과 판매",
+      "status": "source-linked",
+      "total": 7,
+      "linked": 7,
+      "unresolved": 0
+    },
+    {
+      "priority": 90,
+      "slug": "bidder-registration-change",
+      "name": "입찰참가자격 등록의 변경·승계·말소",
+      "status": "source-linked",
+      "total": 3,
+      "linked": 3,
       "unresolved": 0
     }
   ]

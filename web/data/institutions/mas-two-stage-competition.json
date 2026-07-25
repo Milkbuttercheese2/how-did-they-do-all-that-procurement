@@ -575,6 +575,13 @@
     "target": "S02",
     "type": "sequence",
     "label": "납품대상업체 확정"
+   },
+   {
+    "id": "E20",
+    "source": "S00",
+    "target": "S02",
+    "type": "sequence",
+    "label": "예외 승인 — 2단계경쟁 없이 납품요구"
    }
   ],
   "warnings": []

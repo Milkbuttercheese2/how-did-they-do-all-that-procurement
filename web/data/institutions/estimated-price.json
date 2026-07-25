@@ -387,6 +387,30 @@
       "text": "경쟁입찰을 할 때 2인 이상의 유효한 입찰자가 없거나 낙찰자가 없을 경우 재입찰에 부칠 수 있다. 이 경우 재입찰은 새로운 입찰로 보지 않으며, 입찰자 또는 입찰횟수의 제한을 받지 않는다."
      }
     ]
+   },
+   {
+    "id": "P10",
+    "name": "낙찰자 결정·계약 체결",
+    "lane": "계약담당공무원(수요기관)",
+    "stage": "G4 낙찰자 결정",
+    "type": "task",
+    "status": "waiting",
+    "progress": 0,
+    "actor": "계약담당공무원(수요기관)",
+    "receiver": "낙찰자",
+    "action": "예정가격 이하 최저가격 입찰자 중 계약이행능력 심사를 통과한 자를 낙찰자로 결정하고 계약을 체결",
+    "output_documents": [
+     "낙찰자 통보",
+     "계약서"
+    ],
+    "confidence": 0.85,
+    "legal_basis": [
+     {
+      "law": "국가를 당사자로 하는 계약에 관한 법률",
+      "article": "제10조제2항",
+      "text": "각 중앙관서의 장 또는 계약담당공무원은 국고의 부담이 되는 경쟁입찰에서 예정가격 이하로서 최저가격으로 입찰한 자 등을 낙찰자로 한다."
+     }
+    ]
    }
   ],
   "edges": [
@@ -480,6 +504,13 @@
     "target": "C01",
     "type": "loop",
     "label": "재입찰 투찰"
+   },
+   {
+    "id": "E12",
+    "source": "P08",
+    "target": "P10",
+    "type": "sequence",
+    "label": "예정가격 이하 최저가·계약이행능력 적격"
    }
   ],
   "warnings": []
@@ -488,7 +519,7 @@
   "status": "article-verified",
   "verifiedAt": "2026-07-25",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 5건 중 공식 원문 5건을 연결했다. 캔버스와 절차 노드의 명시 조문 26건 가운데 26건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 5건 중 공식 원문 5건을 연결했다. 캔버스와 절차 노드의 명시 조문 27건 가운데 27건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "2026년 정부조직 개편으로 현행 원문의 부처 표기는 재정경제부장관/재정경제부령이며, 본문은 기존 파일 관례에 따라 기획재정부장관(재정경제부장관)으로 병기했다.",
    "복수예비가격의 ±2%는 국가계약 기준이며 지방계약(±3%)과 다르다. 본문에는 국가계약 기준만 반영했다."
@@ -551,10 +582,10 @@
   "articleVerification": {
    "checkedAt": "2026-07-25",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
-   "citationEntries": 20,
-   "explicitCitationEntries": 20,
-   "articleReferences": 26,
-   "verifiedReferences": 26,
+   "citationEntries": 21,
+   "explicitCitationEntries": 21,
+   "articleReferences": 27,
+   "verifiedReferences": 27,
    "missingReferences": 0,
    "uncheckableReferences": 0
   },

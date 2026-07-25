@@ -232,7 +232,7 @@
     "name": "우선시공 여부 결정",
     "lane": "계약담당공무원(발주기관)",
     "stage": "G2 설계변경 확정",
-    "type": "gateway",
+    "type": "task",
     "status": "done",
     "progress": 100,
     "actor": "계약담당공무원",

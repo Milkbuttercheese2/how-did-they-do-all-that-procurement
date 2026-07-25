@@ -264,7 +264,7 @@
     "name": "예정가격 이하 최저가 순위 결정",
     "lane": "계약담당공무원(전자입찰집행자)",
     "stage": "G2 적격심사",
-    "type": "gateway",
+    "type": "task",
     "status": "done",
     "progress": 100,
     "actor": "계약담당공무원(전자입찰집행자)",
@@ -340,7 +340,7 @@
     "name": "계약이행능력 적격심사",
     "lane": "계약담당공무원(전자입찰집행자)",
     "stage": "G2 적격심사",
-    "type": "task",
+    "type": "gateway",
     "status": "done",
     "progress": 100,
     "actor": "계약담당공무원(전자입찰집행자)",
@@ -494,7 +494,7 @@
     "id": "E05",
     "source": "P03",
     "target": "P04",
-    "type": "message",
+    "type": "sequence",
     "label": "무효 판정"
    },
    {

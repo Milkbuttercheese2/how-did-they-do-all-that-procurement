@@ -443,7 +443,7 @@
     "name": "준공대가 지급",
     "lane": "수요기관(계약담당공무원)",
     "stage": "G4 시공·준공·대가",
-    "type": "notice",
+    "type": "task",
     "status": "waiting",
     "progress": 0,
     "actor": "계약담당공무원",

@@ -1,9 +1,23 @@
 {
   "generatedAt": "2026-07-25",
-  "total": 95,
-  "linked": 93,
+  "total": 103,
+  "linked": 101,
   "unresolved": 2,
   "entries": [
+    {
+      "key": "감사원규칙\u0000감사원심사규칙",
+      "source": {
+        "law": "감사원심사규칙",
+        "kind": "감사원규칙",
+        "sourceType": "statute",
+        "officialName": "감사원심사규칙",
+        "lawId": "008776",
+        "mst": "272459",
+        "promulgatedOn": "2025-06-18",
+        "effectiveOn": "2025-06-18",
+        "officialUrl": "https://law.go.kr/법령/감사원심사규칙"
+      }
+    },
     {
       "key": "고시·지침\u0000(계약예규) 공동계약운용요령",
       "source": {
@@ -636,6 +650,20 @@
       }
     },
     {
+      "key": "법률\u0000감사원법",
+      "source": {
+        "law": "감사원법",
+        "kind": "법률",
+        "sourceType": "statute",
+        "officialName": "감사원법",
+        "lawId": "001372",
+        "mst": "222549",
+        "promulgatedOn": "2020-10-20",
+        "effectiveOn": "2020-10-20",
+        "officialUrl": "https://law.go.kr/법령/감사원법"
+      }
+    },
+    {
       "key": "법률\u0000건설기술 진흥법",
       "source": {
         "law": "건설기술 진흥법",
@@ -675,6 +703,20 @@
         "promulgatedOn": "2025-10-01",
         "effectiveOn": "2026-01-02",
         "officialUrl": "https://law.go.kr/법령/건축서비스산업진흥법"
+      }
+    },
+    {
+      "key": "법률\u0000경제안보를 위한 공급망 안정화 지원 기본법",
+      "source": {
+        "law": "경제안보를 위한 공급망 안정화 지원 기본법",
+        "kind": "법률",
+        "sourceType": "statute",
+        "officialName": "경제안보를 위한 공급망 안정화 지원 기본법",
+        "lawId": "014551",
+        "mst": "280361",
+        "promulgatedOn": "2025-12-23",
+        "effectiveOn": "2026-06-24",
+        "officialUrl": "https://law.go.kr/법령/경제안보를위한공급망안정화지원기본법"
       }
     },
     {
@@ -986,6 +1028,48 @@
       }
     },
     {
+      "key": "법률\u0000행정기본법",
+      "source": {
+        "law": "행정기본법",
+        "kind": "법률",
+        "sourceType": "statute",
+        "officialName": "행정기본법",
+        "lawId": "014041",
+        "mst": "269955",
+        "promulgatedOn": "2025-03-18",
+        "effectiveOn": "2026-03-19",
+        "officialUrl": "https://law.go.kr/법령/행정기본법"
+      }
+    },
+    {
+      "key": "법률\u0000행정소송법",
+      "source": {
+        "law": "행정소송법",
+        "kind": "법률",
+        "sourceType": "statute",
+        "officialName": "행정소송법",
+        "lawId": "001218",
+        "mst": "285913",
+        "promulgatedOn": "2026-05-12",
+        "effectiveOn": "2026-05-12",
+        "officialUrl": "https://law.go.kr/법령/행정소송법"
+      }
+    },
+    {
+      "key": "법률\u0000행정심판법",
+      "source": {
+        "law": "행정심판법",
+        "kind": "법률",
+        "sourceType": "statute",
+        "officialName": "행정심판법",
+        "lawId": "001363",
+        "mst": "249041",
+        "promulgatedOn": "2023-03-21",
+        "effectiveOn": "2023-03-21",
+        "officialUrl": "https://law.go.kr/법령/행정심판법"
+      }
+    },
+    {
       "key": "법률\u0000행정절차법",
       "source": {
         "law": "행정절차법",
@@ -1236,6 +1320,32 @@
         "adminRuleSerial": "2100000282194",
         "promulgatedOn": "2026-07-10",
         "officialUrl": "https://law.go.kr/행정규칙/조달청내자구매업무처리규정"
+      }
+    },
+    {
+      "key": "행정규칙\u0000조달청 비축 원자재 외상판매 적용 이자율",
+      "source": {
+        "law": "조달청 비축 원자재 외상판매 적용 이자율",
+        "kind": "행정규칙",
+        "sourceType": "admin-rule",
+        "officialName": "조달청 비축 원자재 외상판매 적용 이자율",
+        "adminRuleId": "78055",
+        "adminRuleSerial": "2100000281446",
+        "promulgatedOn": "2026-07-01",
+        "officialUrl": "https://law.go.kr/행정규칙/조달청비축원자재외상판매적용이자율"
+      }
+    },
+    {
+      "key": "행정규칙\u0000조달청 비축물자 이용업체와 민간 비축 사업자 등록·이용약관",
+      "source": {
+        "law": "조달청 비축물자 이용업체와 민간 비축 사업자 등록·이용약관",
+        "kind": "행정규칙",
+        "sourceType": "admin-rule",
+        "officialName": "조달청 비축물자 이용업체와 민간 비축 사업자 등록·이용약관",
+        "adminRuleId": "34164",
+        "adminRuleSerial": "2100000274848",
+        "promulgatedOn": "2026-01-23",
+        "officialUrl": "https://law.go.kr/행정규칙/조달청비축물자이용업체와민간비축사업자등록·이용약관"
       }
     },
     {

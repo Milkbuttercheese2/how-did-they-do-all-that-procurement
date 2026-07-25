@@ -120,7 +120,7 @@
     "name": "계약목적물 성질·수요빈도 검토",
     "lane": "계약담당공무원(수요기관)",
     "stage": "G0 계약방식 결정",
-    "type": "gateway",
+    "type": "task",
     "status": "done",
     "progress": 100,
     "actor": "계약담당공무원",
@@ -257,7 +257,7 @@
    {
     "id": "S02",
     "name": "개별 납품요구(발주)",
-    "lane": "나라장터(전자조달시스템)",
+    "lane": "계약담당공무원(수요기관)",
     "stage": "G2 개별 납품요구·이행",
     "type": "task",
     "status": "waiting",
@@ -362,7 +362,7 @@
     "name": "회계연도 예산범위 관리·정산",
     "lane": "계약담당공무원(수요기관)",
     "stage": "G3 검사·대가 지급",
-    "type": "notice",
+    "type": "task",
     "status": "waiting",
     "progress": 0,
     "actor": "계약담당공무원",
@@ -460,6 +460,13 @@
     "target": "P09",
     "type": "sequence",
     "label": "회계연도 정산"
+   },
+   {
+    "id": "E12",
+    "source": "P02",
+    "target": "P03",
+    "type": "sequence",
+    "label": "단가계약 요건 미충족 — 총액계약으로 발주"
    }
   ],
   "warnings": []

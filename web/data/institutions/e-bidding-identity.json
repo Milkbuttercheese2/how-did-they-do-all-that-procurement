@@ -488,7 +488,7 @@
     "id": "L02",
     "source": "S03",
     "target": "P07",
-    "type": "loop",
+    "type": "sequence",
     "label": "입력 착오 발견"
    },
    {

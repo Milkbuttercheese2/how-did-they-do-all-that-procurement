@@ -194,7 +194,7 @@
     "name": "혁신성·공공성 심사",
     "lane": "조달청",
     "stage": "G1 혁신성 심사",
-    "type": "gateway",
+    "type": "task",
     "status": "done",
     "progress": 100,
     "actor": "조달청",
@@ -239,7 +239,7 @@
     "name": "조달정책심의위원회 지정 심의·의결",
     "lane": "조달정책심의위원회",
     "stage": "G2 지정 심의",
-    "type": "gateway",
+    "type": "task",
     "status": "current",
     "progress": 50,
     "actor": "조달정책심의위원회",
@@ -450,7 +450,7 @@
     "id": "E09",
     "source": "P06",
     "target": "P09",
-    "type": "message",
+    "type": "sequence",
     "label": "지정기준 미달·부정 지정"
    }
   ],

@@ -138,7 +138,7 @@
     "name": "검사방식·품질관리 대상 결정",
     "lane": "조달청(조달품질원)",
     "stage": "G0 검사방식 결정",
-    "type": "gateway",
+    "type": "task",
     "status": "done",
     "progress": 100,
     "actor": "조달청(조달품질원)",
@@ -476,7 +476,7 @@
     "id": "L01",
     "source": "P08",
     "target": "P09",
-    "type": "loop",
+    "type": "sequence",
     "label": "부적합·시정 필요"
    },
    {

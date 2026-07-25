@@ -157,7 +157,7 @@
     "name": "인증 심의·결정",
     "lane": "고용노동부·한국사회적기업진흥원",
     "stage": "G0 인증·공급자격",
-    "type": "gateway",
+    "type": "task",
     "status": "done",
     "progress": 100,
     "actor": "고용노동부장관(진흥원 심사 지원)",

@@ -463,7 +463,7 @@
     "id": "E10",
     "source": "P09",
     "target": "P08",
-    "type": "sequence",
+    "type": "loop",
     "label": "재심사 후 부적격 확정"
    },
    {

@@ -216,7 +216,7 @@
     "name": "수의계약 사유 검토",
     "lane": "계약담당공무원(발주기관)",
     "stage": "G1 계약방법 결정",
-    "type": "gateway",
+    "type": "task",
     "status": "waiting",
     "progress": 0,
     "actor": "계약담당공무원",

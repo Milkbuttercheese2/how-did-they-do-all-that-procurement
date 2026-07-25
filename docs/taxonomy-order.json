@@ -12,6 +12,10 @@
     "category": "등록·자격"
   },
   {
+    "slug": "bidder-registration-change",
+    "category": "등록·자격"
+  },
+  {
     "slug": "sme-priority-purchase",
     "category": "지정·판로"
   },
@@ -117,6 +121,10 @@
   },
   {
     "slug": "bid-announcement",
+    "category": "공고"
+  },
+  {
+    "slug": "bid-notice-period",
     "category": "공고"
   },
   {
@@ -240,10 +248,6 @@
     "category": "이행·대금"
   },
   {
-    "slug": "reinspection-request",
-    "category": "이행·대금"
-  },
-  {
     "slug": "government-furnished-materials",
     "category": "이행·대금"
   },
@@ -284,6 +288,14 @@
     "category": "분쟁·권리구제"
   },
   {
+    "slug": "debarment-administrative-appeal",
+    "category": "분쟁·권리구제"
+  },
+  {
+    "slug": "audit-board-review-request",
+    "category": "분쟁·권리구제"
+  },
+  {
     "slug": "quality-inspection-management",
     "category": "사후관리·제재"
   },
@@ -312,11 +324,11 @@
     "category": "사후관리·제재"
   },
   {
-    "slug": "tax-evasion-debarment",
-    "category": "사후관리·제재"
+    "slug": "stockpile-goods",
+    "category": "공공물자·비축"
   },
   {
-    "slug": "stockpile-goods",
+    "slug": "stockpile-release-sale",
     "category": "공공물자·비축"
   }
 ]

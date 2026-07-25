@@ -436,7 +436,7 @@
     "id": "E10",
     "source": "P08",
     "target": "P07",
-    "type": "sequence",
+    "type": "loop",
     "label": "누락·오류 발견"
    },
    {

@@ -145,7 +145,7 @@
     "name": "계약체결 기한 확인",
     "lane": "낙찰자·계약상대자(조달업체)",
     "stage": "G0 계약 준비",
-    "type": "task",
+    "type": "gateway",
     "status": "done",
     "progress": 100,
     "actor": "낙찰자·계약상대자",

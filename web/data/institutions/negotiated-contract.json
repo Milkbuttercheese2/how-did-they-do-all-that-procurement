@@ -404,6 +404,13 @@
     "target": "S02",
     "type": "sequence",
     "label": null
+   },
+   {
+    "id": "E20",
+    "source": "P01",
+    "target": "P02",
+    "type": "sequence",
+    "label": "재공고 유찰에 따른 수의계약 전환 검토"
    }
   ],
   "warnings": []

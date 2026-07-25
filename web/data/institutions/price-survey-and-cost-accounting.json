@@ -422,7 +422,7 @@
     "name": "예정가격 확정·낙찰 기준 적용",
     "lane": "계약담당공무원(조달청)",
     "stage": "G4 개찰·확정",
-    "type": "gateway",
+    "type": "task",
     "status": "waiting",
     "progress": 0,
     "actor": "계약담당공무원",

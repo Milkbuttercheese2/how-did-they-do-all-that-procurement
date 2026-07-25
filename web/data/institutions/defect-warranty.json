@@ -247,7 +247,7 @@
     "name": "하자담보책임기간 개시·보관",
     "lane": "계약담당공무원(발주기관)",
     "stage": "G1 준공·보증금 납부",
-    "type": "notice",
+    "type": "task",
     "status": "done",
     "progress": 100,
     "actor": "계약담당공무원",

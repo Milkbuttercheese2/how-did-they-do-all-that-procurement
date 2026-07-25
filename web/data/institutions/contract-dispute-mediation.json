@@ -212,7 +212,7 @@
     "name": "조정 대상·요건 검토",
     "lane": "국가계약분쟁조정위원회",
     "stage": "G1 조정 신청",
-    "type": "gateway",
+    "type": "task",
     "status": "done",
     "progress": 100,
     "actor": "국가계약분쟁조정위원회",
@@ -499,6 +499,16 @@
     "officialUrl": "https://law.go.kr/법령/국가를당사자로하는계약에관한법률시행령"
    }
   ],
+  "articleVerification": {
+   "checkedAt": "2026-07-25",
+   "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
+   "citationEntries": 19,
+   "explicitCitationEntries": 19,
+   "articleReferences": 30,
+   "verifiedReferences": 30,
+   "missingReferences": 0,
+   "uncheckableReferences": 0
+  },
   "articleTexts": {
    "국가를 당사자로 하는 계약에 관한 법률::제28조": {
     "article": "제28조",
@@ -590,16 +600,6 @@
     "text": "각 중앙관서의 장은 제113조에 따른 조정 결과에 불복하여 소송이 제기되거나 제114조에 따른 소송이 제기된 경우에는 그 사실 및 소송 결과를 재정경제부장관에게 알려야 한다.",
     "effectiveOn": "2026-06-03"
    }
-  },
-  "articleVerification": {
-   "checkedAt": "2026-07-25",
-   "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
-   "citationEntries": 19,
-   "explicitCitationEntries": 19,
-   "articleReferences": 30,
-   "verifiedReferences": 30,
-   "missingReferences": 0,
-   "uncheckableReferences": 0
   }
  },
  "category": "분쟁·권리구제"

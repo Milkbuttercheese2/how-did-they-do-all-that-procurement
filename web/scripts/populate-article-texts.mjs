@@ -229,7 +229,9 @@ async function processFile(file) {
   const filled = Object.keys(articleTexts).length;
   if (filled > 0) {
     verification.articleTexts = articleTexts;
-    fs.writeFileSync(p, JSON.stringify(d, null, 2) + "\n");
+    // 들여쓰기 1칸: sync-verification·verify-articles와 같은 형식이라야 한다.
+    // 2칸으로 쓰면 다음 파이프라인 실행 때 전체 파일이 재포맷돼 diff가 통째로 뜬다.
+    fs.writeFileSync(p, JSON.stringify(d, null, 1) + "\n");
   }
   return { file, filled };
 }
