@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import type { ProcessModel, ProcessNode, SourceVerification } from "@/lib/types";
 import {
   getNodeVerification,
@@ -210,6 +211,154 @@ export function ArticleBasisRows({ result }: { result: NodeVerificationResult })
   );
 }
 
+// 노드의 [법적 근거] 버튼과 그 팝업 (운영자 지시, 2026-07-26).
+// 업무구조도 안에 근거를 펼쳐 두면 캔버스의 '법적 근거' 블록과 같은 내용이 두 번
+// 나온다. 노드에서는 버튼만 두고, 원문은 넓은 팝업에서 본다.
+// 팝업이 담는 것은 **요약이 아니라 조문 원문**이다(원문 우선 원칙).
+export function NodeLegalButton({
+  node,
+  verification,
+}: {
+  node: ProcessNode;
+  verification?: SourceVerification;
+}) {
+  const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const result = getNodeVerification(node, verification);
+  const count = result.bases.length;
+  if (count === 0) return null;
+
+  // 팝업을 닫으면 열었던 버튼으로 포커스를 되돌린다. 그렇지 않으면 포커스가 body로
+  // 빠져 키보드 사용자는 처음부터 다시 탐색해야 하고, 화면도 원래 보던 노드가 아닌
+  // 곳으로 튄다.
+  const close = () => {
+    setOpen(false);
+    window.requestAnimationFrame(() => {
+      triggerRef.current?.focus({ preventScroll: true });
+      triggerRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    });
+  };
+
+  return (
+    <>
+      <button
+        type="button"
+        ref={triggerRef}
+        className="node-legal-button"
+        onClick={(event) => {
+          event.stopPropagation();
+          setOpen(true);
+        }}
+        aria-haspopup="dialog"
+        aria-expanded={open}
+      >
+        법적 근거 {count}건
+      </button>
+      {open && <NodeLegalModal node={node} result={result} onClose={close} />}
+    </>
+  );
+}
+
+function NodeLegalModal({
+  node,
+  result,
+  onClose,
+}: {
+  node: ProcessNode;
+  result: NodeVerificationResult;
+  onClose: () => void;
+}) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    closeRef.current?.focus({ preventScroll: true });
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      // Tab이 팝업 밖으로 새지 않도록 가둔다 — 뒤 페이지로 빠지면 사용자는
+      // 자기가 어디에 있는지 알 수 없다.
+      if (e.key !== "Tab" || !modalRef.current) return;
+      const focusables = modalRef.current.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement;
+      if (e.shiftKey && (active === first || !modalRef.current.contains(active))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    const { overflow } = document.body.style;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = overflow;
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="node-legal-overlay"
+      role="presentation"
+      onClick={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <div
+        ref={modalRef}
+        className="node-legal-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${node.name} 법적 근거`}
+        onClick={(event) => event.stopPropagation()}
+      >
+        <header className="node-legal-modal-head">
+          <div>
+            <span>{node.id} · 법적 근거</span>
+            <strong>{node.name}</strong>
+          </div>
+          <button
+            type="button"
+            ref={closeRef}
+            className="node-legal-modal-close"
+            onClick={onClose}
+            aria-label="닫기"
+          >
+            ✕
+          </button>
+        </header>
+
+        <div className="node-legal-modal-status">
+          <VerificationMark result={result} />
+          <p>{result.detail}</p>
+        </div>
+
+        <div className="node-legal-modal-body">
+          <ArticleBasisRows result={result} />
+          {result.bases.flatMap(({ unresolved }) => unresolved).map((item) => (
+            <div key={`${item.reasonCode}:${item.law}`} className="node-legal-modal-unresolved">
+              <strong>{unresolvedReasonLabels[item.reasonCode]}</strong> · {item.law}
+              <span>다음 확인: {item.nextStep}</span>
+            </div>
+          ))}
+          <p className="node-legal-modal-note">
+            검증 범위는 조문 번호의 현행 원문 존재 여부입니다. 해석과 사건별 적용 판단은 포함하지 않습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Metric({ label, value }: { label: string; value: string | number }) {
   return (
     <div className="process-verification-metric">
@@ -261,70 +410,6 @@ export function ProcessVerificationSummaryBar({
         />
         <Metric label="현장 검증" value={summary.fieldCheckNodes} />
       </div>
-    </div>
-  );
-}
-
-export function NodeLegalVerification({
-  node,
-  verification,
-}: {
-  node: ProcessNode;
-  verification?: SourceVerification;
-}) {
-  const result = getNodeVerification(node, verification);
-
-  return (
-    <div data-node-verification={result.state}>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "flex-start",
-          gap: 10,
-          marginBottom: 12,
-        }}
-      >
-        <VerificationMark result={result} />
-        <p style={{ margin: 0, color: "#5d6b63", fontSize: 12, lineHeight: 1.55 }}>
-          {result.detail}
-        </p>
-      </div>
-
-      <ArticleBasisRows result={result} />
-
-      {result.bases.flatMap(({ unresolved }) => unresolved).map((item) => (
-        <div
-          key={`${item.reasonCode}:${item.law}`}
-          style={{
-            marginTop: 8,
-            paddingLeft: 9,
-            borderLeft: "2px solid #c78116",
-            color: "#7b5415",
-            fontSize: 11,
-            lineHeight: 1.55,
-          }}
-        >
-          <strong>{unresolvedReasonLabels[item.reasonCode]}</strong> · {item.law}
-          <span style={{ display: "block", color: "#5d6b63" }}>
-            다음 확인: {item.nextStep}
-          </span>
-        </div>
-      ))}
-
-      {verification?.articleVerification && (
-        <p
-          style={{
-            margin: "9px 0 0",
-            paddingTop: 9,
-            borderTop: "1px solid #dde5df",
-            color: "#87938d",
-            fontSize: 10.5,
-            lineHeight: 1.5,
-          }}
-        >
-          검증 범위는 조문 번호의 현행 원문 존재 여부입니다. 해석과 사건별 적용 판단은 포함하지 않습니다.
-        </p>
-      )}
     </div>
   );
 }

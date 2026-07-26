@@ -11,7 +11,7 @@ import type {
 import { trackEvent } from "@/lib/client-events";
 import { NODE_STATUS_META } from "@/lib/node-status";
 import { getNodeVerification } from "@/lib/process-verification";
-import { ArticleBasisRows, VerificationMark } from "./ProcessVerification";
+import { NodeLegalButton, VerificationMark } from "./ProcessVerification";
 import DesktopProcessBoard from "./DesktopProcessBoard";
 import PortraitProcessBoard from "./PortraitProcessBoard";
 
@@ -169,12 +169,11 @@ function ProcessNodeInspector({
         )}
       </div>
 
+      {/* 근거 원문은 펼쳐두지 않고 [법적 근거] 버튼 → 팝업에서 본다(2026-07-26).
+          캔버스의 '법적 근거' 블록과 같은 내용이 화면에 두 번 나오는 걸 막는다. */}
       <div className="process-node-inspector-laws">
-        <span style={{ display: "inline-flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-          법적 근거
-          <VerificationMark result={verificationResult} />
-        </span>
-        <ArticleBasisRows result={verificationResult} />
+        <NodeLegalButton node={node} verification={verification} />
+        <VerificationMark result={verificationResult} />
       </div>
     </section>
   );

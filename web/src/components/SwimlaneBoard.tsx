@@ -17,7 +17,7 @@ import type {
 } from "@/lib/types";
 import { getNodeVerification } from "@/lib/process-verification";
 import {
-  NodeLegalVerification,
+  NodeLegalButton,
   ProcessVerificationSummaryBar,
   VerificationLegend,
   VerificationMark,
@@ -861,7 +861,8 @@ export function NodeDrawer({
 
         {node.legal_basis && node.legal_basis.length > 0 && (
           <DrawerSection title="법적 근거 · 검증">
-            <NodeLegalVerification node={node} verification={verification} />
+            {/* 서랍 안에 원문을 펼치지 않고 버튼 → 팝업으로 본다(2026-07-26). */}
+            <NodeLegalButton node={node} verification={verification} />
           </DrawerSection>
         )}
 

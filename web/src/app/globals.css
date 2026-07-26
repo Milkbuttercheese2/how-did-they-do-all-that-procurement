@@ -4425,7 +4425,164 @@ body:has(.og-card-page) > main {
 .process-node-inspector-main,
 .process-node-inspector-metrics,
 .process-node-inspector-laws {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
   min-width: 0;
+}
+
+/* 노드의 [법적 근거 N건] 버튼 — 누르면 원문 팝업이 열린다(2026-07-26). */
+.node-legal-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border: 1px solid #087452;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #087452;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.node-legal-button:hover {
+  background: #087452;
+  color: #ffffff;
+}
+
+.node-legal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(11, 20, 16, 0.55);
+}
+
+/* 원문을 읽는 창이라 넓게 잡는다. 조문은 줄이 길고 각 호 열거가 많다. */
+.node-legal-modal {
+  display: flex;
+  width: min(1080px, 96vw);
+  max-height: min(86vh, 900px);
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #bdcbc4;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 24px 64px rgba(11, 20, 16, 0.28);
+}
+
+.node-legal-modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px 13px;
+  border-bottom: 1px solid #e4ebe6;
+  background: #f7faf8;
+}
+
+.node-legal-modal-head > div > span {
+  display: block;
+  color: #68766f;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.node-legal-modal-head > div > strong {
+  display: block;
+  margin-top: 3px;
+  color: #111714;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.node-legal-modal-close {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #cfdad4;
+  border-radius: 5px;
+  background: #ffffff;
+  color: #5d6b63;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.node-legal-modal-close:hover {
+  background: #eef2f0;
+}
+
+.node-legal-modal-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #eef2f0;
+}
+
+.node-legal-modal-status p {
+  margin: 0;
+  color: #5d6b63;
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+.node-legal-modal-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 16px 20px 20px;
+}
+
+/* 팝업 안에서는 원문 글자를 키우고 줄간격을 늘린다 — 읽는 것이 목적인 화면이다. */
+.node-legal-modal-body .article-basis-source {
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.node-legal-modal-body .article-basis-head strong {
+  font-size: 14px;
+}
+
+.node-legal-modal-unresolved {
+  margin-top: 10px;
+  padding-left: 10px;
+  border-left: 2px solid #c78116;
+  color: #7b5415;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.node-legal-modal-unresolved span {
+  display: block;
+  color: #5d6b63;
+}
+
+.node-legal-modal-note {
+  margin: 14px 0 0;
+  padding-top: 11px;
+  border-top: 1px solid #e4ebe6;
+  color: #87938d;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+@media (max-width: 720px) {
+  .node-legal-overlay {
+    padding: 0;
+    place-items: end stretch;
+  }
+
+  .node-legal-modal {
+    width: 100%;
+    max-height: 92vh;
+    border-radius: 12px 12px 0 0;
+  }
 }
 
 .process-node-inspector-label {
