@@ -4506,15 +4506,16 @@ body:has(.og-card-page) > main {
   z-index: 1200;
   display: grid;
   place-items: center;
-  padding: 24px;
+  /* 세로를 키운 만큼 여백을 줄여야 창이 실제로 커진다. */
+  padding: 2vh 24px;
   background: rgba(11, 20, 16, 0.55);
 }
 
-/* 원문을 읽는 창이라 넓게 잡는다. 조문은 줄이 길고 각 호 열거가 많다. */
+/* 원문을 읽는 창. 가로는 좁히고 세로를 늘려 조문이 덜 끊기게 한다. */
 .node-legal-modal {
   display: flex;
-  width: min(1080px, 96vw);
-  max-height: min(86vh, 900px);
+  width: min(864px, 77vw);
+  max-height: min(96vh, 1170px);
   flex-direction: column;
   overflow: hidden;
   border: 1px solid #bdcbc4;
