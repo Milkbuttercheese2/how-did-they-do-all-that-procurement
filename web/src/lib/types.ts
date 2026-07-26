@@ -26,11 +26,10 @@ export interface AnnexRef {
   /** 화면 표기 — "별표3의2", "별지 제12호서식", "별지 2의 4" */
   label: string;
   title: string;
-  /** 법제처 별표서식 파일(/LSW/flDownload.do) — 인증 없이 열리는 유일한 공개 주소다.
-   *  파일이 없는 별표는 이 값이 없고, 화면에서 링크 없이 제목만 보여준다. */
-  url?: string;
-  /** url이 웹 페이지가 아니라 HWP·PDF 파일 다운로드임을 표시한다. */
-  isFile?: boolean;
+  /** 법제처 별표서식 파일(/LSW/flDownload.do). DRF Open API 주소는 인증키 없이
+   *  열리지 않으므로 쓰지 않는다. 둘 다 있으면 화면에 둘 다 노출한다. */
+  pdfUrl?: string;
+  hwpUrl?: string;
 }
 
 export type SourceVerificationStatus =

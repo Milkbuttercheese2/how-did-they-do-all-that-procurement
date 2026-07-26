@@ -63,18 +63,18 @@ for (const file of fs.readdirSync(INSTITUTIONS_DIR)) {
   const refs = [...wanted]
     .map((key) => annexes[key])
     .filter(Boolean)
-    // 링크는 `fileUrl`(별표서식파일링크)만 쓴다. `url`(별표법령상세링크)은 DRF Open API
+    // 파일 링크(/LSW/flDownload.do)만 내보낸다. `url`(별표법령상세링크)은 DRF Open API
     // 엔드포인트라 인증키 없이는 "OpenAPI 사용자 인증에 실패하였습니다"만 돌려준다 —
     // 키는 저장소에 커밋할 수 없으므로 그 링크는 사용자에게 항상 죽은 링크다.
-    // fileUrl(/LSW/flDownload.do)은 인증 없이 원본 파일을 내려주므로 이것만 노출한다.
-    // 파일이 없는 별표는 링크 없이 제목만 보여준다(지어낸 링크보다 낫다).
-    .map(({ law, annex, kind, label, title, fileUrl }) => ({
+    // PDF·HWP를 모두 내보내 화면에서 사용자가 고르게 한다.
+    .map(({ law, annex, kind, label, title, pdfUrl, hwpUrl }) => ({
       law,
       annex,
       kind,
       label: label ?? annex,
       title,
-      ...(fileUrl ? { url: fileUrl, isFile: true } : {}),
+      ...(pdfUrl ? { pdfUrl } : {}),
+      ...(hwpUrl ? { hwpUrl } : {}),
     }));
   if (refs.length === 0) continue;
 

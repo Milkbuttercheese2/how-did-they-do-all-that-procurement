@@ -165,8 +165,15 @@ for (const [rawLaw, wanted] of needed) {
       title: String(hit.row.별표명 ?? "").trim(),
       // 본문은 HWP/PDF 파일이라 링크로 넘긴다. 표 형식이라 텍스트로 옮기면
       // 행·열 관계가 깨져서, 어설픈 텍스트보다 원본 링크가 정확하다.
+      //
+      // `별표법령상세링크`는 DRF Open API 주소라 인증키 없이는 열리지 않는다
+      // (키는 커밋할 수 없으므로 사용자에겐 항상 죽은 링크다). 파일 링크
+      // (/LSW/flDownload.do)만 인증 없이 열린다.
+      // PDF·HWP 둘 다 보관한다 — 화면에서 사용자가 고르게 한다.
+      // PDF는 브라우저에서 바로 열리고, HWP는 편집이 필요한 서식 작성에 쓴다.
       url: scrubKey(hit.row.별표법령상세링크 ?? hit.row.별표행정규칙상세링크),
-      fileUrl: scrubKey(hit.row.별표서식파일링크),
+      pdfUrl: scrubKey(hit.row.별표서식PDF파일링크),
+      hwpUrl: scrubKey(hit.row.별표서식파일링크),
     };
     ok += 1;
   }

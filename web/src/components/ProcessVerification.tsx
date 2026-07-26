@@ -344,33 +344,35 @@ function NodeAnnexDownloads({
     <section className="node-legal-annexes">
       <h4>이 조문에 딸린 별표·서식</h4>
       <div className="node-legal-annex-list">
-        {mine.map((ref) =>
-          ref.url ? (
-            <a
-              key={`${ref.law}::${ref.annex}`}
-              className="node-legal-annex"
-              href={ref.url}
-              target="_blank"
-              rel="noreferrer"
-              title={`${ref.law} ${ref.label} ${ref.title} — 국가법령정보센터 원본 파일(HWP) 내려받기`}
-            >
-              <strong>{ref.label}</strong>
-              <span>{ref.title}</span>
-              <em>HWP ↓</em>
-            </a>
-          ) : (
-            <span
-              key={`${ref.law}::${ref.annex}`}
-              className="node-legal-annex"
-              data-nofile="true"
-              title={`${ref.law} ${ref.label} ${ref.title} — 법제처에 내려받을 수 있는 원본 파일이 없다`}
-            >
-              <strong>{ref.label}</strong>
-              <span>{ref.title}</span>
-              <em>파일 없음</em>
+        {mine.map((ref) => (
+          <div key={`${ref.law}::${ref.annex}`} className="node-legal-annex">
+            <strong>{ref.label}</strong>
+            <span>{ref.title}</span>
+            <span className="node-legal-annex-files">
+              {ref.pdfUrl && (
+                <a
+                  href={ref.pdfUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  title={`${ref.law} ${ref.label} ${ref.title} — PDF 내려받기`}
+                >
+                  PDF ↓
+                </a>
+              )}
+              {ref.hwpUrl && (
+                <a
+                  href={ref.hwpUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  title={`${ref.law} ${ref.label} ${ref.title} — HWP(한글) 내려받기`}
+                >
+                  HWP ↓
+                </a>
+              )}
+              {!ref.pdfUrl && !ref.hwpUrl && <em>파일 없음</em>}
             </span>
-          ),
-        )}
+          </div>
+        ))}
       </div>
     </section>
   );

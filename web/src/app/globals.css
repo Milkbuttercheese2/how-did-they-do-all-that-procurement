@@ -4644,9 +4644,29 @@ body:has(.og-card-page) > main {
   text-decoration: none;
 }
 
-a.node-legal-annex:hover {
-  border-color: #087452;
-  background: #e7f7ef;
+/* 파일 형식별 내려받기 버튼 — 한 별표에 PDF·HWP가 함께 오기도 한다. */
+.node-legal-annex-files {
+  display: inline-flex;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.node-legal-annex-files a {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border: 1px solid #087452;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #087452;
+  font-size: 10.5px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.node-legal-annex-files a:hover {
+  background: #087452;
+  color: #ffffff;
 }
 
 .node-legal-annex strong {
