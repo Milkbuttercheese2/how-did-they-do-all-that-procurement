@@ -10,6 +10,7 @@ import {
   useEffect,
 } from "react";
 import type {
+  AnnexRef,
   ProcessModel,
   ProcessNode,
   ProcessEdge,
@@ -226,6 +227,7 @@ function MobileSwimlaneStageNav({
 export function SwimlaneNodeCard({
   node,
   verification,
+  annexRefs = [],
   onClick,
   highlighted,
   dimmed,
@@ -236,6 +238,7 @@ export function SwimlaneNodeCard({
 }: {
   node: ProcessNode;
   verification?: SourceVerification;
+  annexRefs?: AnnexRef[];
   onClick: (n: ProcessNode) => void;
   highlighted: boolean;
   dimmed: boolean;
@@ -286,7 +289,7 @@ export function SwimlaneNodeCard({
         <span className="swimlane-node-card--grid-foot">
           <VerificationMark result={verificationResult} inverse={isCurrent} compact />
           {/* 근거는 노드에서 바로 연다 — '노드 상세' 패널로 스크롤하지 않는다(2026-07-26). */}
-          <NodeLegalChip node={node} verification={verification} inverse={isCurrent} />
+          <NodeLegalChip node={node} verification={verification} annexRefs={annexRefs} inverse={isCurrent} />
         </span>
       </button>
     );
@@ -435,7 +438,7 @@ export function SwimlaneNodeCard({
         }}
       >
         <VerificationMark result={verificationResult} inverse={isCurrent} compact />
-        <NodeLegalChip node={node} verification={verification} inverse={isCurrent} />
+        <NodeLegalChip node={node} verification={verification} annexRefs={annexRefs} inverse={isCurrent} />
         {verificationResult.lowConfidence && (
           <span
             title={`법령 근거 확신도 ${Math.round((node.confidence ?? 0) * 100)}%`}
@@ -465,10 +468,12 @@ export function SwimlaneNodeCard({
 export function MobileProcessFlow({
   process,
   verification,
+  annexRefs = [],
   onNodeClick,
 }: {
   process: ProcessModel;
   verification?: SourceVerification;
+  annexRefs?: AnnexRef[];
   onNodeClick: (node: ProcessNode) => void;
 }) {
   const { lanes, stages, nodes } = process;
@@ -657,11 +662,13 @@ export function NodeDrawer({
   node,
   edges,
   verification,
+  annexRefs = [],
   onClose,
 }: {
   node: ProcessNode;
   edges: ProcessEdge[];
   verification?: SourceVerification;
+  annexRefs?: AnnexRef[];
   onClose: () => void;
 }) {
   const c = ss(node.status);
@@ -841,7 +848,7 @@ export function NodeDrawer({
         {node.legal_basis && node.legal_basis.length > 0 && (
           <DrawerSection title="법적 근거 · 검증">
             {/* 서랍 안에 원문을 펼치지 않고 버튼 → 팝업으로 본다(2026-07-26). */}
-            <NodeLegalButton node={node} verification={verification} />
+            <NodeLegalButton node={node} verification={verification} annexRefs={annexRefs} />
           </DrawerSection>
         )}
 

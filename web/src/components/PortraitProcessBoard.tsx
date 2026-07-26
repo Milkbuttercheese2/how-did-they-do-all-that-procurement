@@ -9,6 +9,7 @@ import {
   useState,
 } from "react";
 import type {
+  AnnexRef,
   ProcessEdge,
   ProcessLaneGroup,
   ProcessModel,
@@ -46,6 +47,7 @@ const EDGE_RAIL_INSET = 4;
 export default function PortraitProcessBoard({
   process,
   verification,
+  annexRefs = [],
   laneGroups,
   initialNodeId,
   onNodeChange,
@@ -54,6 +56,7 @@ export default function PortraitProcessBoard({
 }: {
   process: ProcessModel;
   verification?: SourceVerification;
+  annexRefs?: AnnexRef[];
   laneGroups?: ProcessLaneGroup[];
   initialNodeId?: string;
   onNodeChange?: (nodeId: string | null) => void;
@@ -501,6 +504,7 @@ export default function PortraitProcessBoard({
                             key={node.id}
                             node={node}
                             verification={verification}
+                            annexRefs={annexRefs}
                             onClick={handleNodeClick}
                             highlighted={selected || (hoverActive && (current || connected))}
                             dimmed={hoverActive && !current && !connected}
@@ -531,6 +535,7 @@ export default function PortraitProcessBoard({
         <MobileProcessFlow
           process={process}
           verification={verification}
+          annexRefs={annexRefs}
           onNodeClick={handleNodeClick}
         />
         <Legend />
@@ -541,6 +546,7 @@ export default function PortraitProcessBoard({
           node={activeNode}
           edges={process.edges}
           verification={verification}
+          annexRefs={annexRefs}
           onClose={handleClose}
         />
       )}

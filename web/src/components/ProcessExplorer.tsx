@@ -102,6 +102,7 @@ export default function ProcessExplorer({
           key={slug}
           process={process}
           verification={verification}
+          annexRefs={annexRefs}
           laneGroups={laneGroups}
           initialNodeId={defaultNodeId}
           onNodeChange={handleNodeChange}
