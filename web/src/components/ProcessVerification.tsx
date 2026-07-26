@@ -259,6 +259,62 @@ export function NodeLegalButton({
   );
 }
 
+/** 노드 카드 안에 놓는 [법적 근거] 트리거.
+ *  카드 자체가 <button>이라 그 안에 <button>을 넣을 수 없다 — span에 role을 준다.
+ *  카드 선택 이벤트로 번지지 않도록 클릭·키 입력을 모두 멈춘다. */
+export function NodeLegalChip({
+  node,
+  verification,
+  inverse = false,
+}: {
+  node: ProcessNode;
+  verification?: SourceVerification;
+  inverse?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLSpanElement>(null);
+  const result = getNodeVerification(node, verification);
+  const count = result.bases.length;
+  if (count === 0) return null;
+
+  const close = () => {
+    setOpen(false);
+    window.requestAnimationFrame(() => {
+      triggerRef.current?.focus({ preventScroll: true });
+      triggerRef.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    });
+  };
+
+  return (
+    <>
+      <span
+        ref={triggerRef}
+        role="button"
+        tabIndex={0}
+        className="node-legal-chip"
+        data-inverse={inverse ? "true" : undefined}
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        title={`${node.name} — 법적 근거 ${count}건 보기`}
+        onClick={(event) => {
+          event.stopPropagation();
+          event.preventDefault();
+          setOpen(true);
+        }}
+        onKeyDown={(event) => {
+          if (event.key !== "Enter" && event.key !== " ") return;
+          event.stopPropagation();
+          event.preventDefault();
+          setOpen(true);
+        }}
+      >
+        법적 근거 {count}
+      </span>
+      {open && <NodeLegalModal node={node} result={result} onClose={close} />}
+    </>
+  );
+}
+
 function NodeLegalModal({
   node,
   result,

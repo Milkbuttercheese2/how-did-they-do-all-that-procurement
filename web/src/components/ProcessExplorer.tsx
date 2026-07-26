@@ -9,9 +9,6 @@ import type {
   SourceVerification,
 } from "@/lib/types";
 import { trackEvent } from "@/lib/client-events";
-import { NODE_STATUS_META } from "@/lib/node-status";
-import { getNodeVerification } from "@/lib/process-verification";
-import { NodeLegalButton, VerificationMark } from "./ProcessVerification";
 import DesktopProcessBoard from "./DesktopProcessBoard";
 import PortraitProcessBoard from "./PortraitProcessBoard";
 
@@ -106,76 +103,9 @@ export default function ProcessExplorer({
           showDrawer={false}
         />
       </div>
-
-      {selectedNode && (
-        <ProcessNodeInspector node={selectedNode} verification={verification} />
-      )}
+      {/* '노드 상세' 패널은 두지 않는다(2026-07-26). 근거는 노드 카드의
+          [법적 근거] 버튼에서 팝업으로 바로 연다. */}
     </div>
-  );
-}
-
-function ProcessNodeInspector({
-  node,
-  verification,
-}: {
-  node: ProcessNode;
-  verification?: SourceVerification;
-}) {
-  const status = NODE_STATUS_META[node.status];
-  const verificationResult = getNodeVerification(node, verification);
-  const documents = [
-    ...(node.input_documents ?? []),
-    ...(node.output_documents ?? []),
-  ];
-
-  return (
-    <section className="process-node-inspector" aria-label="선택한 업무 노드 상세">
-      <div className="process-node-inspector-main">
-        <div className="process-node-inspector-label">
-          <span>노드 상세</span>
-          <strong>{node.id}</strong>
-          {status.label && (
-            <i style={{ color: status.color, borderColor: status.color }}>
-              {status.label}
-            </i>
-          )}
-        </div>
-        <h3>{node.name}</h3>
-        <p>{node.stage} · {node.lane} · {node.actor}</p>
-        {documents.length > 0 && (
-          <div className="process-node-documents">
-            {[...new Set(documents)].map((document) => (
-              <span key={document}>{document}</span>
-            ))}
-          </div>
-        )}
-      </div>
-
-      <div className="process-node-inspector-metrics">
-        <div>
-          <span>기한</span>
-          <strong>{node.deadline ?? "—"}</strong>
-        </div>
-        <div>
-          <span>확신도</span>
-          <strong>
-            {node.confidence === undefined
-              ? "—"
-              : `${Math.round(node.confidence * 100)}%`}
-          </strong>
-        </div>
-        {node.blocker && (
-          <p><strong>유의</strong> · {node.blocker}</p>
-        )}
-      </div>
-
-      {/* 근거 원문은 펼쳐두지 않고 [법적 근거] 버튼 → 팝업에서 본다(2026-07-26).
-          캔버스의 '법적 근거' 블록과 같은 내용이 화면에 두 번 나오는 걸 막는다. */}
-      <div className="process-node-inspector-laws">
-        <NodeLegalButton node={node} verification={verification} />
-        <VerificationMark result={verificationResult} />
-      </div>
-    </section>
   );
 }
 

@@ -18,6 +18,7 @@ import type {
 import { getNodeVerification } from "@/lib/process-verification";
 import {
   NodeLegalButton,
+  NodeLegalChip,
   ProcessVerificationSummaryBar,
   VerificationLegend,
   VerificationMark,
@@ -283,19 +284,9 @@ export function SwimlaneNodeCard({
           {node.name}
         </span>
         <span className="swimlane-node-card--grid-foot">
-          <VerificationMark
-            result={verificationResult}
-            inverse={isCurrent}
-            compact
-            onActivate={() => {
-              onClick(node);
-              window.setTimeout(() => {
-                document
-                  .querySelector(".process-node-inspector-laws")
-                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
-              }, 80);
-            }}
-          />
+          <VerificationMark result={verificationResult} inverse={isCurrent} compact />
+          {/* 근거는 노드에서 바로 연다 — '노드 상세' 패널로 스크롤하지 않는다(2026-07-26). */}
+          <NodeLegalChip node={node} verification={verification} inverse={isCurrent} />
         </span>
       </button>
     );
@@ -443,20 +434,8 @@ export function SwimlaneNodeCard({
           minWidth: 0,
         }}
       >
-        <VerificationMark
-          result={verificationResult}
-          inverse={isCurrent}
-          compact
-          onActivate={() => {
-            onClick(node);
-            // 선택 반영 후 노드 상세의 법적 근거 영역으로 스크롤(모바일 열람 동선)
-            window.setTimeout(() => {
-              document
-                .querySelector(".process-node-inspector-laws")
-                ?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }, 80);
-          }}
-        />
+        <VerificationMark result={verificationResult} inverse={isCurrent} compact />
+        <NodeLegalChip node={node} verification={verification} inverse={isCurrent} />
         {verificationResult.lowConfidence && (
           <span
             title={`법령 근거 확신도 ${Math.round((node.confidence ?? 0) * 100)}%`}

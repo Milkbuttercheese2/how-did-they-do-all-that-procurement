@@ -1,7 +1,8 @@
 "use client";
 
 import { useId, useLayoutEffect, useMemo, useRef, useState } from "react";
-import type { ProcessEdge, ProcessModel, ProcessNode } from "@/lib/types";
+import type { ProcessEdge, ProcessModel, ProcessNode, SourceVerification } from "@/lib/types";
+import { NodeLegalChip } from "./ProcessVerification";
 import { NODE_STATUS_META, nodeStatusAriaLabel } from "@/lib/node-status";
 import { ARROW_HEAD, EDGE_TYPE_COLORS, EDGE_LINE_COLORS, EDGE_END_INSET } from "@/lib/edge-style.mjs";
 
@@ -81,12 +82,14 @@ export default function DesktopProcessBoard({
 
 function FullProcessGrid({
   process,
+  verification,
   stages,
   selectedNodeId,
   loopLabels,
   onNodeChange,
 }: {
   process: ProcessModel;
+  verification?: SourceVerification;
   stages: ReturnType<typeof splitStage>[];
   selectedNodeId: string;
   loopLabels: Map<string, string>;
@@ -264,6 +267,7 @@ function FullProcessGrid({
                   {nodes.map((node) => (
                     <ProcessGridCard
                       key={node.id}
+                      verification={verification}
                       node={node}
                       loopLabel={loopLabels.get(node.id)}
                       selected={selectedNodeId === node.id}
@@ -286,11 +290,13 @@ function FullProcessGrid({
 
 function CoreProcessFlow({
   process,
+  verification,
   selectedNodeId,
   loopLabels,
   onNodeChange,
 }: {
   process: ProcessModel;
+  verification?: SourceVerification;
   selectedNodeId: string;
   loopLabels: Map<string, string>;
   onNodeChange: (nodeId: string) => void;
@@ -311,6 +317,7 @@ function CoreProcessFlow({
             {stage.nodes.map((node, index) => (
               <div className="desktop-process-v2-core-step" key={node.id}>
                 <ProcessGridCard
+                  verification={verification}
                   node={node}
                   loopLabel={loopLabels.get(node.id)}
                   selected={selectedNodeId === node.id}
@@ -328,12 +335,14 @@ function CoreProcessFlow({
 
 function ProcessGridCard({
   node,
+  verification,
   loopLabel,
   selected,
   onClick,
   setRef,
 }: {
   node: ProcessNode;
+  verification?: SourceVerification;
   loopLabel?: string;
   selected: boolean;
   onClick: () => void;
@@ -357,6 +366,8 @@ function ProcessGridCard({
       </span>
       <strong>{node.name}</strong>
       {loopLabel && <small>↩ {loopLabel}</small>}
+      {/* 근거는 노드에서 바로 연다 — 별도 '노드 상세' 패널을 두지 않는다(2026-07-26). */}
+      <NodeLegalChip node={node} verification={verification} />
     </button>
   );
 }

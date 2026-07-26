@@ -4432,6 +4432,46 @@ body:has(.og-card-page) > main {
   min-width: 0;
 }
 
+/* 노드 카드 안의 [법적 근거 N] 칩 — 누르면 원문 팝업이 열린다(2026-07-26).
+   카드가 <button>이라 안에 <button>을 넣을 수 없어 span에 role을 준다. */
+.node-legal-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 18px;
+  padding: 1px 6px;
+  border: 1px solid #087452;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #087452;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.node-legal-chip:hover {
+  background: #087452;
+  color: #ffffff;
+}
+
+.node-legal-chip:focus-visible {
+  outline: 2px solid #0f9f72;
+  outline-offset: 1px;
+}
+
+/* 선택된(핵심) 노드는 배경이 진해서 흰 계열로 뒤집는다. */
+.node-legal-chip[data-inverse="true"] {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.node-legal-chip[data-inverse="true"]:hover {
+  background: #ffffff;
+  color: #087452;
+}
+
 /* 노드의 [법적 근거 N건] 버튼 — 누르면 원문 팝업이 열린다(2026-07-26). */
 .node-legal-button {
   display: inline-flex;
