@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type {
+  AnnexRef,
   ProcessLaneGroup,
   ProcessModel,
   ProcessNode,
@@ -17,11 +18,14 @@ type ProcessMode = "summary" | "full";
 export default function ProcessExplorer({
   process,
   verification,
+  annexRefs = [],
   slug,
   laneGroups,
 }: {
   process: ProcessModel;
   verification?: SourceVerification;
+  /** 노드 근거 팝업에서 그 조문이 딸린 별표·서식을 내려받게 한다. */
+  annexRefs?: AnnexRef[];
   slug: string;
   laneGroups?: ProcessLaneGroup[];
 }) {
@@ -86,6 +90,7 @@ export default function ProcessExplorer({
         <DesktopProcessBoard
           process={process}
           verification={verification}
+          annexRefs={annexRefs}
           compact={mode === "summary"}
           selectedNodeId={selectedNode.id}
           onNodeChange={handleNodeChange}

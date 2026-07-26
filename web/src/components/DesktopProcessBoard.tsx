@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useLayoutEffect, useMemo, useRef, useState } from "react";
-import type { ProcessEdge, ProcessModel, ProcessNode, SourceVerification } from "@/lib/types";
+import type { AnnexRef, ProcessEdge, ProcessModel, ProcessNode, SourceVerification } from "@/lib/types";
 import { NodeLegalChip } from "./ProcessVerification";
 import { NODE_STATUS_META, nodeStatusAriaLabel } from "@/lib/node-status";
 import { ARROW_HEAD, EDGE_TYPE_COLORS, EDGE_LINE_COLORS, EDGE_END_INSET } from "@/lib/edge-style.mjs";
@@ -33,12 +33,14 @@ const EDGE_COLOR: Record<EdgeKind, string> = EDGE_LINE_COLORS;
 export default function DesktopProcessBoard({
   process,
   verification,
+  annexRefs,
   compact,
   selectedNodeId,
   onNodeChange,
 }: {
   process: ProcessModel;
   verification?: SourceVerification;
+  annexRefs?: AnnexRef[];
   compact: boolean;
   selectedNodeId: string;
   onNodeChange: (nodeId: string) => void;
@@ -65,6 +67,7 @@ export default function DesktopProcessBoard({
       <CoreProcessFlow
         process={process}
         verification={verification}
+        annexRefs={annexRefs}
         selectedNodeId={selectedNodeId}
         loopLabels={loopLabels}
         onNodeChange={onNodeChange}
@@ -76,6 +79,7 @@ export default function DesktopProcessBoard({
     <FullProcessGrid
       process={process}
       verification={verification}
+      annexRefs={annexRefs}
       stages={stages}
       selectedNodeId={selectedNodeId}
       loopLabels={loopLabels}
@@ -87,6 +91,7 @@ export default function DesktopProcessBoard({
 function FullProcessGrid({
   process,
   verification,
+  annexRefs,
   stages,
   selectedNodeId,
   loopLabels,
@@ -94,6 +99,7 @@ function FullProcessGrid({
 }: {
   process: ProcessModel;
   verification?: SourceVerification;
+  annexRefs?: AnnexRef[];
   stages: ReturnType<typeof splitStage>[];
   selectedNodeId: string;
   loopLabels: Map<string, string>;
@@ -272,6 +278,7 @@ function FullProcessGrid({
                     <ProcessGridCard
                       key={node.id}
                       verification={verification}
+                      annexRefs={annexRefs}
                       node={node}
                       loopLabel={loopLabels.get(node.id)}
                       selected={selectedNodeId === node.id}
@@ -295,12 +302,14 @@ function FullProcessGrid({
 function CoreProcessFlow({
   process,
   verification,
+  annexRefs,
   selectedNodeId,
   loopLabels,
   onNodeChange,
 }: {
   process: ProcessModel;
   verification?: SourceVerification;
+  annexRefs?: AnnexRef[];
   selectedNodeId: string;
   loopLabels: Map<string, string>;
   onNodeChange: (nodeId: string) => void;
@@ -322,6 +331,7 @@ function CoreProcessFlow({
               <div className="desktop-process-v2-core-step" key={node.id}>
                 <ProcessGridCard
                   verification={verification}
+                  annexRefs={annexRefs}
                   node={node}
                   loopLabel={loopLabels.get(node.id)}
                   selected={selectedNodeId === node.id}
@@ -340,6 +350,7 @@ function CoreProcessFlow({
 function ProcessGridCard({
   node,
   verification,
+  annexRefs,
   loopLabel,
   selected,
   onClick,
@@ -347,6 +358,7 @@ function ProcessGridCard({
 }: {
   node: ProcessNode;
   verification?: SourceVerification;
+  annexRefs?: AnnexRef[];
   loopLabel?: string;
   selected: boolean;
   onClick: () => void;
@@ -371,7 +383,7 @@ function ProcessGridCard({
       <strong>{node.name}</strong>
       {loopLabel && <small>↩ {loopLabel}</small>}
       {/* 근거는 노드에서 바로 연다 — 별도 '노드 상세' 패널을 두지 않는다(2026-07-26). */}
-      <NodeLegalChip node={node} verification={verification} />
+      <NodeLegalChip node={node} verification={verification} annexRefs={annexRefs} />
     </button>
   );
 }

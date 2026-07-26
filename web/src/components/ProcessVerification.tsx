@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import type { ProcessModel, ProcessNode, SourceVerification } from "@/lib/types";
+import type { AnnexRef, ProcessModel, ProcessNode, SourceVerification } from "@/lib/types";
 import {
   getNodeVerification,
   summarizeProcessVerification,
@@ -219,9 +219,11 @@ export function ArticleBasisRows({ result }: { result: NodeVerificationResult })
 export function NodeLegalButton({
   node,
   verification,
+  annexRefs = [],
 }: {
   node: ProcessNode;
   verification?: SourceVerification;
+  annexRefs?: AnnexRef[];
 }) {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -255,7 +257,9 @@ export function NodeLegalButton({
       >
         법적 근거 {count}건
       </button>
-      {open && <NodeLegalModal node={node} result={result} onClose={close} />}
+      {open && (
+        <NodeLegalModal node={node} result={result} annexRefs={annexRefs} onClose={close} />
+      )}
     </>
   );
 }
@@ -266,10 +270,12 @@ export function NodeLegalButton({
 export function NodeLegalChip({
   node,
   verification,
+  annexRefs = [],
   inverse = false,
 }: {
   node: ProcessNode;
   verification?: SourceVerification;
+  annexRefs?: AnnexRef[];
   inverse?: boolean;
 }) {
   const [open, setOpen] = useState(false);
@@ -311,18 +317,74 @@ export function NodeLegalChip({
       >
         법적 근거 {count}
       </span>
-      {open && <NodeLegalModal node={node} result={result} onClose={close} />}
+      {open && (
+        <NodeLegalModal node={node} result={result} annexRefs={annexRefs} onClose={close} />
+      )}
     </>
+  );
+}
+
+/** 이 노드가 인용한 법령에 딸린 별표·서식 내려받기.
+ *  법제처가 주는 파일은 HWP(한글)다 — PDF가 아니므로 브라우저에서 미리보기가 되지
+ *  않는다. 그래서 링크 라벨에 형식을 밝히고 내려받기(↓)로 표시한다.
+ *  파일이 없는 별표는 링크를 만들지 않고 제목만 남긴다(죽은 링크를 만들지 않는다). */
+function NodeAnnexDownloads({
+  result,
+  annexRefs,
+}: {
+  result: NodeVerificationResult;
+  annexRefs: AnnexRef[];
+}) {
+  const strip = (name: string) => name.replace(/^\([^)]*\)\s*/, "").trim();
+  const cited = new Set(result.bases.map(({ basis }) => strip(basis.law)));
+  const mine = annexRefs.filter((ref) => cited.has(strip(ref.law)));
+  if (mine.length === 0) return null;
+
+  return (
+    <section className="node-legal-annexes">
+      <h4>이 조문에 딸린 별표·서식</h4>
+      <div className="node-legal-annex-list">
+        {mine.map((ref) =>
+          ref.url ? (
+            <a
+              key={`${ref.law}::${ref.annex}`}
+              className="node-legal-annex"
+              href={ref.url}
+              target="_blank"
+              rel="noreferrer"
+              title={`${ref.law} ${ref.label} ${ref.title} — 국가법령정보센터 원본 파일(HWP) 내려받기`}
+            >
+              <strong>{ref.label}</strong>
+              <span>{ref.title}</span>
+              <em>HWP ↓</em>
+            </a>
+          ) : (
+            <span
+              key={`${ref.law}::${ref.annex}`}
+              className="node-legal-annex"
+              data-nofile="true"
+              title={`${ref.law} ${ref.label} ${ref.title} — 법제처에 내려받을 수 있는 원본 파일이 없다`}
+            >
+              <strong>{ref.label}</strong>
+              <span>{ref.title}</span>
+              <em>파일 없음</em>
+            </span>
+          ),
+        )}
+      </div>
+    </section>
   );
 }
 
 function NodeLegalModal({
   node,
   result,
+  annexRefs = [],
   onClose,
 }: {
   node: ProcessNode;
   result: NodeVerificationResult;
+  annexRefs?: AnnexRef[];
   onClose: () => void;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -407,6 +469,7 @@ function NodeLegalModal({
 
         <div className="node-legal-modal-body">
           <ArticleBasisRows result={result} />
+          <NodeAnnexDownloads result={result} annexRefs={annexRefs} />
           {result.bases.flatMap(({ unresolved }) => unresolved).map((item) => (
             <div key={`${item.reasonCode}:${item.law}`} className="node-legal-modal-unresolved">
               <strong>{unresolvedReasonLabels[item.reasonCode]}</strong> · {item.law}

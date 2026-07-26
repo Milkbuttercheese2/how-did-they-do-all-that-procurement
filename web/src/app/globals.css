@@ -4611,6 +4611,75 @@ body:has(.og-card-page) > main {
   color: #5d6b63;
 }
 
+/* 팝업 안 별표·서식 내려받기 목록 */
+.node-legal-annexes {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #e4ebe6;
+}
+
+.node-legal-annexes h4 {
+  margin: 0 0 8px;
+  color: #5d6b63;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.node-legal-annex-list {
+  display: grid;
+  gap: 6px;
+}
+
+.node-legal-annex {
+  display: grid;
+  grid-template-columns: minmax(88px, auto) minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 10px;
+  border: 1px solid #cde7dc;
+  border-radius: 6px;
+  background: #f4faf7;
+  color: #0c5c43;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+a.node-legal-annex:hover {
+  border-color: #087452;
+  background: #e7f7ef;
+}
+
+.node-legal-annex strong {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.node-legal-annex span {
+  color: #33413a;
+  font-weight: 500;
+}
+
+.node-legal-annex em {
+  color: #087452;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* 법제처에 파일이 없는 별표 — 눌리지 않음이 색으로 드러나야 한다. */
+.node-legal-annex[data-nofile="true"] {
+  border-style: dashed;
+  border-color: #dde5df;
+  background: #f7f8f7;
+  color: #5d6b63;
+}
+
+.node-legal-annex[data-nofile="true"] span,
+.node-legal-annex[data-nofile="true"] em {
+  color: #87938d;
+}
+
 .node-legal-modal-note {
   margin: 14px 0 0;
   padding-top: 11px;
