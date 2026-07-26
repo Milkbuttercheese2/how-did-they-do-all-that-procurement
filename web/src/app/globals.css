@@ -4507,7 +4507,7 @@ body:has(.og-card-page) > main {
   display: grid;
   place-items: center;
   /* 세로를 키운 만큼 여백을 줄여야 창이 실제로 커진다. */
-  padding: 2vh 24px;
+  padding: 1vh 24px;
   background: rgba(11, 20, 16, 0.55);
 }
 
@@ -4515,7 +4515,7 @@ body:has(.og-card-page) > main {
 .node-legal-modal {
   display: flex;
   width: min(864px, 77vw);
-  max-height: min(96vh, 1170px);
+  max-height: min(98vh, 1462px);
   flex-direction: column;
   overflow: hidden;
   border: 1px solid #bdcbc4;
@@ -4529,7 +4529,7 @@ body:has(.og-card-page) > main {
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  padding: 16px 20px 13px;
+  padding: 11px 20px 9px;
   border-bottom: 1px solid #e4ebe6;
   background: #f7faf8;
 }
@@ -4570,7 +4570,7 @@ body:has(.og-card-page) > main {
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  padding: 12px 20px;
+  padding: 8px 20px;
   border-bottom: 1px solid #eef2f0;
 }
 
@@ -4584,7 +4584,7 @@ body:has(.og-card-page) > main {
 .node-legal-modal-body {
   flex: 1 1 auto;
   overflow-y: auto;
-  padding: 16px 20px 20px;
+  padding: 12px 20px 14px;
 }
 
 /* 팝업 안에서는 원문 글자를 키우고 줄간격을 늘린다 — 읽는 것이 목적인 화면이다. */
