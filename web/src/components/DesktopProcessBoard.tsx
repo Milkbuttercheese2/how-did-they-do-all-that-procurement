@@ -32,11 +32,13 @@ const EDGE_COLOR: Record<EdgeKind, string> = EDGE_LINE_COLORS;
 
 export default function DesktopProcessBoard({
   process,
+  verification,
   compact,
   selectedNodeId,
   onNodeChange,
 }: {
   process: ProcessModel;
+  verification?: SourceVerification;
   compact: boolean;
   selectedNodeId: string;
   onNodeChange: (nodeId: string) => void;
@@ -62,6 +64,7 @@ export default function DesktopProcessBoard({
     return (
       <CoreProcessFlow
         process={process}
+        verification={verification}
         selectedNodeId={selectedNodeId}
         loopLabels={loopLabels}
         onNodeChange={onNodeChange}
@@ -72,6 +75,7 @@ export default function DesktopProcessBoard({
   return (
     <FullProcessGrid
       process={process}
+      verification={verification}
       stages={stages}
       selectedNodeId={selectedNodeId}
       loopLabels={loopLabels}

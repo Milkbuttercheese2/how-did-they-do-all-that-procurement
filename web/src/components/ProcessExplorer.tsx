@@ -85,6 +85,7 @@ export default function ProcessExplorer({
       <div className="process-desktop-board">
         <DesktopProcessBoard
           process={process}
+          verification={verification}
           compact={mode === "summary"}
           selectedNodeId={selectedNode.id}
           onNodeChange={handleNodeChange}
