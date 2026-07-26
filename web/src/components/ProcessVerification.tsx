@@ -324,20 +324,21 @@ export function NodeLegalChip({
   );
 }
 
-/** 이 노드가 인용한 법령에 딸린 별표·서식 내려받기.
- *  법제처가 주는 파일은 HWP(한글)다 — PDF가 아니므로 브라우저에서 미리보기가 되지
- *  않는다. 그래서 링크 라벨에 형식을 밝히고 내려받기(↓)로 표시한다.
- *  파일이 없는 별표는 링크를 만들지 않고 제목만 남긴다(죽은 링크를 만들지 않는다). */
+/** 이 노드가 실제로 가리키는 별표·서식 내려받기.
+ *  법제처는 법령 별표에는 HWP·PDF를 모두 주지만 행정규칙 별표에는 HWP만 준다.
+ *  그래서 형식을 라벨에 밝히고 내려받기(↓)로 표시하며, 있는 형식만 링크한다
+ *  (파일이 없는 별표는 제목만 남긴다 — 죽은 링크를 만들지 않는다). */
 function NodeAnnexDownloads({
-  result,
+  nodeId,
   annexRefs,
 }: {
-  result: NodeVerificationResult;
+  nodeId: string;
   annexRefs: AnnexRef[];
 }) {
-  const strip = (name: string) => name.replace(/^\([^)]*\)\s*/, "").trim();
-  const cited = new Set(result.bases.map(({ basis }) => strip(basis.law)));
-  const mine = annexRefs.filter((ref) => cited.has(strip(ref.law)));
+  // 귀속은 빌드 타임에 끝나 있다(scripts/generate-annex-refs.mjs). 화면에서
+  // 법령명으로 다시 거르지 않는다 — 그러면 같은 법의 무관한 서식이 딸려오고,
+  // 조문이 인용한 타법 별표는 빠진다.
+  const mine = annexRefs.filter((ref) => ref.nodes?.includes(nodeId));
   if (mine.length === 0) return null;
 
   return (
@@ -471,7 +472,7 @@ function NodeLegalModal({
 
         <div className="node-legal-modal-body">
           <ArticleBasisRows result={result} />
-          <NodeAnnexDownloads result={result} annexRefs={annexRefs} />
+          <NodeAnnexDownloads nodeId={node.id} annexRefs={annexRefs} />
           {result.bases.flatMap(({ unresolved }) => unresolved).map((item) => (
             <div key={`${item.reasonCode}:${item.law}`} className="node-legal-modal-unresolved">
               <strong>{unresolvedReasonLabels[item.reasonCode]}</strong> · {item.law}

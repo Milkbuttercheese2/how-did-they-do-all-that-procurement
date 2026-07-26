@@ -30,6 +30,11 @@ export interface AnnexRef {
    *  열리지 않으므로 쓰지 않는다. 둘 다 있으면 화면에 둘 다 노출한다. */
   pdfUrl?: string;
   hwpUrl?: string;
+  /** 이 별표를 실제로 가리키는 절차 노드 id. 빌드 타임(generate-annex-refs)에
+   *  노드 근거 문구와 인용 조문 본문에서 계산한다. 화면은 법령명이 아니라 이
+   *  목록으로 걸러야 한다 — 법령명으로 거르면 같은 법의 무관한 서식이 딸려오고,
+   *  조문이 인용한 타법 별표는 도리어 빠진다. */
+  nodes?: string[];
 }
 
 export type SourceVerificationStatus =

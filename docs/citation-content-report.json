@@ -1,17 +1,17 @@
 {
- "checkedAt": "2026-07-24",
+ "checkedAt": "2026-07-26",
  "method": "L1 exact(30자+) / L2 char-bigram containment≥0.5 — korean-law-mcp citation-content-matcher 이식(요지vs원문에 맞게 containment 보정)",
- "checked": 1514,
+ "checked": 1677,
  "mismatches": 1,
  "rows": [
   {
-   "slug": "commercial-software-mas",
-   "node": "P12",
-   "law": "상용소프트웨어 다수공급자계약 업무처리규정",
-   "article": "제18조제2항",
-   "score": 0.286,
-   "lcs": 23,
-   "claim": "계약담당공무원은 「물품구매(제조)계약일반조건」 제26조(단, 유지관리상품 및 커스터마이징상품의 경우 「용역계약일반조건」 제31조)에 따라 계약상대자의 책임있는 사유로 인하여 당해 계약의 전부 또는 일부를 해제 또는 "
+   "slug": "international-bidding",
+   "node": "P01",
+   "law": "국가를 당사자로 하는 계약에 관한 법률 시행령",
+   "article": "제7조",
+   "score": 0.304,
+   "lcs": 7,
+   "claim": "법 제4조제1항에 따른 추정가격은 물품ㆍ공사ㆍ용역 등의 조달계약을 체결할 때 국제입찰 대상 여부를 판단하는 기준 등으로 삼기 위하여 예정가격이 결정되기 전에 다음 각 호에 따라 산정된 가격을 말한다."
   }
  ]
 }

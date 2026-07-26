@@ -159,6 +159,33 @@
   "pdfUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=160252777",
   "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=160252775"
  },
+ "국가종합전자조달시스템 구축 및 운용에 관한 규정::별지1": {
+  "law": "국가종합전자조달시스템 구축 및 운용에 관한 규정",
+  "annex": "별지1",
+  "kind": "서식",
+  "label": "별지 1",
+  "title": "자체전자조달시스템 이용전환 신청서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=2119753&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=79413911"
+ },
+ "국가종합전자조달시스템 입찰참가자격등록규정::별지1": {
+  "law": "국가종합전자조달시스템 입찰참가자격등록규정",
+  "annex": "별지1",
+  "kind": "서식",
+  "label": "별지 1",
+  "title": "지사 등록 이행각서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3174111&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=161696341"
+ },
+ "국가종합전자조달시스템 입찰참가자격등록규정::별지7": {
+  "law": "국가종합전자조달시스템 입찰참가자격등록규정",
+  "annex": "별지7",
+  "kind": "서식",
+  "label": "별지 7",
+  "title": "경쟁입찰참가자격등록증",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3174123&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=161696377"
+ },
  "국가종합전자조달시스템 전자입찰특별유의서::별표2": {
   "law": "국가종합전자조달시스템 전자입찰특별유의서",
   "annex": "별표2",
@@ -177,6 +204,33 @@
   "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=2939239&type=HTML&mobileYn=",
   "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=146048077"
  },
+ "물품 다수공급자계약 업무처리규정::별지2": {
+  "law": "물품 다수공급자계약 업무처리규정",
+  "annex": "별지2",
+  "kind": "서식",
+  "label": "별지 2",
+  "title": "적격성 평가 신청서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3270693&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=167386349"
+ },
+ "물품 다수공급자계약 업무처리규정::별지4": {
+  "law": "물품 다수공급자계약 업무처리규정",
+  "annex": "별지4",
+  "kind": "서식",
+  "label": "별지 4",
+  "title": "(세부품명) 규격서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3270951&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=167386403"
+ },
+ "물품 다수공급자계약 업무처리규정::별지5": {
+  "law": "물품 다수공급자계약 업무처리규정",
+  "annex": "별지5",
+  "kind": "서식",
+  "label": "별지 5",
+  "title": "가격자료 제출서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3270955&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=167386417"
+ },
  "물품 다수공급자계약 업무처리규정::별표5": {
   "law": "물품 다수공급자계약 업무처리규정",
   "annex": "별표5",
@@ -185,6 +239,114 @@
   "title": "다수공급자계약 2단계경쟁 종합평가방식 및 표준평가 방식",
   "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3270687&type=HTML&mobileYn=",
   "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=167386249"
+ },
+ "물품목록정보의 관리 및 이용에 관한 규정::별표1": {
+  "law": "물품목록정보의 관리 및 이용에 관한 규정",
+  "annex": "별표1",
+  "kind": "별표",
+  "label": "별표1",
+  "title": "물품목록 행정처리기간 적용기준(제12조 관련)",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3111893&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=159657921"
+ },
+ "벤처나라 등록 물품·서비스 지정 관리 규정::별지1": {
+  "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+  "annex": "별지1",
+  "kind": "서식",
+  "label": "별지 1",
+  "title": "벤처나라제품 후보 추천서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3220539&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=164105955"
+ },
+ "벤처나라 등록 물품·서비스 지정 관리 규정::별지2의1": {
+  "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+  "annex": "별지2의1",
+  "kind": "서식",
+  "label": "별지 2의 1",
+  "title": "협업 승인 신청서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3220541&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=164105961"
+ },
+ "벤처나라 등록 물품·서비스 지정 관리 규정::별지7의2": {
+  "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+  "annex": "별지7의2",
+  "kind": "서식",
+  "label": "별지 7의 2",
+  "title": "조달청 벤처나라 지정증서(협업)",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3220559&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=164106021"
+ },
+ "벤처나라 등록 물품·서비스 지정 관리 규정::별지8의1": {
+  "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+  "annex": "별지8의1",
+  "kind": "서식",
+  "label": "별지 8의 1",
+  "title": "벤처나라제품규격(모델)추가신청서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3220563&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=164106033"
+ },
+ "벤처나라 등록 물품·서비스 지정 관리 규정::별지8의3": {
+  "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+  "annex": "별지8의3",
+  "kind": "서식",
+  "label": "별지 8의 3",
+  "title": "벤처나라제품 규격(모델)추가 검토서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3220567&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=164106045"
+ },
+ "벤처나라 등록 물품·서비스 지정 관리 규정::별표2": {
+  "law": "벤처나라 등록 물품·서비스 지정 관리 규정",
+  "annex": "별표2",
+  "kind": "별표",
+  "label": "별표2",
+  "title": "벤처나라제품 지정신청 제출서류",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3220573&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=164106063"
+ },
+ "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정::별지5": {
+  "law": "불공정조달행위 조사 및 부당이득 환수 절차 등에 관한 규정",
+  "annex": "별지5",
+  "kind": "서식",
+  "label": "별지 5",
+  "title": "이의신청서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3185209&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=162322113"
+ },
+ "상용소프트웨어 다수공급자계약 업무처리규정::별지1": {
+  "law": "상용소프트웨어 다수공급자계약 업무처리규정",
+  "annex": "별지1",
+  "kind": "서식",
+  "label": "별지 1",
+  "title": "구매입찰공고서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3057827&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=155872175"
+ },
+ "상용소프트웨어 다수공급자계약 업무처리규정::별지2": {
+  "law": "상용소프트웨어 다수공급자계약 업무처리규정",
+  "annex": "별지2",
+  "kind": "서식",
+  "label": "별지 2",
+  "title": "적격성 평가 신청서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3057829&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=155872201"
+ },
+ "상용소프트웨어 다수공급자계약 업무처리규정::별지3": {
+  "law": "상용소프트웨어 다수공급자계약 업무처리규정",
+  "annex": "별지3",
+  "kind": "서식",
+  "label": "별지 3",
+  "title": "기본상품 규격서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3057833&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=155872213"
+ },
+ "상용소프트웨어 다수공급자계약 업무처리규정::별지5": {
+  "law": "상용소프트웨어 다수공급자계약 업무처리규정",
+  "annex": "별지5",
+  "kind": "서식",
+  "label": "별지 5",
+  "title": "가격제안서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3057845&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=155872253"
  },
  "상용소프트웨어 다수공급자계약 업무처리규정::별표1": {
   "law": "상용소프트웨어 다수공급자계약 업무처리규정",
@@ -215,6 +377,51 @@
   "pdfUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=140284747",
   "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=140284745"
  },
+ "우수조달공동상표 물품 지정 관리규정::별지10": {
+  "law": "우수조달공동상표 물품 지정 관리규정",
+  "annex": "별지10",
+  "kind": "서식",
+  "label": "별지 10",
+  "title": "우수조달공동상표 물품 지정관련의견서(이의서)",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=2630701&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=131634781"
+ },
+ "우수조달공동상표 물품 지정 관리규정::별지13": {
+  "law": "우수조달공동상표 물품 지정 관리규정",
+  "annex": "별지13",
+  "kind": "서식",
+  "label": "별지 13",
+  "title": "우수조달공동상표 물품 지정증서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=2630715&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=131634829"
+ },
+ "우수조달공동상표 물품 지정 관리규정::별지15": {
+  "law": "우수조달공동상표 물품 지정 관리규정",
+  "annex": "별지15",
+  "kind": "서식",
+  "label": "별지 15",
+  "title": "우수조달공동상표 물품 이의신청 심사서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=2630721&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=131634849"
+ },
+ "우수조달공동상표 물품 지정 관리규정::별지9의1": {
+  "law": "우수조달공동상표 물품 지정 관리규정",
+  "annex": "별지9의1",
+  "kind": "서식",
+  "label": "별지 9의 1",
+  "title": "업체실태 조사서(대표법인용)",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=2630697&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=131634769"
+ },
+ "우수조달공동상표 물품 지정 관리규정::별지9의2": {
+  "law": "우수조달공동상표 물품 지정 관리규정",
+  "annex": "별지9의2",
+  "kind": "서식",
+  "label": "별지 9의 2",
+  "title": "업체실태 조사서(참여기업)",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=2630699&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=131634775"
+ },
  "우수조달공동상표 물품 지정 관리규정::별표1": {
   "law": "우수조달공동상표 물품 지정 관리규정",
   "annex": "별표1",
@@ -223,6 +430,69 @@
   "title": "우수조달공동상표 물품 지정신청 제출서류",
   "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=2630621&type=HTML&mobileYn=",
   "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=131634501"
+ },
+ "우수조달물품 지정관리 규정::별지2의2": {
+  "law": "우수조달물품 지정관리 규정",
+  "annex": "별지2의2",
+  "kind": "서식",
+  "label": "별지 2의 2",
+  "title": "우수제품지정심사서(성장 유망 제품), 우수제품지정심사서(일반 제품)",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3214147&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=163890785"
+ },
+ "우수조달물품 지정관리 규정::별지2의4": {
+  "law": "우수조달물품 지정관리 규정",
+  "annex": "별지2의4",
+  "kind": "서식",
+  "label": "별지 2의 4",
+  "title": "우수제품지정 적용기술심사서(제4조제2항제4호 S/W제품), 우수제품지정 적용기술심사서(제4조제2항제5호 및 제6호 연구개발사업 기술개발제품, 혁신제품)",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3214151&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=163890813"
+ },
+ "우수조달물품 지정관리 규정::별지2의6": {
+  "law": "우수조달물품 지정관리 규정",
+  "annex": "별지2의6",
+  "kind": "서식",
+  "label": "별지 2의 6",
+  "title": "1차심사 통과제품 업체실태 조사서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3214155&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=163890827"
+ },
+ "우수조달물품 지정관리 규정::별지3의1": {
+  "law": "우수조달물품 지정관리 규정",
+  "annex": "별지3의1",
+  "kind": "서식",
+  "label": "별지 3의 1",
+  "title": "우수제품 지정기간 연장 신청서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3214163&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=163890851"
+ },
+ "우수조달물품 지정관리 규정::별표1": {
+  "law": "우수조달물품 지정관리 규정",
+  "annex": "별표1",
+  "kind": "별표",
+  "label": "별표1",
+  "title": "우수제품 지정신청 제출서류",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3214093&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=163890593"
+ },
+ "우수조달물품 지정관리 규정::별표10": {
+  "law": "우수조달물품 지정관리 규정",
+  "annex": "별표10",
+  "kind": "별표",
+  "label": "별표10",
+  "title": "우수제품지정 신인도심사서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3214111&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=163890661"
+ },
+ "우수조달물품 지정관리 규정::별표3": {
+  "law": "우수조달물품 지정관리 규정",
+  "annex": "별표3",
+  "kind": "별표",
+  "label": "별표3",
+  "title": "우수제품 지정기간 연장신청 제출서류",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3214097&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=163890607"
  },
  "전기공사업법 시행령::별표3의2": {
   "law": "전기공사업법 시행령",
@@ -313,6 +583,60 @@
   "url": "https://www.law.go.kr/DRF/lawService.do?target=licbyl&ID=17913149&type=HTML&mobileYn=",
   "pdfUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=160252687",
   "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=160252685"
+ },
+ "조달청 내자구매업무 처리규정::별지32": {
+  "law": "조달청 내자구매업무 처리규정",
+  "annex": "별지32",
+  "kind": "서식",
+  "label": "별지 32",
+  "title": "기초금액 공개",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3261167&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=166985585"
+ },
+ "조달청 내자구매업무 처리규정::별지36": {
+  "law": "조달청 내자구매업무 처리규정",
+  "annex": "별지36",
+  "kind": "서식",
+  "label": "별지 36",
+  "title": "조달물자 리스입찰 공고",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3261173&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=166985603"
+ },
+ "조달청 내자구매업무 처리규정::별지37": {
+  "law": "조달청 내자구매업무 처리규정",
+  "annex": "별지37",
+  "kind": "서식",
+  "label": "별지 37",
+  "title": "리스목표 금리조서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3261175&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=166985609"
+ },
+ "조달청 내자구매업무 처리규정::별지38": {
+  "law": "조달청 내자구매업무 처리규정",
+  "annex": "별지38",
+  "kind": "서식",
+  "label": "별지 38",
+  "title": "리스입찰서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3261177&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=166985615"
+ },
+ "조달청 내자구매업무 처리규정::별지39": {
+  "law": "조달청 내자구매업무 처리규정",
+  "annex": "별지39",
+  "kind": "서식",
+  "label": "별지 39",
+  "title": "리스개찰조서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3261179&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=166985621"
+ },
+ "조달청 내자구매업무 처리규정::별지40": {
+  "law": "조달청 내자구매업무 처리규정",
+  "annex": "별지40",
+  "kind": "서식",
+  "label": "별지 40",
+  "title": "시설대여(리스)계약서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3261181&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=166985627"
  },
  "조달청 비축사업 운영규정::별표1": {
   "law": "조달청 비축사업 운영규정",
@@ -445,9 +769,36 @@
   "annex": "별표10",
   "kind": "별표",
   "label": "별표10",
-  "title": "시공실적 제출 및 심사 기준",
-  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3220633&type=HTML&mobileYn=",
-  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=164106283"
+  "title": "기술개발투자비율 및 업종별 실적확인서",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=3220661&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=164106381"
+ },
+ "조달청 제조물품 직접생산확인 기준::별지1": {
+  "law": "조달청 제조물품 직접생산확인 기준",
+  "annex": "별지1",
+  "kind": "서식",
+  "label": "별지 1",
+  "title": "제조공정표 (세부품명별)",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=2686965&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=135754605"
+ },
+ "조달청 제조물품 직접생산확인 기준::별지4": {
+  "law": "조달청 제조물품 직접생산확인 기준",
+  "annex": "별지4",
+  "kind": "서식",
+  "label": "별지 4",
+  "title": "확인서(진술서)",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=2686971&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=135754629"
+ },
+ "조달청 제조물품 직접생산확인기준::별지1": {
+  "law": "조달청 제조물품 직접생산확인기준",
+  "annex": "별지1",
+  "kind": "서식",
+  "label": "별지 1",
+  "title": "제조공정표 (세부품명별)",
+  "url": "https://www.law.go.kr/DRF/lawService.do?target=admbyl&ID=2686965&type=HTML&mobileYn=",
+  "hwpUrl": "https://www.law.go.kr/LSW/flDownload.do?flSeq=135754605"
  },
  "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령::별표1": {
   "law": "중소기업제품 구매촉진 및 판로지원에 관한 법률 시행령",

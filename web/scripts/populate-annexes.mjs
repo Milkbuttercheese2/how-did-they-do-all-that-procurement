@@ -43,38 +43,66 @@ if (!OC) {
 const BASE = "https://www.law.go.kr/DRF";
 
 /**
- * 별표·서식 목록 조회.
+ * 법령명 대조용 정규화.
  *
- * 함정 둘:
- *  - 응답 루트가 `licBylSearch`다(대문자 B 아님). 법령·행정규칙 검색과 표기가 달라
- *    LicBylSearch로 읽으면 조용히 0건이 된다.
- *  - knd=1 이 별표, knd=2 가 서식(별지)이다. knd 없이 부르면 섞여 와서 번호
- *    해석이 꼬인다. 종류별로 따로 부른다.
+ * 법제처는 어절 구분에 가운뎃점을 쓴다 — "우수조달물품 지정ㆍ관리 규정". 우리
+ * 데이터는 "우수조달물품 지정관리 규정"이라 공백만 지워서는 영영 안 맞는다.
+ * 가운뎃점은 코드포인트가 여럿(ㆍ U+318D, · U+00B7, ・ U+30FB, ･ U+FF65)이라
+ * 전부 지운다. 이 대조가 실패하면 그 법령의 별표는 통째로 사라진다.
  */
-async function listAnnexes(lawName, knd) {
+function nameKey(name) {
+  return String(name ?? "")
+    .replace(/[\sㆍ·・･]/g, "")
+    .trim();
+}
+
+/**
+ * 별표·서식 목록 조회. 법령명(search=2)으로 찾아 그 법령 것만 남긴다.
+ *
+ * 함정 넷 — 넷 다 조용히 0건이 되므로 하나씩 짚는다:
+ *  - 응답 루트가 `licBylSearch`다(대문자 B 아님).
+ *  - 행정규칙 응답의 배열 키는 `admbyl`이 아니라 `admrulbyl`이다.
+ *  - `search=2`라야 법령명(section=lawNm/admNm)을 검색한다. 기본값·search=1은
+ *    별표'명'을 검색하므로 법령명을 넣으면 0건이다.
+ *  - `knd` 코드가 target마다 다르다. 법령은 서식=2인데 행정규칙은 서식=3이다.
+ *    그래서 knd는 아예 쓰지 않고, 응답의 `별표종류` 필드로 분류한다.
+ *
+ * display 상한이 100이라 페이지를 끝까지 넘긴다(계약법 시행규칙류는 100을 넘는다).
+ */
+async function listAnnexes(lawName) {
   // 법령 별표는 licbyl, 행정규칙(고시·훈령·예규) 별표는 admbyl 로 나뉜다.
   // 우리 근거의 상당수가 계약예규·조달청 기준이라 admbyl 쪽이 오히려 많다.
   const targets = [
-    { target: "licbyl", root: "licBylSearch", key: "licbyl", admRule: false },
-    { target: "admbyl", root: "admRulBylSearch", key: "admbyl", admRule: true },
+    { target: "licbyl", root: "licBylSearch", admRule: false },
+    { target: "admbyl", root: "admRulBylSearch", admRule: true },
   ];
+  const want = nameKey(lawName);
+  // 질의 문자열도 손봐야 한다. 법제처 색인은 가운뎃점을 ㆍ(U+318D)로 쓰는데,
+  // 우리 데이터의 ·(U+00B7)를 그대로 보내면 검색기가 못 알아듣고 0건을 준다
+  // ("벤처나라 등록 물품·서비스…" → 0건, 점을 빼면 18건). 비교용 nameKey만
+  // 고쳐서는 안 되고, 보내는 질의에서 점을 빼야 한다.
+  const query = lawName.replace(/[ㆍ·・･]/g, "");
   for (const t of targets) {
-    const url = `${BASE}/lawSearch.do?OC=${OC}&target=${t.target}&type=JSON&display=100&search=2&knd=${knd}&query=${encodeURIComponent(lawName)}`;
-    const res = await fetch(url);
-    if (!res.ok) continue;
-    let rows = [];
-    try {
-      const data = JSON.parse(await res.text());
-      const list = data?.[t.root]?.[t.key] ?? Object.values(data?.[t.root] ?? {}).find(Array.isArray);
-      rows = Array.isArray(list) ? list : list ? [list] : [];
-    } catch {
-      continue; // 오픈API는 오류를 HTML로 주기도 한다
+    const mine = [];
+    for (let page = 1; page <= 20; page += 1) {
+      const url = `${BASE}/lawSearch.do?OC=${OC}&target=${t.target}&type=JSON&display=100&page=${page}&search=2&query=${encodeURIComponent(query)}`;
+      const res = await fetch(url);
+      if (!res.ok) break;
+      let root;
+      try {
+        root = JSON.parse(await res.text())?.[t.root];
+      } catch {
+        break; // 오픈API는 오류를 HTML로 주기도 한다
+      }
+      const list = Object.values(root ?? {}).find(Array.isArray);
+      const rows = Array.isArray(list) ? list : list ? [list] : [];
+      if (rows.length === 0) break;
+      // 검색어가 부분일치라 다른 법령이 섞여 온다. 이름이 같은 것만.
+      for (const r of rows) {
+        if (nameKey(r.관련법령명 ?? r.관련행정규칙명) === want) mine.push(r);
+      }
+      if (page * 100 >= Number(root?.totalCnt ?? 0)) break;
     }
-    // 검색어가 부분일치라 다른 법령이 섞여 온다. 이름이 정확히 같은 것만.
-    const mine = rows.filter((r) => {
-      const owner = String(r.관련법령명 ?? r.관련행정규칙명 ?? "").trim();
-      return owner === lawName || owner.replace(/\s/g, "") === lawName.replace(/\s/g, "");
-    });
     if (mine.length > 0) return { rows: mine, admRule: t.admRule };
   }
   return { rows: [], admRule: false };
@@ -132,15 +160,14 @@ let miss = 0;
 
 for (const [rawLaw, wanted] of needed) {
   const lawName = normalizeLawName(rawLaw);
-  const kinds = new Set([...wanted].map((w) => (w.startsWith("별지") ? "2" : "1")));
   const found = new Map(); // 별표N|별지N → { row, admRule }
-  for (const knd of kinds) {
-    const { rows, admRule } = await listAnnexes(lawName, knd);
-    for (const row of rows) {
-      const no = decodeAnnexNo(row.별표번호, knd === "2" ? "서식" : "별표");
-      // 같은 번호가 중복되면(시행규칙 서식5·6 '입찰서' 등) 첫 항목을 쓴다.
-      if (no && !found.has(no)) found.set(no, { row, admRule });
-    }
+  const { rows, admRule } = await listAnnexes(lawName);
+  for (const row of rows) {
+    // 별표/서식 구분은 knd 요청값이 아니라 응답의 `별표종류`로 판정한다.
+    // 법령은 "별표"|"서식", 행정규칙은 "별표"|"별지"로 표기가 갈린다.
+    const no = decodeAnnexNo(row.별표번호, String(row.별표종류 ?? "별표"));
+    // 같은 번호가 중복되면(시행규칙 서식5·6 '입찰서' 등) 첫 항목을 쓴다.
+    if (no && !found.has(no)) found.set(no, { row, admRule });
   }
   if (found.size === 0 && wanted.size > 0) {
     console.warn(`  ✗ 별표·서식 목록이 비었음: ${lawName}`);
