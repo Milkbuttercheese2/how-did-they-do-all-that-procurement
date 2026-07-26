@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { ProcessModel, ProcessNode, SourceVerification } from "@/lib/types";
 import {
   getNodeVerification,
@@ -326,6 +327,10 @@ function NodeLegalModal({
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+  // 노드 카드가 <button>이라 그 안에서 오버레이를 그리면 레이아웃이 카드에 갇히고
+  // 클릭도 카드로 샌다. body로 포털해서 화면 전체를 덮게 한다.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     closeRef.current?.focus({ preventScroll: true });
@@ -361,7 +366,9 @@ function NodeLegalModal({
     };
   }, [onClose]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <div
       className="node-legal-overlay"
       role="presentation"
@@ -411,7 +418,8 @@ function NodeLegalModal({
           </p>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 

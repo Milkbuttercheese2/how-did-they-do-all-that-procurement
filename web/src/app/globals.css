@@ -4347,6 +4347,13 @@ body:has(.og-card-page) > main {
   line-height: 1.35;
 }
 
+/* 노드 카드 하단의 [법적 근거] 칩 자리. 카드가 좁으므로(그리드 최소 135px)
+   블록으로 떨어뜨려 이름 줄과 겹치지 않게 한다. */
+.desktop-process-v2-card-foot {
+  display: block;
+  margin-top: 4px;
+}
+
 .desktop-process-v2-core {
   display: flex;
   flex-direction: column;
@@ -4437,15 +4444,15 @@ body:has(.og-card-page) > main {
 .node-legal-chip {
   display: inline-flex;
   align-items: center;
-  min-height: 18px;
-  padding: 1px 6px;
+  max-width: 100%;
+  padding: 1px 5px;
   border: 1px solid #087452;
   border-radius: 4px;
   background: #ffffff;
   color: #087452;
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.45;
   white-space: nowrap;
   cursor: pointer;
 }
