@@ -1,5 +1,5 @@
 {
- "checkedAt": "2026-07-26",
+ "checkedAt": "2026-07-27",
  "method": "L1 exact(30자+) / L2 char-bigram containment≥0.5 — korean-law-mcp citation-content-matcher 이식(요지vs원문에 맞게 containment 보정)",
  "checked": 1677,
  "mismatches": 1,
