@@ -1,4 +1,4 @@
-# 그 많던 조달은 어떻게 했을까 — 그 많던 조달은 어떻게 했을까
+# 그 많던 조달은 어떻게 했을까 — 조달제도 100
 
 **🔗 라이브 사이트: <https://how-did-they-do-all-that-procurement.dali-n-narumi.workers.dev/>**
 
