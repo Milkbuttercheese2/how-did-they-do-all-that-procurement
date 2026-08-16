@@ -466,10 +466,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-03",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-17",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 25건 가운데 25건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 25건 가운데 23건의 조문 번호 존재를 확인했고, 0건은 불일치, 2건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "장기계속계약 계약보증금의 부기 총공사금액 기준 이행보증 근거 조·항은 fieldVerification으로 남겼다.",
    "시행령 제69조 각 항 배열은 개정 이력에 따라 변동 가능해 통합 시점에 법제처 현행 원문 대조로 재확인이 필요하다."
@@ -520,14 +520,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-03",
+   "checkedAt": "2026-08-17",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 19,
    "explicitCitationEntries": 19,
    "articleReferences": 25,
-   "verifiedReferences": 25,
+   "verifiedReferences": 23,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 2
   },
   "articleTexts": {
    "국가를 당사자로 하는 계약에 관한 법률::제21조제1항": {
