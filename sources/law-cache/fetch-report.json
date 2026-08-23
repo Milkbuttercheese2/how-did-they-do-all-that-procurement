@@ -1,4 +1,50 @@
 {
-  "fetchedAt": "2026-08-16",
-  "failures": []
+  "fetchedAt": "2026-08-23",
+  "failures": [
+    {
+      "kind": "법령",
+      "name": "사회적기업 육성법",
+      "note": "\n"
+    },
+    {
+      "kind": "행정규칙",
+      "name": "정부 입찰·계약 집행기준",
+      "note": "[EXTERNAL_API_ERROR] API 오류 (404) - getAdminRule\n도구: get_admin_rule\n\n"
+    },
+    {
+      "kind": "행정규칙",
+      "name": "적격심사기준",
+      "note": "[EXTERNAL_API_ERROR] API 오류 (404) - getAdminRule\n도구: get_admin_rule\n\n"
+    },
+    {
+      "kind": "행정규칙",
+      "name": "공사계약일반조건",
+      "note": "search_admin_rule에서 일련번호 미확인: [EXTERNAL_API_ERROR] API 오류 (404) - searchAdminRule\n도구: search_admin_rule\n\n"
+    },
+    {
+      "kind": "행정규칙",
+      "name": "물품구매(제조)계약일반조건",
+      "note": "[EXTERNAL_API_ERROR] API 오류 (404) - getAdminRule\n도구: get_admin_rule\n\n"
+    },
+    {
+      "kind": "행정규칙",
+      "name": "용역계약일반조건",
+      "note": "search_admin_rule에서 일련번호 미확인: [EXTERNAL_API_ERROR] API 오류 (404) - searchAdminRule\n도구: search_admin_rule\n\n"
+    },
+    {
+      "kind": "행정규칙",
+      "name": "입찰참가자격사전심사요령",
+      "note": "[EXTERNAL_API_ERROR] API 오류 (404) - getAdminRule\n도구: get_admin_rule\n\n"
+    },
+    {
+      "kind": "행정규칙",
+      "name": "공동계약운용요령",
+      "note": "[EXTERNAL_API_ERROR] API 오류 (404) - getAdminRule\n도구: get_admin_rule\n\n"
+    },
+    {
+      "kind": "행정규칙",
+      "name": "우수조달물품 지정·관리 규정",
+      "note": "[EXTERNAL_API_ERROR] API 오류 (404) - getAdminRule\n도구: get_admin_rule\n\n"
+    }
+  ]
 }

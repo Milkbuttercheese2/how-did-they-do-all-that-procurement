@@ -497,10 +497,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-17",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-24",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 6건 중 공식 원문 6건을 연결했다. 캔버스와 절차 노드의 명시 조문 27건 가운데 27건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 6건 중 공식 원문 6건을 연결했다. 캔버스와 절차 노드의 명시 조문 27건 가운데 12건의 조문 번호 존재를 확인했고, 0건은 불일치, 15건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "공사용 자재 직접구매 대상 공사규모는 현행 판로지원법 시행령 제11조제1항(종합공사 추정가격 40억원 이상, 전문공사·전기·정보통신·소방시설공사 등 3억원 이상)을 원문 대조하여 본문에 반영했다. 개별 직접구매 대상품목은 중소벤처기업부장관 고시로 정해지므로 최신 고시 확인이 필요하다.",
    "2026년 정부조직 개편으로 국가계약법령 원문의 부처 표기는 재정경제부장관·재정경제부령이며, 서술은 실무 통용 표기를 따랐다."
@@ -573,14 +573,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-17",
+   "checkedAt": "2026-08-24",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 22,
    "explicitCitationEntries": 22,
    "articleReferences": 27,
-   "verifiedReferences": 27,
+   "verifiedReferences": 12,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 15
   },
   "articleTexts": {
    "국가를 당사자로 하는 계약에 관한 법률 시행규칙::제83조": {

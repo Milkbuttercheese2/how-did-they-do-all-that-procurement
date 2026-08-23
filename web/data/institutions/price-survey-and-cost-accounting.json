@@ -555,10 +555,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-17",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-24",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 43건 가운데 43건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 43건 가운데 31건의 조문 번호 존재를 확인했고, 0건은 불일치, 12건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "예규·시행규칙 원문의 등록·감독 주체 표기는 2026 정부조직 개편 반영으로 '재정경제부장관'이며, 본문은 기존 파일 관례에 따라 '기획재정부장관(재정경제부장관)'으로 병기했다.",
    "복수예비가격 15개·4개 추첨은 서면입찰 기준이며, 전자입찰은 예규 제44조의4제2항에 따라 해당 기관 기준으로 예정가격을 결정할 수 있다."
@@ -609,14 +609,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-17",
+   "checkedAt": "2026-08-24",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 23,
    "explicitCitationEntries": 23,
    "articleReferences": 43,
-   "verifiedReferences": 43,
+   "verifiedReferences": 31,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 12
   },
   "articleTexts": {
    "조달사업에 관한 법률::제11조": {
