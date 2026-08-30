@@ -587,10 +587,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 38건 가운데 38건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 38건 가운데 32건의 조문 번호 존재를 확인했고, 0건은 불일치, 6건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "핵심 근거는 조달청 훈령 '물품 다수공급자계약 업무처리규정'(2026-05-29 공포) 현행본이다. 품목 특정본(레미콘·아스콘·상용소프트웨어·용역)이 아닌 일반 물품본을 기준으로 작성했다.",
    "종합평가방식·표준평가방식의 평가항목별 배점은 규정 [별표 5]에 있어 조문 본문 대조 대상이 아니며, 통합 단계에서 별도 확인한다."
@@ -641,14 +641,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 31,
    "explicitCitationEntries": 31,
    "articleReferences": 38,
-   "verifiedReferences": 38,
+   "verifiedReferences": 32,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 6
   },
   "articleTexts": {
    "물품 다수공급자계약 업무처리규정::제49조제1항": {

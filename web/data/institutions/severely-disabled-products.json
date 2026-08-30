@@ -503,10 +503,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 6건 중 공식 원문 6건을 연결했다. 캔버스와 절차 노드의 명시 조문 29건 가운데 29건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 6건 중 공식 원문 6건을 연결했다. 캔버스와 절차 노드의 명시 조문 29건 가운데 1건의 조문 번호 존재를 확인했고, 0건은 불일치, 28건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "구매목표비율 상한이 총구매액의 100분의 1에서 100분의 2 범위로 상향 개정되었다. 연도별 실제 비율은 보건복지부 고시로 정한다(예: 2024년 1%, 2025년 1.1%).",
    "국가계약법 시행령 제26조의 수의계약 해당 호·목 번호는 2026년 시행령 개정으로 재배열될 수 있어 조 번호만 확정 인용했다."
@@ -579,14 +579,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 23,
    "explicitCitationEntries": 21,
    "articleReferences": 29,
-   "verifiedReferences": 29,
+   "verifiedReferences": 1,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 28
   },
   "articleTexts": {
    "중증장애인생산품 우선구매 특별법::제9조제1항": {

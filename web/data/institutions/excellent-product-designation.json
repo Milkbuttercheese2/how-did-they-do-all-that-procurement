@@ -516,10 +516,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 34건 가운데 34건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 34건 가운데 21건의 조문 번호 존재를 확인했고, 0건은 불일치, 13건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "우수조달물품 지정관리 규정은 조달청고시 제2026-29호(2026.4.23. 일부개정, 2026.4.27. 시행)로 확인되나 원문 식별자(adminRuleId/Serial) 미연결.",
    "지정 통과점수(65점+신인도 5점 이내=70점)·특허 7년/실용신안 3년·연장 최대 3년 등 수치는 규정·실무 사항으로 개정 가능성이 있어 본문에서 단정하지 않고 fieldVerification로 이관."
@@ -570,14 +570,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 22,
    "explicitCitationEntries": 22,
    "articleReferences": 34,
-   "verifiedReferences": 34,
+   "verifiedReferences": 21,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 13
   },
   "articleTexts": {
    "조달사업에 관한 법률::제26조제1항": {

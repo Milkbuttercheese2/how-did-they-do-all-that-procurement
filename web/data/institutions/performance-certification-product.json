@@ -502,10 +502,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 6건 중 공식 원문 6건을 연결했다. 캔버스와 절차 노드의 명시 조문 26건 가운데 26건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 6건 중 공식 원문 6건을 연결했다. 캔버스와 절차 노드의 명시 조문 26건 가운데 0건의 조문 번호 존재를 확인했고, 0건은 불일치, 26건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "성능인증 유효기간의 구체 연수는 공개 자료에서 4년(1회 연장)으로 확인되나 구법 3년 표기와 상충해, 조문 요지는 '법 제16조가 유효기간을 정한다' 수준으로만 기재하고 구체 수치는 fieldVerification로 남겼다.",
    "우선구매 구매목표비율(중소기업물품 구매액의 15% 이상)은 공개 자료로 확인했으나 연도별 공고로 변동될 수 있어 확정 수치는 fieldVerification로 관리한다.",
@@ -578,14 +578,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 23,
    "explicitCitationEntries": 21,
    "articleReferences": 26,
-   "verifiedReferences": 26,
+   "verifiedReferences": 0,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 26
   },
   "articleTexts": {
    "중소기업제품 구매촉진 및 판로지원에 관한 법률::제15조": {

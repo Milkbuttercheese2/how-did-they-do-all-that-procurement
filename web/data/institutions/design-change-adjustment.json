@@ -530,9 +530,9 @@
  },
  "verification": {
   "status": "needs-review",
-  "verifiedAt": "2026-08-24",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 33건 가운데 11건의 조문 번호 존재를 확인했고, 0건은 불일치, 22건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 33건 가운데 22건의 조문 번호 존재를 확인했고, 0건은 불일치, 11건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "국가계약법령 현행 원문의 부처 표기는 재정경제부장관이며, 본문은 기획재정부장관(재정경제부장관) 병기 관례를 따랐다.",
    "시행규칙 제74조의2 세부 산정식과 영 제65조 항 단위 조문은 시행령·시행규칙 캐시가 TOC뿐이어서 원문 기계 대조 시 재확인이 필요하다(uncheckable로 분류).",
@@ -584,14 +584,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 24,
    "explicitCitationEntries": 24,
    "articleReferences": 33,
-   "verifiedReferences": 11,
+   "verifiedReferences": 22,
    "missingReferences": 0,
-   "uncheckableReferences": 22
+   "uncheckableReferences": 11
   },
   "articleTexts": {
    "국가를 당사자로 하는 계약에 관한 법률::제19조": {

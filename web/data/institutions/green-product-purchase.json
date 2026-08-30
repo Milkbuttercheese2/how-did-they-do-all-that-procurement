@@ -492,10 +492,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 2건 중 공식 원문 2건을 연결했다. 캔버스와 절차 노드의 명시 조문 29건 가운데 29건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 2건 중 공식 원문 2건을 연결했다. 캔버스와 절차 노드의 명시 조문 29건 가운데 0건의 조문 번호 존재를 확인했고, 0건은 불일치, 29건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "녹색제품 구매촉진에 관한 법률·시행령은 registry에 식별자가 있으나 이번 배치에서는 캐시 목차로 조문 존재만 확인. 법제처 현행 원문 대조로 항·수치를 확정해야 함.",
    "구매실적 증감사유 확인 기준(전년 대비 50% 증가·30% 감소, 시행령 제11조의2)은 원문 미확정으로 본문에 확정 기재하지 않고 fieldVerification로 유보.",
@@ -527,14 +527,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 20,
    "explicitCitationEntries": 20,
    "articleReferences": 29,
-   "verifiedReferences": 29,
+   "verifiedReferences": 0,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 29
   },
   "articleTexts": {
    "녹색제품 구매촉진에 관한 법률::제4조": {

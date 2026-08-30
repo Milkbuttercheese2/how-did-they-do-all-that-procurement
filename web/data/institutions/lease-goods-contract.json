@@ -558,10 +558,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 38건 가운데 38건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 38건 가운데 34건의 조문 번호 존재를 확인했고, 0건은 불일치, 4건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "조달청 내자구매업무 처리규정 제6장(리스계약 절차)은 제166조부터 제186조까지이며, 그중 신용장개설(제181조)과 외자리스계약절차(제185조)는 2005년 개정으로 삭제되어 본문에 반영하지 않았다.",
    "2026년 정부조직 개편으로 국가계약법령의 현행 원문 표기는 재정경제부장관/재정경제부령이며, 조달청 내자구매업무 처리규정 원문도 같은 표기를 쓴다.",
@@ -613,14 +613,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 26,
    "explicitCitationEntries": 26,
    "articleReferences": 38,
-   "verifiedReferences": 38,
+   "verifiedReferences": 34,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 4
   },
   "articleTexts": {
    "조달청 내자구매업무 처리규정::제169조": {

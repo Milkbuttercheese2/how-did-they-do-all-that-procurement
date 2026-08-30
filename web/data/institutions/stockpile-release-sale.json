@@ -777,10 +777,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 7건 중 공식 원문 7건을 연결했다. 캔버스와 절차 노드의 명시 조문 50건 가운데 50건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 7건 중 공식 원문 7건을 연결했다. 캔버스와 절차 노드의 명시 조문 50건 가운데 39건의 조문 번호 존재를 확인했고, 0건은 불일치, 11건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "조달사업에 관한 법률은 2026-09-03 시행(제21715호)과 2026-09-11 시행(제21420호) 개정이 예정되어 있어 시행일 이후 조문 번호·내용이 달라질 수 있다.",
    "조달청 비축사업 운영규정 제25조·제27조·제30조는 여러 노드가 인용하지만, 각 노드가 서로 다른 항을 가리키도록 항 단위로 분리해 인용했다(제25조는 제1항/제3항·제4항/제5항·제6항, 제27조는 제1항~제3항/제4항·제5항/제6항/제7항·제8항, 제30조는 제2항·제3항/제4항/제5항).",
@@ -865,14 +865,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 43,
    "explicitCitationEntries": 42,
    "articleReferences": 50,
-   "verifiedReferences": 50,
+   "verifiedReferences": 39,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 11
   },
   "articleTexts": {
    "조달청 비축사업 운영규정::제24조제1항": {

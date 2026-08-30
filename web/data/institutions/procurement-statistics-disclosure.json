@@ -409,10 +409,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 26건 가운데 26건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 26건 가운데 16건의 조문 번호 존재를 확인했고, 0건은 불일치, 10건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "조달통계 작성 세부기준(조달청 고시, 2024-07-02 공포·2024-07-03 시행)은 원문 목차와 본문을 확인했으나, 통계법상 승인통계 여부와 국가데이터처 협의 절차의 구체 내용은 별도 고시 원문을 확보하지 못해 fieldVerification에 남겼다."
   ],
@@ -462,14 +462,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 20,
    "explicitCitationEntries": 20,
    "articleReferences": 26,
-   "verifiedReferences": 26,
+   "verifiedReferences": 16,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 10
   },
   "articleTexts": {
    "조달사업에 관한 법률 시행령::제9조제1항": {

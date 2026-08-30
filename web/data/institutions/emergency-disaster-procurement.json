@@ -468,10 +468,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 3건 중 공식 원문 3건을 연결했다. 캔버스와 절차 노드의 명시 조문 25건 가운데 25건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 3건 중 공식 원문 3건을 연결했다. 캔버스와 절차 노드의 명시 조문 25건 가운데 4건의 조문 번호 존재를 확인했고, 0건은 불일치, 21건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "재난·긴급 수의계약의 전자 견적(나라장터) 적용 범위는 소액수의와 다를 수 있어 절차 노드에서 조건부로 서술했다.",
    "긴급 입찰공고 기간 단축 일수(시행령 제35조제4항)는 전문 미확보로 본문 수치로 확정하지 않고 검증 대기로 남겼다.",
@@ -512,14 +512,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 21,
    "explicitCitationEntries": 21,
    "articleReferences": 25,
-   "verifiedReferences": 25,
+   "verifiedReferences": 4,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 21
   },
   "articleTexts": {
    "국가를 당사자로 하는 계약에 관한 법률::제7조제1항": {

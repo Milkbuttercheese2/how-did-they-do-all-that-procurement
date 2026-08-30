@@ -251,10 +251,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 3건 중 공식 원문 3건을 연결했다. 캔버스와 절차 노드의 명시 조문 19건 가운데 19건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 3건 중 공식 원문 3건을 연결했다. 캔버스와 절차 노드의 명시 조문 19건 가운데 8건의 조문 번호 존재를 확인했고, 0건은 불일치, 11건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "전자조달법 제14조는 신규 구축 허용·이용전환 요구의 요건을 대통령령에 위임하고, 시행령 제9조의2가 그 요건(3가지 사유)과 위임 절차(사전 협의 의무)를 정하는 구조다. 이 제도는 확인된 근거가 법률 2개 조·시행령 1개 조(제9조의2)에 그쳐 다른 나라장터 관련 제도보다 조문 수가 적다."
   ],
@@ -293,14 +293,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 16,
    "explicitCitationEntries": 16,
    "articleReferences": 19,
-   "verifiedReferences": 19,
+   "verifiedReferences": 8,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 11
   },
   "articleTexts": {
    "전자조달의 이용 및 촉진에 관한 법률::제14조제1항": {

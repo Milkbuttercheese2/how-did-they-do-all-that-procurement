@@ -792,10 +792,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 63건 가운데 63건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 63건 가운데 58건의 조문 번호 존재를 확인했고, 0건은 불일치, 5건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "핵심 근거는 조달청 고시 '벤처나라 등록 물품·서비스 지정 관리 규정'(고시 제2026-32호, 2026-05-12 시행) 현행본이며, 이 규정의 상위 위임 근거는 조달사업에 관한 법률 제25조 및 같은 법 시행령 제29조제1항제2호·제3항이다.",
    "지정기간 6년, 이의신청 10일·심사 7일, 이용정지 기간, 국가계약법 시행령 제30조제1항 1인 견적 수의계약 금액구간 등 수치는 규정·상위법령 원문 표현을 따랐고, 배점·모집 일정 등 운영 세부는 현장 검증 항목으로 이관했다."
@@ -846,14 +846,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 39,
    "explicitCitationEntries": 39,
    "articleReferences": 63,
-   "verifiedReferences": 63,
+   "verifiedReferences": 58,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 5
   },
   "articleTexts": {
    "벤처나라 등록 물품·서비스 지정 관리 규정::제7조제3항": {

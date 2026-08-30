@@ -576,10 +576,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 5건 중 공식 원문 5건을 연결했다. 캔버스와 절차 노드의 명시 조문 37건 가운데 37건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 5건 중 공식 원문 5건을 연결했다. 캔버스와 절차 노드의 명시 조문 37건 가운데 30건의 조문 번호 존재를 확인했고, 0건은 불일치, 7건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "핵심 근거는 조달청 훈령 「상용소프트웨어 다수공급자계약 업무처리규정」(2025-08-28 공포) 현행본이며, 거래정지·환수 기준과 제안서 유효기간 등은 「상용소프트웨어 다수공급자계약 특수조건」(2025-12-22)에서 정하므로 별도 대조가 필요하다.",
    "2단계경쟁 종합평가방식의 평가항목별 배점은 규정 [별표 3]에 있어 조문 본문 대조 대상이 아니며, 별도 확인한다.",
@@ -642,14 +642,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 27,
    "explicitCitationEntries": 27,
    "articleReferences": 37,
-   "verifiedReferences": 37,
+   "verifiedReferences": 30,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 7
   },
   "articleTexts": {
    "상용소프트웨어 다수공급자계약 업무처리규정::제6조제1항": {

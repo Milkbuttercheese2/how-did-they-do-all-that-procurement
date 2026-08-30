@@ -447,10 +447,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 19건 가운데 19건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 19건 가운데 0건의 조문 번호 존재를 확인했고, 0건은 불일치, 19건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "현행 원문 대조 결과 법 제27조의2제2항과 제27조의3이 모두 '삭제'되어 과징금부과심의위원회가 폐지되었음을 확인했다. 이에 위원회 lane과 상정·심의 노드(P05·P06)를 각 중앙관서의 장이 부과 비율·금액을 산정하고 부과 여부를 결정하는 현행 절차로 재구성했다.",
    "과징금 부과 비율은 법 제27조의2제3항 및 영 제76조의2제3항에 따라 재정경제부령으로 정하고, 부과·납부 절차는 영 제76조의3(60일 이내 납부), 납부기한 연장·분할납부는 영 제76조의4로 확인했다.",
@@ -502,14 +502,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 16,
    "explicitCitationEntries": 15,
    "articleReferences": 19,
-   "verifiedReferences": 19,
+   "verifiedReferences": 0,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 19
   },
   "articleTexts": {
    "국가를 당사자로 하는 계약에 관한 법률::제27조제1항": {

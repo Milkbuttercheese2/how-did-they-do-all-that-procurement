@@ -560,10 +560,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 5건 중 공식 원문 5건을 연결했다. 캔버스와 절차 노드의 명시 조문 50건 가운데 50건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 5건 중 공식 원문 5건을 연결했다. 캔버스와 절차 노드의 명시 조문 50건 가운데 23건의 조문 번호 존재를 확인했고, 0건은 불일치, 27건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "「물품목록정보의 관리 및 이용에 관한 법률 시행규칙」은 2009년 12월 29일 시행 이후 개정 이력이 없는 현행 규정이며, 물품목록번호 부여의 세부 실무 기준은 그 이후 제정된 조달청 훈령 '목록화지침'과 '물품목록정보의 관리 및 이용에 관한 규정'이 보완한다.",
    "이 제도는 조달업체 등록(입찰참가자격 등록)이나 벤처나라 등록 등 여러 제도에서 전제 조건으로 짧게 언급되던 물품목록번호 부여 절차 자체를 다루며, 신설·최신화·정비 절차는 두 조달청 훈령의 현행 조문을 기준으로 정리했다."
@@ -624,14 +624,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 31,
    "explicitCitationEntries": 31,
    "articleReferences": 50,
-   "verifiedReferences": 50,
+   "verifiedReferences": 23,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 27
   },
   "articleTexts": {
    "물품목록정보의 관리 및 이용에 관한 법률::제9조제1항": {

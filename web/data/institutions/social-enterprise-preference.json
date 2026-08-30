@@ -491,9 +491,9 @@
  },
  "verification": {
   "status": "needs-review",
-  "verifiedAt": "2026-08-24",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 5건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 26건 가운데 26건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 5건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 26건 가운데 0건의 조문 번호 존재를 확인했고, 0건은 불일치, 26건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "사회적기업제품 우선구매는 법정 고정 목표비율이 없는 촉진 의무 제도로, 구매계획·전년도 실적 통보(매년 2월 말일)와 종합 공고(매년 4월 30일)로 이행을 관리한다.",
    "사회적기업 등과의 수의계약 가능 여부는 국가계약법 시행령 제26조제1항의 요건(기획재정부장관이 정하는 요건) 충족에 달려 있으며, 해당 호·목 번호는 시행령 개정으로 재배열될 수 있다.",
@@ -556,14 +556,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 23,
    "explicitCitationEntries": 22,
    "articleReferences": 26,
-   "verifiedReferences": 26,
+   "verifiedReferences": 0,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 26
   },
   "articleTexts": {
    "사회적기업 육성법::제7조제1항": {

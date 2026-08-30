@@ -469,10 +469,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 5건 중 공식 원문 5건을 연결했다. 캔버스와 절차 노드의 명시 조문 24건 가운데 24건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 5건 중 공식 원문 5건을 연결했다. 캔버스와 절차 노드의 명시 조문 24건 가운데 0건의 조문 번호 존재를 확인했고, 0건은 불일치, 24건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "성능인증(EPC) 유효기간 수치는 자료마다 상충(3년+3년 / 4년+4년)하여 본문에 확정 기재하지 않고 fieldVerification로 이관했다.",
    "우선구매 대상 기술개발제품의 정확한 종류·개수는 시행세칙 현행본 확인 대상이다."
@@ -534,14 +534,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 21,
    "explicitCitationEntries": 20,
    "articleReferences": 24,
-   "verifiedReferences": 24,
+   "verifiedReferences": 0,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 24
   },
   "articleTexts": {
    "중소기업제품 구매촉진 및 판로지원에 관한 법률::제15조": {

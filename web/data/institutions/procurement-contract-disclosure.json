@@ -451,9 +451,9 @@
  },
  "verification": {
   "status": "needs-review",
-  "verifiedAt": "2026-08-24",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 21건 가운데 19건의 조문 번호 존재를 확인했고, 0건은 불일치, 2건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 4건 중 공식 원문 4건을 연결했다. 캔버스와 절차 노드의 명시 조문 21건 가운데 0건의 조문 번호 존재를 확인했고, 0건은 불일치, 21건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "계약변경은 제92조의2제1항의 공개 사항(기획재정부령 위임)에 포함되며, 변경 정보 공개의 구체 기한('지체 없이' 등)과 시행규칙 제82조 공개 항목의 최신 열거 범위는 현행 원문 대조·운영으로 확정이 필요하다."
   ],
@@ -504,14 +504,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 19,
    "explicitCitationEntries": 19,
    "articleReferences": 21,
-   "verifiedReferences": 19,
+   "verifiedReferences": 0,
    "missingReferences": 0,
-   "uncheckableReferences": 2
+   "uncheckableReferences": 21
   },
   "articleTexts": {
    "국가를 당사자로 하는 계약에 관한 법률 시행령::제92조의2": {

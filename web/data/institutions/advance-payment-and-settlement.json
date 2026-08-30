@@ -505,10 +505,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 5건 중 공식 원문 5건을 연결했다. 캔버스와 절차 노드의 명시 조문 30건 가운데 30건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 5건 중 공식 원문 5건을 연결했다. 캔버스와 절차 노드의 명시 조문 30건 가운데 9건의 조문 번호 존재를 확인했고, 0건은 불일치, 21건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "2026년 정부조직 개편에 따라 국가계약법령 현행 원문의 부처 표기는 재정경제부장관/재정경제부령이며, 본 문서는 기존 파일 관례에 따라 기획재정부장관(재정경제부장관)으로 병기했다.",
    "선금 70% 한도와 규모별 선급률은 정부 입찰·계약 집행기준 제34조, 선금 청구 후 14일 지급기한은 국고금 관리법 시행령 제40조제3항, 선금 정산·반환은 같은 예규 제37조·제38조로 조문을 확인했다."
@@ -570,14 +570,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 23,
    "explicitCitationEntries": 23,
    "articleReferences": 30,
-   "verifiedReferences": 30,
+   "verifiedReferences": 9,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 21
   },
   "articleTexts": {
    "국고금 관리법::제26조": {

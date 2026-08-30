@@ -515,10 +515,10 @@
   "warnings": []
  },
  "verification": {
-  "status": "article-verified",
-  "verifiedAt": "2026-08-24",
+  "status": "needs-review",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 3건 중 공식 원문 3건을 연결했다. 캔버스와 절차 노드의 명시 조문 24건 가운데 24건의 조문 번호 존재를 확인했고, 0건은 불일치, 0건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 3건 중 공식 원문 3건을 연결했다. 캔버스와 절차 노드의 명시 조문 24건 가운데 0건의 조문 번호 존재를 확인했고, 0건은 불일치, 24건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "과제에서 후보로 제시된 조문 배치(제35조=입찰공고의 내용)는 검색 결과와 달랐다. 현행 시행령은 제35조=입찰공고의 시기, 제36조=입찰공고의 내용이며 자매 제도 general-competitive-bidding 워크시트와도 일치한다.",
    "일부 검색에서 회수된 시행령 제14조(10일 전 관보 공고)는 과거 개정 규정으로 판단해 배제했다. 현행은 전자조달시스템 공고(제33조).",
@@ -559,14 +559,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 20,
    "explicitCitationEntries": 19,
    "articleReferences": 24,
-   "verifiedReferences": 24,
+   "verifiedReferences": 0,
    "missingReferences": 0,
-   "uncheckableReferences": 0
+   "uncheckableReferences": 24
   },
   "articleTexts": {
    "국가를 당사자로 하는 계약에 관한 법률::제7조제1항": {

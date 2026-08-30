@@ -517,9 +517,9 @@
  },
  "verification": {
   "status": "needs-review",
-  "verifiedAt": "2026-08-24",
+  "verifiedAt": "2026-08-31",
   "method": "국가법령정보센터 Open API 조문 대조",
-  "scope": "법적 근거 5건 중 공식 원문 5건을 연결했다. 캔버스와 절차 노드의 명시 조문 39건 가운데 31건의 조문 번호 존재를 확인했고, 0건은 불일치, 8건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
+  "scope": "법적 근거 5건 중 공식 원문 5건을 연결했다. 캔버스와 절차 노드의 명시 조문 39건 가운데 19건의 조문 번호 존재를 확인했고, 0건은 불일치, 20건은 자동 검증 불가로 분류했다. 인용 문구의 해석·적용 타당성은 검증 범위에 포함하지 않는다.",
   "notes": [
    "국가계약법 시행령 조문의 수치는 다중 공개 출처 일치로 확인했으며 원문 기계 대조로 최종 승격 예정이다.",
    "2026년 정부조직 개편으로 국가계약법령 원문의 부처 표기는 재정경제부장관이나, 서술 편의상 기존 관례를 따른다."
@@ -580,14 +580,14 @@
    }
   ],
   "articleVerification": {
-   "checkedAt": "2026-08-24",
+   "checkedAt": "2026-08-31",
    "method": "현행 법령 조문 일괄조회 및 행정규칙 전문조회",
    "citationEntries": 23,
    "explicitCitationEntries": 23,
    "articleReferences": 39,
-   "verifiedReferences": 31,
+   "verifiedReferences": 19,
    "missingReferences": 0,
-   "uncheckableReferences": 8
+   "uncheckableReferences": 20
   },
   "articleTexts": {
    "국가를 당사자로 하는 계약에 관한 법률::제12조": {
