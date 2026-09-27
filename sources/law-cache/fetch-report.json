@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-20",
+  "fetchedAt": "2026-09-27",
   "failures": [
     {
       "kind": "법령",
@@ -24,7 +24,7 @@
     {
       "kind": "법령",
       "name": "조달사업에 관한 법률 시행령",
-      "note": "[EXTERNAL_API_ERROR] 법령을 찾을 수 없습니다. MST 또는 법령명을 확인해주세요. - API가 HTML 에러 페이지를 반환했습니다. 파라미터를 확인해주세요. XML 엔드포인트 장애 시 LAW_RESPONSE_TYPE=JSON 환경변수로 우회할 수 있습니다.\n도구: get_law_text\n\n"
+      "note": "[EXTERNAL_API_ERROR] fetch failed\n도구: get_law_text\n\n"
     },
     {
       "kind": "법령",
@@ -44,7 +44,7 @@
     {
       "kind": "법령",
       "name": "중소기업제품 구매촉진 및 판로지원에 관한 법률",
-      "note": "[EXTERNAL_API_ERROR] fetch failed\n도구: get_law_text\n\n"
+      "note": "[EXTERNAL_API_ERROR] 법령을 찾을 수 없습니다. MST 또는 법령명을 확인해주세요. - API가 HTML 에러 페이지를 반환했습니다. 파라미터를 확인해주세요. XML 엔드포인트 장애 시 LAW_RESPONSE_TYPE=JSON 환경변수로 우회할 수 있습니다.\n도구: get_law_text\n\n"
     },
     {
       "kind": "법령",
@@ -109,7 +109,7 @@
     {
       "kind": "법령",
       "name": "장애인기업활동 촉진법",
-      "note": "[EXTERNAL_API_ERROR] 법령을 찾을 수 없습니다. MST 또는 법령명을 확인해주세요. - API가 HTML 에러 페이지를 반환했습니다. 파라미터를 확인해주세요. XML 엔드포인트 장애 시 LAW_RESPONSE_TYPE=JSON 환경변수로 우회할 수 있습니다.\n도구: get_law_text\n\n"
+      "note": "[EXTERNAL_API_ERROR] fetch failed\n도구: get_law_text\n\n"
     },
     {
       "kind": "법령",
