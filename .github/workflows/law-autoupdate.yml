@@ -23,7 +23,7 @@ jobs:
         working-directory: web
     env:
       LAW_OC: ${{ secrets.LAW_OC || 'wooseongkyun' }}
-      LAW_UPDATE_REPORT_DIR: ${{ runner.temp }}/law-update-diagnostics
+      LAW_UPDATE_REPORT_DIR: ${{ github.workspace }}/.law-autoupdate-report
     steps:
       - uses: actions/checkout@v4
         id: checkout
@@ -111,6 +111,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: law-autoupdate-report-${{ github.run_id }}
-          path: ${{ runner.temp }}/law-update-diagnostics/report.*
+          path: ${{ env.LAW_UPDATE_REPORT_DIR }}/report.*
           if-no-files-found: warn
           retention-days: 30

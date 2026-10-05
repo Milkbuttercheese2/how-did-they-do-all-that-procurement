@@ -218,7 +218,7 @@ test("workflow requires successful mandatory steps before committing and always 
   assert.match(stepBlock("report"), /toJSON\(steps\)/);
   const upload = stepBlocks.find((block) => block.includes("actions/upload-artifact"));
   assert.match(upload, /if: \$\{\{ always\(\) \}\}/);
-  assert.match(upload, /law-update-diagnostics\/report\.\*/);
+  assert.match(upload, /env\.LAW_UPDATE_REPORT_DIR.*\/report\.\*/);
 });
 
 function runCommit(t, env = {}) {
@@ -262,4 +262,12 @@ test("actual workflow commit shell handles transient push failure, pull failure,
   const unchanged = runCommit(t, { NO_CHANGES: "1" });
   assert.equal(unchanged.result.status, 0);
   assert.equal(unchanged.calls.filter((line) => /^(commit|pull|push) /.test(line)).length, 0);
+});
+
+
+test("workflow report paths use contexts valid at job and step scope", () => {
+  const beforeSteps = workflow.split("    steps:", 1)[0];
+  assert.doesNotMatch(beforeSteps, /\$\{\{\s*runner\./);
+  assert.match(beforeSteps, /LAW_UPDATE_REPORT_DIR: \$\{\{ github\.workspace \}\}\/\.law-autoupdate-report/);
+  assert.match(workflow, /path: \$\{\{ env\.LAW_UPDATE_REPORT_DIR \}\}\/report\.\*/);
 });
