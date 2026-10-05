@@ -6,6 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
+import { scrubError } from "./lib/law-update.mjs";
 
 const execFileAsync = promisify(execFile);
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
@@ -28,13 +29,11 @@ const CLI =
   (fs.existsSync(LOCAL_CLI) ? LOCAL_CLI : "korean-law");
 const CLI_IS_SCRIPT = /\.(?:mjs|cjs|js)$/i.test(CLI);
 
-if (!process.env.LAW_OC?.trim()) {
-  throw new Error("LAW_OC 환경변수가 없어 원문 캐시를 중단합니다.");
-}
-
-const list = JSON.parse(fs.readFileSync(LIST_PATH, "utf8"));
 const today = new Date().toISOString().slice(0, 10);
 const failures = [];
+let requested = 0;
+let completed = 0;
+const timeoutMs = Number(process.env.LAW_CLI_TIMEOUT_MS ?? 120_000);
 
 function compact(value) {
   return (value ?? "").replace(/\s+/g, "").replace(/[「」『』()·ㆍ]/g, "");
@@ -45,13 +44,17 @@ async function runCli(args) {
     const { stdout } = await execFileAsync(
       CLI_IS_SCRIPT ? process.execPath : CLI,
       CLI_IS_SCRIPT ? [CLI, ...args] : args,
-      { env: process.env, maxBuffer: 48 * 1024 * 1024, timeout: 120_000 },
+      { env: process.env, maxBuffer: 48 * 1024 * 1024, timeout: timeoutMs },
     );
     return { ok: true, output: stdout };
   } catch (error) {
-    const output = [error.stdout, error.stderr]
-      .filter((value) => typeof value === "string")
-      .join("\n");
+    // korean-law-mcp 4.7.5 already retries network calls. Do not multiply them here.
+    const output = scrubError([
+      `CLI ${args[0]} failed (code=${error.code ?? "?"}, signal=${error.signal ?? "-"}, killed=${Boolean(error.killed)}, timeout=${timeoutMs}ms)`,
+      error.message,
+      error.stderr,
+      error.stdout,
+    ].filter((value) => typeof value === "string" && value.trim()).join("\n"));
     return { ok: false, output };
   }
 }
@@ -60,7 +63,7 @@ function looksFailed(result) {
   return (
     !result.ok ||
     result.output.trim().length < 200 ||
-    /^\[(?:ERROR|NOT_FOUND)\]/m.test(result.output) ||
+    /^\[(?:ERROR|NOT_FOUND|[A-Z_]+_ERROR)\]/m.test(result.output) ||
     /전문을 조회할 수 없습니다|데이터를 찾을 수 없습니다|조회 실패/.test(result.output)
   );
 }
@@ -106,47 +109,63 @@ function save(kind, name, meta, body) {
     "",
   ].join("\n");
   fs.writeFileSync(file, header + body.trimEnd() + "\n");
+  completed += 1;
   console.log(`저장: ${path.relative(REPO_DIR, file)} (${body.length.toLocaleString()}자)`);
 }
 
-for (const name of list.statutes ?? []) {
-  const search = await runCli(["search_law", "--query", name, "--display", "10"]);
-  const entry = pickEntry(parseSearchEntries(search.output, /MST[:=\s]*(\d+)/i), name);
-  if (!entry) {
-    failures.push({ kind: "법령", name, note: `search_law에서 MST 미확인: ${search.output.slice(0, 400)}` });
-    console.error(`실패: 법령 ${name} (MST 미확인)`);
-    continue;
+try {
+  fs.mkdirSync(CACHE_DIR, { recursive: true });
+  if (!process.env.LAW_OC?.trim()) {
+    throw new Error("LAW_OC 환경변수가 없어 원문 캐시를 중단합니다.");
   }
-  const result = await runCli(["get_law_text", "--mst", entry.id]);
-  if (looksFailed(result)) {
-    failures.push({ kind: "법령", name, note: result.output.slice(0, 400) });
-    console.error(`실패: 법령 ${name} (전문 조회 실패, mst=${entry.id})`);
-    continue;
+  if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) {
+    throw new Error("LAW_CLI_TIMEOUT_MS must be a positive number");
   }
-  save("법령", name, `get_law_text --mst ${entry.id} (검색명: ${entry.name})`, result.output);
-}
+  const list = JSON.parse(fs.readFileSync(LIST_PATH, "utf8"));
+  requested = (list.statutes ?? []).length + (list.adminRules ?? []).length;
+  for (const name of list.statutes ?? []) {
+    const search = await runCli(["search_law", "--query", name, "--display", "10"]);
+    const entry = pickEntry(parseSearchEntries(search.output, /MST[:=\s]*(\d+)/i), name);
+    if (!search.ok || !entry) {
+      failures.push({ kind: "법령", name, note: `search_law에서 MST 미확인: ${scrubError(search.output || "empty search response")}` });
+      console.error(`실패: 법령 ${name} (MST 미확인)`);
+      continue;
+    }
+    const result = await runCli(["get_law_text", "--mst", entry.id]);
+    if (looksFailed(result)) {
+      failures.push({ kind: "법령", name, note: scrubError(result.output || "empty full-text response") });
+      console.error(`실패: 법령 ${name} (전문 조회 실패, mst=${entry.id})`);
+      continue;
+    }
+    save("법령", name, `get_law_text --mst ${entry.id} (검색명: ${entry.name})`, result.output);
+  }
 
-for (const name of list.adminRules ?? []) {
-  const search = await runCli(["search_admin_rule", "--query", name, "--display", "10"]);
-  const entries = parseSearchEntries(search.output, /행정규칙일련번호[:=\s]*(\d+)/);
-  const entry = pickEntry(entries, name) ?? entries[0] ?? null;
-  if (!entry) {
-    failures.push({ kind: "행정규칙", name, note: `search_admin_rule에서 일련번호 미확인: ${search.output.slice(0, 400)}` });
-    console.error(`실패: 행정규칙 ${name} (일련번호 미확인)`);
-    continue;
+  for (const name of list.adminRules ?? []) {
+    const search = await runCli(["search_admin_rule", "--query", name, "--display", "10"]);
+    const entries = parseSearchEntries(search.output, /행정규칙일련번호[:=\s]*(\d+)/);
+    const entry = pickEntry(entries, name) ?? entries[0] ?? null;
+    if (!search.ok || !entry) {
+      failures.push({ kind: "행정규칙", name, note: `search_admin_rule에서 일련번호 미확인: ${scrubError(search.output || "empty search response")}` });
+      console.error(`실패: 행정규칙 ${name} (일련번호 미확인)`);
+      continue;
+    }
+    const result = await runCli(["get_admin_rule", "--id", entry.id]);
+    if (looksFailed(result)) {
+      failures.push({ kind: "행정규칙", name, note: scrubError(result.output || "empty full-text response") });
+      console.error(`실패: 행정규칙 ${name} (전문 조회 실패, id=${entry.id})`);
+      continue;
+    }
+    save("행정규칙", name, `get_admin_rule --id ${entry.id} (검색명: ${entry.name})`, result.output);
   }
-  const result = await runCli(["get_admin_rule", "--id", entry.id]);
-  if (looksFailed(result)) {
-    failures.push({ kind: "행정규칙", name, note: result.output.slice(0, 400) });
-    console.error(`실패: 행정규칙 ${name} (전문 조회 실패, id=${entry.id})`);
-    continue;
-  }
-  save("행정규칙", name, `get_admin_rule --id ${entry.id} (검색명: ${entry.name})`, result.output);
+} catch (error) {
+  const note = scrubError(error);
+  failures.push({ kind: "실행", name: "원문 캐시", note });
+  console.error(note);
 }
 
 fs.writeFileSync(
   path.join(CACHE_DIR, "fetch-report.json"),
-  JSON.stringify({ fetchedAt: today, failures }, null, 2) + "\n",
+  JSON.stringify({ fetchedAt: today, status: failures.length ? "failed" : "success", requested, completed, failures }, null, 2) + "\n",
 );
 console.log(`완료: 실패 ${failures.length}건 (fetch-report.json 참조)`);
-if (failures.length > 0) process.exitCode = 0; // 부분 실패는 리포트로 남기고 커밋은 진행한다.
+if (failures.length > 0) process.exitCode = 1; // 리포트를 남긴 뒤 필수 수집 실패를 CI에 전달한다.
