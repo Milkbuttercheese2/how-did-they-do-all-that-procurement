@@ -14,76 +14,128 @@ import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
 import { fileURLToPath } from "node:url";
-import { parse } from "kordoc";
+import { atomicWriteFile, fetchWithRetry, isMain, scrubError } from "./lib/law-update.mjs";
 
 const WEB_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const INDEX_FILE = path.join(WEB_DIR, "data", "annexes.json");
 const OUT_FILE = path.join(WEB_DIR, "public", "annexes.json");
-
-const index = JSON.parse(fs.readFileSync(INDEX_FILE, "utf8"));
-const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "annex-"));
-
-// 표가 큰 별표가 있어 상한을 둔다. 넘치면 근거로 쓰기엔 너무 길고, Worker가
-// 읽어 프롬프트에 싣는 비용도 감당이 안 된다.
 const MAX_CHARS = 12000;
 
-const out = {};
-let ok = 0;
-let failed = 0;
-let truncated = 0;
+async function parseDocument(file) {
+  const { parse } = await import("kordoc");
+  return parse(file);
+}
 
-for (const [key, meta] of Object.entries(index)) {
-  // 별지 서식은 본문을 뽑지 않는다. 빈칸 양식이라 텍스트로 옮기면 표 껍데기만
-  // 남아 근거로도 검색으로도 쓸모가 없다 — 제목과 원본 링크가 전부다.
-  if (meta.kind === "서식") {
-    out[key] = { ...meta };
-    continue;
+export function documentExtension(buffer) {
+  if (buffer.subarray(0, 8).toString("hex") === "d0cf11e0a1b11ae1") return "hwp";
+  if (buffer.subarray(0, 4).toString("hex") === "504b0304") return "hwpx";
+  if (buffer.subarray(0, 5).toString("ascii") === "%PDF-") return "pdf";
+  throw new Error("알 수 없거나 빈 별표 파일 형식");
+}
+
+export function annexFileUrls(meta) {
+  return [...new Set([meta.hwpUrl, meta.pdfUrl, meta.fileUrl].filter((value) => typeof value === "string" && value.trim()))];
+}
+
+async function collectAnnexTexts({
+  indexFile = INDEX_FILE,
+  outFile = OUT_FILE,
+  parseImpl = parseDocument,
+  logger = console,
+  ...requestOptions
+}, report) {
+  const index = JSON.parse(fs.readFileSync(indexFile, "utf8"));
+  if (!index || typeof index !== "object" || Array.isArray(index) || Object.keys(index).length === 0) {
+    throw new Error("별표 목록이 비었거나 올바르지 않음: 기존 본문을 보존함");
   }
-  if (!meta.fileUrl) {
-    // 본문은 못 담아도 제목·링크는 남긴다. 어디에 있는지 안내조차 못 하면 안 된다.
-    console.warn(`  ✗ ${key} — 파일 링크 없음(제목·링크만 수록)`);
-    out[key] = { ...meta };
-    failed += 1;
-    continue;
-  }
+  report.requested = Object.keys(index).length;
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "annex-"));
+  const out = {};
+  let ok = 0;
+  let failed = 0;
+  let truncated = 0;
   try {
-    const res = await fetch(meta.fileUrl);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const buf = Buffer.from(await res.arrayBuffer());
-
-    // kordoc은 확장자로도 포맷을 판단하므로 실제 시그니처에 맞춰 붙인다.
-    // d0cf11e0 = OLE(구 HWP 5.x), 504b = ZIP(HWPX/DOCX), 25504446 = PDF
-    const sig = buf.subarray(0, 4).toString("hex");
-    const ext =
-      sig.startsWith("d0cf11e0") ? "hwp"
-      : sig.startsWith("504b") ? "hwpx"
-      : sig.startsWith("25504446") ? "pdf"
-      : "hwp";
-    const file = path.join(tmp, `${ok + failed}.${ext}`);
-    fs.writeFileSync(file, buf);
-
-    const parsed = await parse(file);
-    let text = String(parsed?.markdown ?? parsed?.text ?? "").trim();
-    if (!text) throw new Error("본문이 비어 있음");
-    if (text.length > MAX_CHARS) {
-      text = `${text.slice(0, MAX_CHARS)}\n\n…(이하 생략 — 전문은 원문 링크에서 확인)`;
-      truncated += 1;
+    for (const [key, meta] of Object.entries(index)) {
+      if (!meta || typeof meta !== "object" || Array.isArray(meta)
+        || !["서식", "별표"].includes(meta.kind)
+        || typeof meta.law !== "string" || !meta.law.trim()
+        || typeof meta.annex !== "string" || !meta.annex.trim()) {
+        throw new Error("별표 목록 항목 형식 오류: 기존 본문을 보존함");
+      }
+      // 별지 서식은 빈칸 양식이므로 원본 링크만 보관한다.
+      if (meta.kind === "서식") {
+        out[key] = { ...meta };
+        report.succeeded += 1;
+        continue;
+      }
+      let text;
+      let lastError = new Error("파일 링크 없음");
+      // 현재 목록의 HWP/PDF 링크를 우선하고 옛 fileUrl도 지원한다.
+      for (const url of annexFileUrls(meta)) {
+        try {
+          const data = await fetchWithRetry(url, { ...requestOptions, read: (response) => response.arrayBuffer() });
+          const buffer = Buffer.from(data);
+          const file = path.join(tmp, `${ok + failed}.${documentExtension(buffer)}`);
+          fs.writeFileSync(file, buffer);
+          const parsed = await parseImpl(file);
+          text = [parsed?.markdown, parsed?.text].find((value) => typeof value === "string" && value.trim())?.trim();
+          if (!text) throw new Error("본문이 비어 있음");
+          break;
+        } catch (error) {
+          lastError = error;
+        }
+      }
+      if (!text) {
+        logger.warn(`  ✗ ${key} — ${scrubError(lastError)}`);
+        failed += 1;
+        report.failed += 1;
+        report.failures.push(`${key}: ${scrubError(lastError)}`);
+        continue;
+      }
+      if (text.length > MAX_CHARS) {
+        text = `${text.slice(0, MAX_CHARS)}\n\n…(이하 생략 — 전문은 원문 링크에서 확인)`;
+        truncated += 1;
+      }
+      out[key] = { ...meta, text };
+      ok += 1;
+      report.succeeded += 1;
+      logger.log(`  ✓ ${key} — ${text.length}자`);
     }
-
-    out[key] = { ...meta, text };
-    ok += 1;
-    console.log(`  ✓ ${key} — ${text.length}자`);
-  } catch (error) {
-    console.warn(`  ✗ ${key} — ${error.message}`);
-    // 실패해도 제목·링크는 남긴다. 본문이 없다고 안내조차 못 하면 안 된다.
-    out[key] = { ...meta };
-    failed += 1;
+    if (failed > 0) throw new Error(`별표 본문 수집 불완전 (${failed}건 실패): 기존 본문을 보존함`);
+    fs.mkdirSync(path.dirname(outFile), { recursive: true });
+    await atomicWriteFile(outFile, JSON.stringify(out));
+    const kb = (fs.statSync(outFile).size / 1024).toFixed(0);
+    logger.log(`별표 본문: 성공 ${ok}건 / 길이초과 잘림 ${truncated}건 — ${kb}KB → public/annexes.json`);
+    return out;
+  } finally {
+    fs.rmSync(tmp, { recursive: true, force: true });
   }
 }
 
-fs.rmSync(tmp, { recursive: true, force: true });
-fs.writeFileSync(OUT_FILE, JSON.stringify(out));
-const kb = (fs.statSync(OUT_FILE).size / 1024).toFixed(0);
-console.log(
-  `별표 본문: 성공 ${ok}건 / 실패 ${failed}건 / 길이초과 잘림 ${truncated}건 — ${kb}KB → public/annexes.json`,
-);
+export async function populateAnnexTexts({ reportDir = process.env.LAW_UPDATE_REPORT_DIR, ...options } = {}) {
+  const report = { stage: "annex-texts", requested: 0, succeeded: 0, failed: 0, preserved: true, failures: [] };
+  try {
+    const out = await collectAnnexTexts(options, report);
+    report.preserved = false;
+    return out;
+  } catch (error) {
+    report.failed = Math.max(report.failed, 1);
+    report.failures.push(scrubError(error));
+    throw error;
+  } finally {
+    if (reportDir) {
+      try {
+        await atomicWriteFile(path.join(reportDir, "annex-texts.json"), `${JSON.stringify(report, null, 2)}\n`);
+      } catch (error) {
+        (options.logger ?? console).warn(`진단 보고서 저장 실패: ${scrubError(error)}`);
+      }
+    }
+  }
+}
+
+if (isMain(import.meta.url)) {
+  populateAnnexTexts().catch((error) => {
+    console.error(scrubError(error));
+    process.exitCode = 1;
+  });
+}
