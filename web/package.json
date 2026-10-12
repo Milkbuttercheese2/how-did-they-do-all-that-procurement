@@ -20,6 +20,7 @@
     "verify:articles": "node scripts/verify-articles.mjs",
     "test:article-parser": "node --test scripts/article-citations.test.mjs",
     "test:process-layout": "node --test scripts/process-layout.test.mjs",
+    "test:law-update": "node --test scripts/law-update.test.mjs scripts/law-autoupdate.test.mjs scripts/annex-refresh.test.mjs",
     "verify:citation-content": "node scripts/verify-citation-content.mjs",
     "generate:routing-index": "node scripts/generate-routing-index.mjs",
     "generate:article-assets": "node scripts/generate-article-assets.mjs",

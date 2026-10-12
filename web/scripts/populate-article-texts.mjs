@@ -3,17 +3,11 @@
 // 사용: LAW_OC=... KOREAN_LAW_CLI=... node scripts/populate-article-texts.mjs [--only slug]
 import fs from "node:fs";
 import path from "node:path";
-import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { atomicWriteFile, fetchWithRetry, isMain, runLawCli, scrubError } from "./lib/law-update.mjs";
 
 const REPO_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DATA_DIR = path.join(REPO_DIR, "data", "institutions");
-const CLI = process.env.KOREAN_LAW_CLI;
-const OC = process.env.LAW_OC;
-if (!CLI || !OC) throw new Error("KOREAN_LAW_CLI, LAW_OC 환경변수가 필요합니다.");
-
-const onlyArg = process.argv.indexOf("--only");
-const ONLY = onlyArg > -1 ? process.argv[onlyArg + 1] : null;
 
 const compact = (s) => (s ?? "").replace(/\s+/g, "").replace(/[·ㆍ]/g, "");
 // "제7조제1항", "제12조의2제3항" → base article "제7조", "제12조의2"
@@ -45,46 +39,16 @@ function extractHang(body, n) {
   return body.slice(start, end).trim();
 }
 
-function stripToolNoise(s) {
-  return (s || "")
-    .split("\n")
-    .filter(
-      (line) =>
-        !/^\(node:\d+\)/.test(line) &&
-        !/UNDICI|EnvHttpProxyAgent/.test(line) &&
-        !/--trace-warnings/.test(line),
-    )
-    .join("\n");
-}
-
-function runCli(args) {
-  const res = spawnSync("node", [CLI, ...args], {
-    encoding: "utf8",
-    env: { ...process.env },
-    maxBuffer: 64 * 1024 * 1024,
-  });
-  // stdout만 사용한다. stderr(UNDICI 경고 등 내부 노이즈)는 조문 원문에 섞지 않는다.
-  return stripToolNoise(res.stdout || "");
-}
-
-async function fetchAdminRuleFull(serial) {
-  const url = `https://www.law.go.kr/DRF/lawService.do?OC=${OC}&target=admrul&ID=${serial}&type=JSON`;
-  try {
-    const r = await fetch(url);
-    if (!r.ok) return "";
-    const j = await r.json();
-    // 응답 전체를 JSON.stringify 하면 조문 본문에 \" 같은 이스케이프 잔재가 남는다.
-    // 조문내용은 줄 단위 문자열 배열이므로 그대로 이어붙인다.
-    const articles = j?.AdmRulService?.["조문내용"];
-    const text = Array.isArray(articles) ? articles.join("\n") : JSON.stringify(j);
-    // admrul 전문 API는 호출 서버 IP가 계정에 등록돼 있지 않으면 조문 대신
-    // 오류 문구("사용자 정보 검증에 실패…")를 200으로 돌려준다. 조문 헤더가 없는
-    // 응답으로 CLI 본문(잘렸어도 조문 포함)을 덮어쓰면 전부 미수록이 되므로 버린다.
-    if (!/제\s*\d+\s*조/.test(text)) return "";
-    return text;
-  } catch {
-    return "";
+async function fetchAdminRuleFull(serial, oc = process.env.LAW_OC) {
+  const url = `https://www.law.go.kr/DRF/lawService.do?OC=${encodeURIComponent(oc)}&target=admrul&ID=${serial}&type=JSON`;
+  const json = await fetchWithRetry(url);
+  const articles = json?.AdmRulService?.["조문내용"];
+  if (!Array.isArray(articles) || !articles.every((line) => typeof line === "string")) {
+    throw new Error("행정규칙 전문 응답 구조가 올바르지 않음");
   }
+  const text = articles.join("\n");
+  if (!/제\s*\d+\s*조/.test(text)) throw new Error("행정규칙 전문에 조문이 없음");
+  return text;
 }
 
 // 본문 안에서 자기 조문이 아닌 다른 조문의 '행 시작' 헤더(제N조 …)를 만나면 그 앞에서 절단한다.
@@ -108,7 +72,7 @@ function truncateAtForeignArticle(body, ownKey) {
 }
 
 // 본문 텍스트에서 "제N조(제목) …" 블록을 각 조문 단위로 분리
-function parseArticleBodies(output) {
+function parseArticleBodies(output, { dropLast = false } = {}) {
   const map = new Map();
   // 헤더 라인: 제7조(계약의 방법)  — 조문 제목 괄호 포함.
   // 반드시 행 시작에 앵커한다. 앵커가 없으면 문장 중간의 상호참조
@@ -132,7 +96,9 @@ function parseArticleBodies(output) {
     marks.push({ idx: m.index, key: `제${m[1]}조${m[2] ? `의${m[2]}` : ""}`, title, headEnd: bareHeaderRe.lastIndex });
   }
   marks.sort((a, b) => a.idx - b.idx);
-  for (let i = 0; i < marks.length; i += 1) {
+  // Truncated CLI output may have the final header but only half its body.
+  // Only sections bounded by the following header are then safe to keep.
+  for (let i = 0; i < marks.length - (dropLast ? 1 : 0); i += 1) {
     const start = marks[i].headEnd;
     const end = i + 1 < marks.length ? marks[i + 1].idx : output.length;
     let body = output.slice(start, end).trim();
@@ -153,8 +119,8 @@ function chunk(arr, n) {
   return out;
 }
 
-async function processFile(file) {
-  const p = path.join(DATA_DIR, file);
+export async function processFile(file, { dataDir = DATA_DIR, runCli = runLawCli, fetchFull = fetchAdminRuleFull } = {}) {
+  const p = path.join(dataDir, file);
   const d = JSON.parse(fs.readFileSync(p, "utf8"));
   const verification = d.verification;
   if (!verification || !Array.isArray(verification.sources)) return { file, filled: 0, skipped: "no-sources" };
@@ -186,21 +152,29 @@ async function processFile(file) {
     const src = group.source;
     let output = "";
     let fallback = "";
+    let truncated = false;
     if (src.mst) {
       for (const b of chunk([...group.bases], 20)) {
-        output += "\n" + runCli(["get_batch_articles", "--mst", src.mst, "--articles", JSON.stringify(b)]);
+        const batch = await runCli(["get_batch_articles", "--mst", src.mst, "--articles", JSON.stringify(b)]);
+        if (/응답이 너무 길어|too long/i.test(batch)) throw new Error("조문 배치 응답이 잘림: 기존 제도 파일 보존");
+        output += "\n" + batch;
       }
     } else if (src.adminRuleSerial) {
-      output = runCli(["get_admin_rule", "--id", src.adminRuleSerial]);
+      output = await runCli(["get_admin_rule", "--id", src.adminRuleSerial]);
       // CLI 출력은 항·호가 줄바꿈으로 구분된 정본이다. 다만 50,000자에서 잘리므로
       // 뒤쪽 조문은 폴백에서만 얻을 수 있다. 폴백으로 '덮어쓰면' 앞쪽 조문의
       // 줄바꿈까지 함께 잃으므로(팝업은 pre-wrap이라 문단 구분이 사라진다),
       // 덮어쓰지 않고 CLI에 없는 조문만 보충한다.
       if (/응답이 너무 길어|too long/i.test(output)) {
-        fallback = await fetchAdminRuleFull(src.adminRuleSerial);
+        truncated = true;
+        fallback = await fetchFull(src.adminRuleSerial);
+        if (!fallback.trim() || /응답이 너무 길어|too long|^\[(?:ERROR|NOT_FOUND|[A-Z_]+_ERROR)\]/im.test(fallback)) {
+          throw new Error("행정규칙 전문 폴백이 비었거나 불완전함");
+        }
       }
     }
-    const bodies = parseArticleBodies(output);
+    if (/^\[(?:ERROR|NOT_FOUND|[A-Z_]+_ERROR)\]/m.test(output)) throw new Error("조문 CLI가 오류 응답을 반환함");
+    const bodies = parseArticleBodies(output, { dropLast: truncated });
     if (fallback) {
       for (const [key, body] of parseArticleBodies(fallback)) {
         if (!bodies.has(key)) bodies.set(key, body);
@@ -210,6 +184,9 @@ async function processFile(file) {
       const [, article] = key.split("::");
       const base = baseArticle(article);
       const hit = bodies.get(base);
+      if (!hit) {
+        throw new Error(`${src.law ?? src.officialName ?? file} ${base}: 조문 원문 누락 (검토 필요, 기존 제도 파일 보존)`);
+      }
       if (hit) {
         // 인용이 특정 항(제N항)을 지정하면 그 항만, 아니면 조문 전체를 담는다.
         const n = hangNumber(article);
@@ -231,16 +208,39 @@ async function processFile(file) {
     verification.articleTexts = articleTexts;
     // 들여쓰기 1칸: sync-verification·verify-articles와 같은 형식이라야 한다.
     // 2칸으로 쓰면 다음 파이프라인 실행 때 전체 파일이 재포맷돼 diff가 통째로 뜬다.
-    fs.writeFileSync(p, JSON.stringify(d, null, 1) + "\n");
+    atomicWriteFile(p, JSON.stringify(d, null, 1) + "\n");
   }
   return { file, filled };
 }
 
-const files = fs.readdirSync(DATA_DIR).filter((f) => f.endsWith(".json") && (!ONLY || f === `${ONLY}.json`));
-let total = 0;
-for (const f of files) {
-  const r = await processFile(f);
-  total += r.filled || 0;
-  console.log(`${r.file}: ${r.filled ?? 0} 조문 원문${r.skipped ? ` (${r.skipped})` : ""}`);
+export async function main({ dataDir = DATA_DIR, only, runCli, fetchFull, reportDir = process.env.LAW_UPDATE_REPORT_DIR } = {}) {
+  if (!process.env.LAW_OC?.trim()) throw new Error("LAW_OC 환경변수가 필요합니다.");
+  const files = fs.readdirSync(dataDir).filter((f) => f.endsWith(".json") && (!only || f === `${only}.json`));
+  if (only && files.length === 0) throw new Error(`제도를 찾을 수 없음: ${only}`);
+  const results = [];
+  for (const file of files) {
+    try {
+      const result = await processFile(file, { dataDir, runCli, fetchFull });
+      results.push(result);
+      console.log(`${result.file}: ${result.filled ?? 0} 조문 원문${result.skipped ? ` (${result.skipped})` : ""}`);
+    } catch (error) {
+      const note = scrubError(error);
+      results.push({ file, filled: 0, failed: true, preserved: true, note });
+      console.error(`${file}: ${note}`);
+    }
+  }
+  const failures = results.filter((result) => result.failed);
+  const total = results.reduce((sum, result) => sum + (result.filled || 0), 0);
+  if (reportDir) atomicWriteFile(path.join(reportDir, "article-texts.json"), JSON.stringify({ files: files.length, total, failures }, null, 2) + "\n");
+  console.log(`\n총 ${total}개 조문 원문 저장 (${files.length}개 제도), 실패 ${failures.length}개 (기존 파일 보존)`);
+  if (failures.length) process.exitCode = 1;
+  return { total, failures };
 }
-console.log(`\n총 ${total}개 조문 원문 저장 (${files.length}개 제도)`);
+
+if (isMain(import.meta.url)) {
+  const onlyArg = process.argv.indexOf("--only");
+  main({ only: onlyArg > -1 ? process.argv[onlyArg + 1] : null }).catch((error) => {
+    console.error(scrubError(error));
+    process.exitCode = 1;
+  });
+}

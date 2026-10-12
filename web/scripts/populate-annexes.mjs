@@ -20,6 +20,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { atomicWriteFile, fetchWithRetry, isMain, scrubError } from "./lib/law-update.mjs";
 import {
   extractAnnexRefs,
   normalizeLawName,
@@ -31,14 +32,6 @@ const WEB_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
 const ARTICLES_DIR = path.join(WEB_DIR, "public", "articles");
 const INSTITUTIONS_DIR = path.join(WEB_DIR, "data", "institutions");
 const OUT_FILE = path.join(WEB_DIR, "data", "annexes.json");
-
-const OC = process.env.LAW_OC;
-if (!OC) {
-  console.error(
-    "LAW_OC 가 없습니다. web/.dev.vars 에 LAW_OC=... 를 넣고 다시 실행하세요.",
-  );
-  process.exit(1);
-}
 
 const BASE = "https://www.law.go.kr/DRF";
 
@@ -69,41 +62,91 @@ function nameKey(name) {
  *
  * display 상한이 100이라 페이지를 끝까지 넘긴다(계약법 시행규칙류는 100을 넘는다).
  */
-async function listAnnexes(lawName) {
-  // 법령 별표는 licbyl, 행정규칙(고시·훈령·예규) 별표는 admbyl 로 나뉜다.
-  // 우리 근거의 상당수가 계약예규·조달청 기준이라 admbyl 쪽이 오히려 많다.
-  const targets = [
-    { target: "licbyl", root: "licBylSearch", admRule: false },
-    { target: "admbyl", root: "admRulBylSearch", admRule: true },
-  ];
-  const want = nameKey(lawName);
-  // 질의 문자열도 손봐야 한다. 법제처 색인은 가운뎃점을 ㆍ(U+318D)로 쓰는데,
-  // 우리 데이터의 ·(U+00B7)를 그대로 보내면 검색기가 못 알아듣고 0건을 준다
-  // ("벤처나라 등록 물품·서비스…" → 0건, 점을 빼면 18건). 비교용 nameKey만
-  // 고쳐서는 안 되고, 보내는 질의에서 점을 빼야 한다.
-  const query = lawName.replace(/[ㆍ·・･]/g, "");
-  for (const t of targets) {
-    const mine = [];
-    for (let page = 1; page <= 20; page += 1) {
-      const url = `${BASE}/lawSearch.do?OC=${OC}&target=${t.target}&type=JSON&display=100&page=${page}&search=2&query=${encodeURIComponent(query)}`;
-      const res = await fetch(url);
-      if (!res.ok) break;
-      let root;
-      try {
-        root = JSON.parse(await res.text())?.[t.root];
-      } catch {
-        break; // 오픈API는 오류를 HTML로 주기도 한다
-      }
-      const list = Object.values(root ?? {}).find(Array.isArray);
-      const rows = Array.isArray(list) ? list : list ? [list] : [];
-      if (rows.length === 0) break;
-      // 검색어가 부분일치라 다른 법령이 섞여 온다. 이름이 같은 것만.
-      for (const r of rows) {
-        if (nameKey(r.관련법령명 ?? r.관련행정규칙명) === want) mine.push(r);
-      }
-      if (page * 100 >= Number(root?.totalCnt ?? 0)) break;
+const TARGETS = [
+  { target: "licbyl", root: "licBylSearch", key: "licbyl", lawKey: "관련법령명", admRule: false },
+  { target: "admbyl", root: "admRulBylSearch", key: "admrulbyl", lawKey: "관련행정규칙명", admRule: true },
+];
+const isRecord = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
+
+function countValue(value) {
+  if ((typeof value !== "number" && typeof value !== "string") || !/^\d+$/.test(String(value))) {
+    throw new Error("별표 응답의 totalCnt가 올바르지 않음");
+  }
+  const count = Number(value);
+  if (!Number.isSafeInteger(count)) throw new Error("별표 응답의 totalCnt 범위 초과");
+  return count;
+}
+
+// 지정된 루트와 행 키만 인정한다. 오류 객체나 엉뚱한 배열을 0건으로 취급하지 않는다.
+export function parseAnnexPage(payload, target, page = 1) {
+  const spec = TARGETS.find((entry) => entry.target === target);
+  if (!spec || !isRecord(payload) || !isRecord(payload[spec.root])) {
+    throw new Error("별표 응답 루트가 올바르지 않음");
+  }
+  const root = payload[spec.root];
+  // 나머지 문서화된 필드는 스칼라 메타데이터다. 낯선 배열/객체는 0건이 아니다.
+  if (Object.entries(root).some(([key, value]) => key !== spec.key && value !== null && typeof value === "object")) {
+    throw new Error("별표 응답에 알 수 없는 목록/오류 객체가 있음");
+  }
+  const total = countValue(root.totalCnt);
+  if (root.page !== undefined && countValue(root.page) !== page) {
+    throw new Error("별표 응답 페이지 불일치");
+  }
+  const value = root[spec.key];
+  let rows;
+  if (value === undefined && total === 0) rows = [];
+  else if (Array.isArray(value)) rows = value;
+  else if (isRecord(value)) rows = [value];
+  else throw new Error("별표 응답 목록이 올바르지 않음");
+  const expected = Math.min(100, Math.max(0, total - (page - 1) * 100));
+  if (rows.length !== expected) throw new Error("별표 응답 목록이 불완전함");
+  for (const row of rows) {
+    if (!isRecord(row) || typeof row[spec.lawKey] !== "string" || !row[spec.lawKey].trim()
+      || !/^[0-9]+$/.test(String(row.별표번호 ?? ""))
+      || typeof row.별표명 !== "string" || !row.별표명.trim()
+      || !["별표", "서식", "별지", "별도", "부록"].includes(row.별표종류)) {
+      throw new Error("별표 응답 항목이 올바르지 않음");
     }
-    if (mine.length > 0) return { rows: mine, admRule: t.admRule };
+    for (const key of ["별표서식파일링크", "별표서식PDF파일링크", "별표법령상세링크", "별표행정규칙상세링크"]) {
+      if (row[key] !== undefined && row[key] !== null && typeof row[key] !== "string") {
+        throw new Error("별표 응답 링크가 올바르지 않음");
+      }
+    }
+  }
+  return { rows, total };
+}
+
+export async function listAnnexes(lawName, { oc = process.env.LAW_OC, ...requestOptions } = {}) {
+  if (!oc) throw new Error("LAW_OC 가 없습니다");
+  const want = nameKey(lawName);
+  const query = lawName.replace(/[ㆍ·・･]/g, "");
+  for (const spec of TARGETS) {
+    const mine = [];
+    let expectedTotal;
+    const seenPages = new Set();
+    let complete = false;
+    for (let page = 1; page <= 20; page += 1) {
+      const url = new URL(`${BASE}/lawSearch.do`);
+      url.search = new URLSearchParams({ OC: oc, target: spec.target, type: "JSON", display: "100", page: String(page), search: "2", query });
+      const payload = await fetchWithRetry(url.toString(), requestOptions);
+      const { rows, total } = parseAnnexPage(payload, spec.target, page);
+      if (expectedTotal !== undefined && total !== expectedTotal) {
+        throw new Error("별표 수집 중 전체 건수가 변경됨");
+      }
+      expectedTotal = total;
+      const signature = JSON.stringify(rows);
+      if (rows.length && seenPages.has(signature)) throw new Error("별표 응답 페이지 중복: 결과가 불완전함");
+      seenPages.add(signature);
+      for (const row of rows) {
+        if (nameKey(row[spec.lawKey]) === want) mine.push(row);
+      }
+      if (page * 100 >= total) {
+        complete = true;
+        break;
+      }
+    }
+    if (!complete) throw new Error("별표 수집 페이지 상한 초과: 결과가 불완전함");
+    if (mine.length > 0) return { rows: mine, admRule: spec.admRule };
   }
   return { rows: [], admRule: false };
 }
@@ -112,104 +155,117 @@ async function listAnnexes(lawName) {
  * 응답에 실려 오는 링크에는 OC(인증키)가 쿼리로 박혀 있다. 그대로 저장하면
  * 키가 저장소에 커밋된다. 반드시 지우고 쓴다.
  */
-function scrubKey(link) {
+export function scrubKey(link) {
   if (!link) return undefined;
-  const path = String(link).replace(/([?&])OC=[^&]*&?/g, "$1").replace(/[?&]$/, "");
-  return `https://www.law.go.kr${path}`;
-}
-
-// ── 필요한 별표·별지 목록을 조문과 제도 데이터에서 뽑는다 ────────────────────
-
-const needed = new Map(); // 법령명 → Set<별표N|별지N>
-function addRefs(text, ownLaw) {
-  for (const { law, annex } of extractAnnexRefs(text, ownLaw)) {
-    if (!needed.has(law)) needed.set(law, new Set());
-    needed.get(law).add(annex);
+  const url = new URL(link, "https://www.law.go.kr");
+  if (!["http:", "https:"].includes(url.protocol)) throw new Error("별표 링크 형식 오류");
+  for (const key of [...url.searchParams.keys()]) {
+    if (key.toLowerCase() === "oc") url.searchParams.delete(key);
   }
+  return url.toString();
 }
 
-for (const file of fs.readdirSync(ARTICLES_DIR)) {
-  const { articles } = JSON.parse(
-    fs.readFileSync(path.join(ARTICLES_DIR, file), "utf8"),
-  );
-  for (const a of articles) addRefs(a.text, a.law);
-}
-
-for (const file of fs.readdirSync(INSTITUTIONS_DIR)) {
-  const inst = JSON.parse(
-    fs.readFileSync(path.join(INSTITUTIONS_DIR, file), "utf8"),
-  );
-  for (const node of inst.process?.nodes ?? []) {
-    for (const basis of node.legal_basis ?? []) {
-      if (!basis.law) continue;
-      addRefs(`${basis.article ?? ""} ${basis.text ?? ""}`, basis.law);
+// 목록을 모두 수집하기 전에는 기존 파일을 건드리지 않는다.
+async function collectAnnexes({
+  articlesDir = ARTICLES_DIR,
+  institutionsDir = INSTITUTIONS_DIR,
+  outFile = OUT_FILE,
+  logger = console,
+  ...requestOptions
+}, report) {
+  const needed = new Map();
+  function addRefs(text, ownLaw) {
+    for (const { law, annex } of extractAnnexRefs(text, ownLaw)) {
+      if (!needed.has(law)) needed.set(law, new Set());
+      needed.get(law).add(annex);
     }
   }
-  for (const basis of inst.canvas?.legalBasis ?? []) {
-    addRefs(basis.articles ?? "", basis.law);
+  for (const file of fs.readdirSync(articlesDir).filter((name) => name.endsWith(".json"))) {
+    const { articles } = JSON.parse(fs.readFileSync(path.join(articlesDir, file), "utf8"));
+    if (!Array.isArray(articles)) throw new Error("조문 입력 형식 오류");
+    for (const article of articles) addRefs(article.text, article.law);
   }
-}
-
-console.log(
-  `참조된 별표·별지: ${[...needed.values()].reduce((n, s) => n + s.size, 0)}건 / 법령 ${needed.size}개`,
-);
-
-const out = {};
-let ok = 0;
-let miss = 0;
-
-for (const [rawLaw, wanted] of needed) {
-  const lawName = normalizeLawName(rawLaw);
-  const found = new Map(); // 별표N|별지N → { row, admRule }
-  const { rows, admRule } = await listAnnexes(lawName);
-  for (const row of rows) {
-    // 별표/서식 구분은 knd 요청값이 아니라 응답의 `별표종류`로 판정한다.
-    // 법령은 "별표"|"서식", 행정규칙은 "별표"|"별지"로 표기가 갈린다.
-    const no = decodeAnnexNo(row.별표번호, String(row.별표종류 ?? "별표"));
-    // 같은 번호가 중복되면(시행규칙 서식5·6 '입찰서' 등) 첫 항목을 쓴다.
-    if (no && !found.has(no)) found.set(no, { row, admRule });
-  }
-  if (found.size === 0 && wanted.size > 0) {
-    console.warn(`  ✗ 별표·서식 목록이 비었음: ${lawName}`);
-    miss += wanted.size;
-    continue;
-  }
-  for (const want of wanted) {
-    const hit = found.get(want);
-    if (!hit) {
-      // 조문이 가리키는 별표가 그 법령에 없는 경우가 실제로 있다(타법 별표 인용,
-      // 삭제·재편된 옛 번호). 지어내지 말고 남긴다 — 이 경고가 콘텐츠 오류 신호다.
-      console.warn(`  ✗ ${lawName} ${want} — 그 법령에 없음`);
-      miss += 1;
-      continue;
+  for (const file of fs.readdirSync(institutionsDir).filter((name) => name.endsWith(".json"))) {
+    const inst = JSON.parse(fs.readFileSync(path.join(institutionsDir, file), "utf8"));
+    for (const node of inst.process?.nodes ?? []) {
+      for (const basis of node.legal_basis ?? []) {
+        if (basis.law) addRefs(`${basis.article ?? ""} ${basis.text ?? ""}`, basis.law);
+      }
     }
-    const kind = want.startsWith("별지") ? "서식" : "별표";
-    out[`${lawName}::${want}`] = {
-      law: lawName,
-      annex: want,
-      kind,
-      label: annexLabel(want, kind, hit.admRule),
-      title: String(hit.row.별표명 ?? "").trim(),
-      // 본문은 HWP/PDF 파일이라 링크로 넘긴다. 표 형식이라 텍스트로 옮기면
-      // 행·열 관계가 깨져서, 어설픈 텍스트보다 원본 링크가 정확하다.
-      //
-      // `별표법령상세링크`는 DRF Open API 주소라 인증키 없이는 열리지 않는다
-      // (키는 커밋할 수 없으므로 사용자에겐 항상 죽은 링크다). 파일 링크
-      // (/LSW/flDownload.do)만 인증 없이 열린다.
-      // PDF·HWP 둘 다 보관한다 — 화면에서 사용자가 고르게 한다.
-      // PDF는 브라우저에서 바로 열리고, HWP는 편집이 필요한 서식 작성에 쓴다.
-      url: scrubKey(hit.row.별표법령상세링크 ?? hit.row.별표행정규칙상세링크),
-      pdfUrl: scrubKey(hit.row.별표서식PDF파일링크),
-      hwpUrl: scrubKey(hit.row.별표서식파일링크),
-    };
-    ok += 1;
+    for (const basis of inst.canvas?.legalBasis ?? []) addRefs(basis.articles ?? "", basis.law);
+  }
+  if (needed.size === 0) throw new Error("별표 참조 입력이 비었음: 기존 목록을 보존함");
+  report.requested = [...needed.values()].reduce((n, set) => n + set.size, 0);
+  logger.log(`참조된 별표·별지: ${[...needed.values()].reduce((n, set) => n + set.size, 0)}건 / 법령 ${needed.size}개`);
+  const out = {};
+  let missing = 0;
+  for (const [rawLaw, wanted] of needed) {
+    const lawName = normalizeLawName(rawLaw);
+    const { rows, admRule } = await listAnnexes(lawName, requestOptions);
+    const found = new Map();
+    for (const row of rows) {
+      const no = decodeAnnexNo(row.별표번호, row.별표종류);
+      if (no && !found.has(no)) found.set(no, row);
+    }
+    for (const want of wanted) {
+      const row = found.get(want);
+      if (!row) {
+        logger.warn(`  ✗ ${lawName} ${want} — 그 법령에 없음`);
+        missing += 1;
+        report.failed += 1;
+        report.failures.push(`${lawName} ${want}: 요청한 별표 없음`);
+        continue;
+      }
+      const kind = want.startsWith("별지") ? "서식" : "별표";
+      const meta = {
+        law: lawName,
+        annex: want,
+        kind,
+        label: annexLabel(want, kind, admRule),
+        title: row.별표명.trim(),
+        url: scrubKey(row.별표법령상세링크 ?? row.별표행정규칙상세링크),
+        pdfUrl: scrubKey(row.별표서식PDF파일링크),
+        hwpUrl: scrubKey(row.별표서식파일링크),
+      };
+      if (!meta.hwpUrl && !meta.pdfUrl) throw new Error("별표 파일 링크 없음: 기존 목록을 보존함");
+      out[`${lawName}::${want}`] = meta;
+      report.succeeded += 1;
+    }
+  }
+  if (missing > 0 || Object.keys(out).length === 0) {
+    throw new Error(`별표 수집 불완전 (${missing}건 누락): 기존 목록을 보존함`);
+  }
+  const sorted = Object.fromEntries(Object.entries(out).sort(([a], [b]) => a.localeCompare(b, "ko")));
+  fs.mkdirSync(path.dirname(outFile), { recursive: true });
+  await atomicWriteFile(outFile, `${JSON.stringify(sorted, null, 1)}\n`);
+  logger.log(`별표·별지 수집: 성공 ${Object.keys(out).length}건 → data/annexes.json`);
+  return sorted;
+}
+
+export async function populateAnnexes({ reportDir = process.env.LAW_UPDATE_REPORT_DIR, ...options } = {}) {
+  const report = { stage: "annex-index", requested: 0, succeeded: 0, failed: 0, preserved: true, failures: [] };
+  try {
+    const out = await collectAnnexes(options, report);
+    report.preserved = false;
+    return out;
+  } catch (error) {
+    report.failed = Math.max(report.failed, 1);
+    report.failures.push(scrubError(error));
+    throw error;
+  } finally {
+    if (reportDir) {
+      try {
+        await atomicWriteFile(path.join(reportDir, "annex-index.json"), `${JSON.stringify(report, null, 2)}\n`);
+      } catch (error) {
+        (options.logger ?? console).warn(`진단 보고서 저장 실패: ${scrubError(error)}`);
+      }
+    }
   }
 }
 
-// 키 정렬은 diff 안정성을 위해서다 — 주간 갱신 때 순서만 바뀐 커밋을 막는다.
-const sorted = Object.fromEntries(
-  Object.entries(out).sort(([a], [b]) => a.localeCompare(b, "ko")),
-);
-fs.mkdirSync(path.dirname(OUT_FILE), { recursive: true });
-fs.writeFileSync(OUT_FILE, `${JSON.stringify(sorted, null, 1)}\n`);
-console.log(`별표·별지 수집: 성공 ${ok}건 / 실패 ${miss}건 → data/annexes.json`);
+if (isMain(import.meta.url)) {
+  populateAnnexes().catch((error) => {
+    console.error(scrubError(error));
+    process.exitCode = 1;
+  });
+}

@@ -1,10 +1,7 @@
 name: Law auto-update (weekly detect & machine-verify)
 
-# 법 개정 자동 반영 1단(결정적 부분): 매주 법제처 현행본을 다시 받아
-# 원문 캐시·조문 원문(articleTexts)·기계 검증을 갱신하고, 개정으로 생긴
-# 불일치(삭제조문·내용불일치·실존실패)를 리포트로 커밋한다.
-# 2단(AI 수정·검토·배포)은 CCR Routine이 주간 세션에서 이 리포트를 읽어 수행한다.
-# (docs/operations.md '법개정 자동 반영' 절 참조)
+# 수집 성공과 내용 검토 완료는 다르다. 필수 수집/점검이 실패하면 커밋하지 않고
+# 실행 요약과 비밀값을 제거한 보고서를 남긴다. AI 검토·배포는 별도 Routine 작업이다.
 
 on:
   schedule:
@@ -26,42 +23,60 @@ jobs:
         working-directory: web
     env:
       LAW_OC: ${{ secrets.LAW_OC || 'wooseongkyun' }}
+      LAW_UPDATE_REPORT_DIR: ${{ github.workspace }}/.law-autoupdate-report
     steps:
       - uses: actions/checkout@v4
+        id: checkout
+      - name: Capture last committed audit date
+        id: baseline
+        run: node scripts/report-law-autoupdate.mjs --capture-baseline
       - uses: actions/setup-node@v4
+        id: setup
         with:
           node-version: 22
           cache: npm
           cache-dependency-path: web/package-lock.json
       - run: npm ci
+        id: dependencies
       - name: Install korean-law CLI
+        id: cli
         run: npm install -g korean-law-mcp@4.7.5
       - name: Refresh full-text law cache (개정본 수신)
+        id: cache
         run: node scripts/fetch-law-cache.mjs
       - name: Re-verify article existence against 현행본
+        id: article_verify
         run: npm run verify:articles -- --write
       - name: Re-extract article texts (팝업 원문 최신화)
+        id: article_texts
         env:
           KOREAN_LAW_CLI: korean-law
         run: node scripts/populate-article-texts.mjs
-      # 별표는 조문과 별개 API라 조문 갱신만으로는 최신화되지 않는다. 조문이
-      # 가리키는 별표 목록이 바뀌거나(개정으로 별표가 추가·삭제) 표 내용이 바뀌면
-      # 여기서 따라잡는다. 별표에는 제재기간·적격심사 배점처럼 실무에서 제일 자주
-      # 묻는 수치가 들어 있어 오래된 값이 남으면 손해가 크다.
-      - name: Re-collect annex index and texts
-        run: |
-          node scripts/populate-annexes.mjs
-          node scripts/populate-annex-texts.mjs
-          node scripts/generate-annex-refs.mjs
-
+      # 별표는 조문과 별개 API다. 단계별 결과를 남겨 수집 실패와 미실행을 구분한다.
+      - name: Re-collect annex index
+        id: annex_index
+        run: node scripts/populate-annexes.mjs
+      - name: Re-collect annex texts
+        id: annex_texts
+        run: node scripts/populate-annex-texts.mjs
+      - name: Generate annex references
+        id: annex_refs
+        run: node scripts/generate-annex-refs.mjs
       - name: Full audit (개정발 불일치 검출)
-        run: |
-          node scripts/audit-legal-bases.mjs
-          node scripts/verify-citation-content.mjs
+        id: audit
+        run: node scripts/audit-legal-bases.mjs
+      - name: Citation content audit
+        id: citation_audit
+        run: node scripts/verify-citation-content.mjs
       - name: Freshness check (개정 이력 리포트)
-        run: npm run check:freshness || true
+        id: freshness
+        run: npm run check:freshness
       - name: Commit weekly update report
+        id: commit
+        if: ${{ success() }}
         working-directory: .
+        env:
+          UPDATE_BRANCH: ${{ github.ref_name }}
         run: |
           git config user.name "law-autoupdate-bot"
           git config user.email "actions@github.com"
@@ -71,8 +86,31 @@ jobs:
           else
             git commit -m "chore(law-autoupdate): 주간 법제처 현행본 갱신 + 기계 재검증 리포트" \
               -m "AI 검토·배포는 주간 Routine 세션이 docs/full-audit-report.json 기준으로 수행"
+            pushed=false
             for i in 1 2 3 4 5; do
-              git pull --rebase origin ${{ github.ref_name }} && git push origin HEAD:${{ github.ref_name }} && break
-              echo "push retry $i"; sleep 3
+              if git pull --rebase origin "$UPDATE_BRANCH" && git push origin "HEAD:$UPDATE_BRANCH"; then
+                pushed=true
+                break
+              fi
+              echo "push retry $i"
+              if [ "$i" -lt 5 ]; then sleep 3; fi
             done
+            if [ "$pushed" != true ]; then
+              echo "Push failed after 5 attempts; update was not published" >&2
+              exit 1
+            fi
           fi
+      - name: Summarize collection and review status
+        id: report
+        if: ${{ always() }}
+        env:
+          LAW_UPDATE_STEPS: ${{ toJSON(steps) }}
+        run: node scripts/report-law-autoupdate.mjs
+      - name: Upload scrubbed update report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: law-autoupdate-report-${{ github.run_id }}
+          path: ${{ env.LAW_UPDATE_REPORT_DIR }}/report.*
+          if-no-files-found: warn
+          retention-days: 30
